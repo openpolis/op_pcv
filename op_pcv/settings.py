@@ -1,7 +1,15 @@
 # Django settings for op_pcv project.
 
+import os
+import logging
+
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
+DEVELOPMENT = True
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+REPO_ROOT = os.path.abspath(os.path.dirname(PROJECT_ROOT))
+
+
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -135,26 +143,51 @@ INSTALLED_APPS = (
 # the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        },
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
         }
     },
     'handlers': {
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+        'logfile': {
+            'level':'INFO',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': REPO_ROOT + "/log/logfile",
+            'maxBytes': 10000000,
+            'backupCount': 10,
+            'formatter': 'standard',
+            },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
+        },
+        },
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
-        },
+            },
+        'csvimport': {
+            'handlers': ['console', 'logfile'],
+            'level': 'DEBUG',
+            'propagate': True,
+            }
     }
 }

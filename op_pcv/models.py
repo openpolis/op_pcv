@@ -3,7 +3,13 @@
 
 
 from django.db import models
-from django.conf import settings
+
+
+class UltimoAggiornamento(models.Model):
+    ultimo_aggiornamento = models.DateTimeField()
+
+    class Meta:
+        verbose_name_plural = u'Ultimo Aggiornamento'
 
 
 class Parlamentare(models.Model):
@@ -21,7 +27,6 @@ class Parlamentare(models.Model):
     )
 
     RAMO_PARLAMENTO_SELECT=(
-
         (1, 'Parlamento'),
         (2, 'Senato'),
     )
