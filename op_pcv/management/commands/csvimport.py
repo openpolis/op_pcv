@@ -99,6 +99,8 @@ class Command(BaseCommand):
 
         self.logger.info("Inizio import da %s" % self.csv_file)
 
+        for r in self.unicode_reader:
+            parlamentare, created = Parlamentare
         # for r in self.unicode_reader:
         #
         #
