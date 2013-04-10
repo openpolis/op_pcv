@@ -14,20 +14,20 @@ class Parlamentare(models.Model):
         verbose_name_plural = u'Parlamentari'
 
     ADESIONE_SELECT = (
-        (0, '---'),
+
         (1, 'Aderisce'),
         (2, 'Non risponde'),
         (3, 'Non aderisce'),
     )
 
     RAMO_PARLAMENTO_SELECT=(
-        (0, '---'),
+
         (1, 'Parlamento'),
         (2, 'Senato'),
     )
 
     GRUPPO_SELECT=(
-        (0, '---'),
+
         (1,'Popolo della Libertà'),
         (2,'Partito Democratico'),
         (3,'Movimento 5 stelle'),
@@ -43,13 +43,14 @@ class Parlamentare(models.Model):
     nome = models.CharField(max_length=50)
     cognome = models.CharField(max_length=50)
     account_twitter = models.CharField(max_length=20, blank=True)
-    gruppo_parlamentare = models.IntegerField(choices=GRUPPO_SELECT, blank=True, default=0)
+    gruppo_parlamentare = models.IntegerField(choices=GRUPPO_SELECT, blank=True, default=None)
     risposta_twitter = models.BooleanField(default=False)
-    account_mail = models.CharField(max_length=80, blank=True)
+    account_mail = models.EmailField(max_length=100, blank=True)
+
     lettura_mail = models.BooleanField(default=False)
     risposta_mail = models.BooleanField(default=False)
-    adesione = models.IntegerField(choices=ADESIONE_SELECT, blank=True, default=0)
-    ramo_parlamento = models.IntegerField(choices=RAMO_PARLAMENTO_SELECT, blank=True, default=0)
+    adesione = models.IntegerField(choices=ADESIONE_SELECT, blank=True, default=None)
+    ramo_parlamento = models.IntegerField(choices=RAMO_PARLAMENTO_SELECT, blank=True, default=None)
     attivo = models.BooleanField(default=True)
     gruppo_ristretto = models.BooleanField(default=False)
     data_adesione = models.DateField(blank=True, null=True)
