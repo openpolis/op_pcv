@@ -77,11 +77,14 @@ class Command(BaseCommand):
         except csv.Error, e:
             self.logger.error("CSV error while reading %s: %s\n" % (self.csv_file, e.message))
 
+
         if options['type'] == 'dep':
-            self.handle_dep(*args, **options)
+            ramo = Parlamentare.RAMO_PARLAMENTO_SELECT[0][0]
+            self.handle_parlamentare(ramo, *args, **options)
             UltimoAggiornamento.objects.all().update(data=timezone.now())
         elif options['type'] == 'sen':
-            # self.handle_sen(*args, **options)
+            ramo = Parlamentare.RAMO_PARLAMENTO_SELECT[1][0]
+            self.handle_parlamentare(ramo, *args, **options)
             UltimoAggiornamento.objects.all().update(data=timezone.now())
         elif options['type'] == 'gruppi':
             self.handle_gruppi(*args, **options)
@@ -132,13 +135,13 @@ class Command(BaseCommand):
 
             c += 1
 
-    def handle_dep(self, *args, **options):
+    def handle_parlamentare(self, ramo, *args, **options):
 
         c = 0
 
         if options['delete']:
             self.logger.info("Erasing the precedently stored data...")
-            Parlamentare.objects.filter(ramo_parlamento=0).delete()
+            Parlamentare.objects.filter(ramo_parlamento=ramo).delete()
 
         self.logger.info("Inizio import da %s" % self.csv_file)
 
@@ -150,10 +153,12 @@ class Command(BaseCommand):
             except ObjectDoesNotExist:
                 r_gruppo_parlamentare = None
 
-            deputato = r["Deputato"]
-
+            if ramo == "0":
+                parlamentare = r["Deputato"]
+            else:
+                parlamentare = r["Senatore"]
             # separa nome e cognome
-            nomelist=deputato.split(" ")
+            nomelist=parlamentare.split(" ")
 
             r_cognome=""
             r_nome=""
@@ -225,7 +230,7 @@ class Command(BaseCommand):
                     'account_mail': r["Contatto mail"],
                     'lettura_mail': lettura_mail,
                     'risposta_mail': risposta_mail,
-                    'ramo_parlamento':'0',
+                    'ramo_parlamento':ramo,
                     'adesione': adesione,
                 }
             )
@@ -236,7 +241,7 @@ class Command(BaseCommand):
                 parlamentare.account_mail=r["Contatto mail"]
                 parlamentare.lettura_mail=lettura_mail
                 parlamentare.risposta_mail=risposta_mail
-                parlamentare.ramo_parlamento="0"
+                parlamentare.ramo_parlamento=ramo
                 parlamentare.adesione=adesione
                 parlamentare.save()
 
