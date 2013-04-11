@@ -6,7 +6,7 @@ from django.db import models
 
 
 class UltimoAggiornamento(models.Model):
-    ultimo_aggiornamento = models.DateTimeField()
+    data = models.DateTimeField()
 
     class Meta:
         verbose_name_plural = u'Ultimo Aggiornamento'
@@ -26,8 +26,8 @@ class GruppoParlamentare(models.Model):
 
 class Parlamentare(models.Model):
     ADESIONE_SELECT = (
-        ('0', 'Aderisce'),
-        ('1', 'Non risponde'),
+        ('0', 'Non risponde'),
+        ('1', 'Aderisce'),
         ('2', 'Non aderisce'),
     )
 
@@ -38,7 +38,7 @@ class Parlamentare(models.Model):
 
 
     def __unicode__(self):
-        str = self.nome+" "+self.cognome
+        str = self.cognome+" "+self.nome
 
         if self.ramo_parlamento:
             str+=" - "+self.RAMO_PARLAMENTO_SELECT[int(self.ramo_parlamento)][1]
@@ -54,14 +54,13 @@ class Parlamentare(models.Model):
     nome = models.CharField(max_length=50)
     cognome = models.CharField(max_length=50)
     account_twitter = models.CharField(max_length=20, blank=True)
-    # gruppo_parlamentare = models.CharField(max_length=3,choices=GRUPPO_SELECT, blank=True, default=None)
     gruppo_parlamentare = models.ForeignKey('GruppoParlamentare', null=True, blank=True, on_delete=models.SET_NULL)
     risposta_twitter = models.BooleanField(default=False)
     account_mail = models.EmailField(max_length=100, blank=True)
     lettura_mail = models.BooleanField(default=False)
     risposta_mail = models.BooleanField(default=False)
-    adesione = models.CharField(max_length=3,choices=ADESIONE_SELECT, blank=True, default=None)
-    ramo_parlamento = models.CharField(max_length=3,choices=RAMO_PARLAMENTO_SELECT, blank=True, default=None)
+    adesione = models.CharField(max_length=3,choices=ADESIONE_SELECT, blank=True, default=None, null=True)
+    ramo_parlamento = models.CharField(max_length=3,choices=RAMO_PARLAMENTO_SELECT, blank=True, default=None, null=True)
     attivo = models.BooleanField(default=True)
     gruppo_ristretto = models.BooleanField(default=False)
     data_adesione = models.DateField(blank=True, null=True)

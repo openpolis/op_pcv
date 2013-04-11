@@ -186,6 +186,7 @@ LOGGING = {
             },
         'csvimport': {
             'handlers': ['console', 'logfile'],
+            'encoding': 'UTF-8',
             'level': 'DEBUG',
             'propagate': True,
             }
