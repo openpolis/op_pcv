@@ -17,7 +17,7 @@ class GruppoParlamentare(models.Model):
         verbose_name_plural = u'Gruppi Parlamentari'
 
     def __unicode__(self):
-        return self.nome
+        return self.nome + " - " + self.sigla
 
     nome = models.CharField(max_length=50)
     sigla = models.CharField(max_length=10)
@@ -43,7 +43,7 @@ class Parlamentare(models.Model):
         if self.ramo_parlamento:
             str+=" - "+self.RAMO_PARLAMENTO_SELECT[int(self.ramo_parlamento)][1]
         if self.gruppo_parlamentare:
-            str+=" - "+self.gruppo_parlamentare
+            str+=" - "+self.gruppo_parlamentare.sigla
         if self.adesione:
             str+=" - "+self.ADESIONE_SELECT[int(self.adesione)][1]
         return str

@@ -83,12 +83,54 @@ class Command(BaseCommand):
         elif options['type'] == 'sen':
             # self.handle_sen(*args, **options)
             UltimoAggiornamento.objects.all().update(data=timezone.now())
-        elif options['type'] == 'sen':
+        elif options['type'] == 'gruppi':
             self.handle_gruppi(*args, **options)
 
         else:
             self.logger.error("Wrong type %s. Select among dep, sen, gruppi." % options['type'])
             exit(1)
+
+    def handle_gruppi(self,*args, **options):
+        c = 0
+
+        if options['delete']:
+            self.logger.info("Erasing the precedently stored data...")
+            GruppoParlamentare.objects.all().delete()
+
+        self.logger.info("Inizio import da %s" % self.csv_file)
+        for r in self.unicode_reader:
+            updated=False
+            if r["data_creazione"] is not u"":
+                data = r["data_creazione"]
+            else:
+                data="1970-01-01"
+
+            # metadata nome, sigla, data_creazione
+            gruppo, created = GruppoParlamentare.objects.get_or_create(
+                nome=r["nome"],
+
+                defaults={
+                    'nome':r["nome"],
+                    'sigla':r["sigla"].upper(),
+                    'data_creazione':data,
+                    }
+            )
+            if created is False and options['update']:
+                gruppo.sigla = r['sigla'].upper()
+                gruppo.data_creazione=data
+                gruppo.save()
+
+                updated=True
+
+            if created:
+                self.logger.info("%s: gruppo inserito: %s " % ( c, gruppo))
+            else:
+                if updated:
+                    self.logger.debug("%s: gruppo trovato e aggiornato: %s " % ( c,gruppo))
+                else:
+                    self.logger.debug("%s: gruppo trovato e non aggiornato: %s " % ( c, gruppo))
+
+            c += 1
 
     def handle_dep(self, *args, **options):
 
@@ -104,12 +146,13 @@ class Command(BaseCommand):
             updated=False
             r_gruppo_parlamentare=None
             try:
-                r_gruppo_parlamentare = GruppoParlamentare.objects.get(sigla=r['Gruppo'])
+                r_gruppo_parlamentare = GruppoParlamentare.objects.get(sigla=r['Gruppo'].upper())
             except ObjectDoesNotExist:
                 r_gruppo_parlamentare = None
 
             deputato = r["Deputato"]
 
+            # separa nome e cognome
             nomelist=deputato.split(" ")
 
             r_cognome=""
