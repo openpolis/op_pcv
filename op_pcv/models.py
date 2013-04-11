@@ -23,7 +23,6 @@ class GruppoParlamentare(models.Model):
     sigla = models.CharField(max_length=10)
     data_creazione = models.DateField(blank=True, null=True)
 
-
 class Parlamentare(models.Model):
     ADESIONE_SELECT = (
         ('0', 'Non risponde'),
