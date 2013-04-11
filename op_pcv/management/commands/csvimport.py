@@ -93,6 +93,20 @@ class Command(BaseCommand):
             self.logger.error("Wrong type %s. Select among dep, sen, gruppi." % options['type'])
             exit(1)
 
+
+    def get_yesno(self, var, true_value, null_value):
+        if var:
+            var_string=var.lower()
+            if var_string ==true_value:
+                output=True
+            else:
+                output=False
+        else:
+            output=null_value
+
+        return output
+
+
     def handle_gruppi(self,*args, **options):
         c = 0
 
@@ -185,29 +199,11 @@ class Command(BaseCommand):
             r_nome=r_nome.encode(self.db_encoding)
             r_cognome=r_cognome.encode(self.db_encoding)
 
-            if r["Risposta twitter"]:
-                risposta_twitter=True
-            else:
-                risposta_twitter=False
-
-            if r["Lettura mail"]:
-                lettura_mail=True
-            else:
-                lettura_mail=False
-
-            if r["Risposta mail"]:
-                risposta_mail=True
-            else:
-                risposta_mail=False
-
-            if r["In carica"]:
-                str_in_carica=r["In carica"].lower()
-                if str_in_carica ==u"si" or str_in_carica == u"sì":
-                    in_carica=True
-                else:
-                    in_carica=False
-            else:
-                in_carica=True
+            risposta_twitter=self.get_yesno(r["Risposta twitter"], "si", False)
+            lettura_mail = self.get_yesno(r["Lettura mail"],"si",False)
+            risposta_mail = self.get_yesno(r["Risposta mail"],"si",False)
+            in_carica = self.get_yesno(r["In carica"],"si",True)
+            
 
             # ADESIONE_SELECT = (
             #     ('0', 'Non risponde'),
