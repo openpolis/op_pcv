@@ -17,7 +17,7 @@ class GruppoParlamentare(models.Model):
         verbose_name_plural = u'Gruppi Parlamentari'
 
     def __unicode__(self):
-        return self.nome + " - " + self.sigla
+        return self.nome
 
     nome = models.CharField(max_length=50)
     sigla = models.CharField(max_length=10)
@@ -53,14 +53,14 @@ class Parlamentare(models.Model):
 
     nome = models.CharField(max_length=50)
     cognome = models.CharField(max_length=50)
-    account_twitter = models.CharField(max_length=20, blank=True)
+    ramo_parlamento = models.CharField(max_length=3,choices=RAMO_PARLAMENTO_SELECT, blank=True, default=None, null=True)
     gruppo_parlamentare = models.ForeignKey('GruppoParlamentare', null=True, blank=True, on_delete=models.SET_NULL)
+    adesione = models.CharField(max_length=3,choices=ADESIONE_SELECT, blank=True, default=None, null=True)
+    data_adesione = models.DateField(blank=True, null=True)
+    gruppo_ristretto = models.BooleanField(default=False)
+    in_carica = models.BooleanField(default=True)
+    account_twitter = models.CharField(max_length=20, blank=True)
     risposta_twitter = models.BooleanField(default=False)
     account_mail = models.EmailField(max_length=100, blank=True)
     lettura_mail = models.BooleanField(default=False)
     risposta_mail = models.BooleanField(default=False)
-    adesione = models.CharField(max_length=3,choices=ADESIONE_SELECT, blank=True, default=None, null=True)
-    ramo_parlamento = models.CharField(max_length=3,choices=RAMO_PARLAMENTO_SELECT, blank=True, default=None, null=True)
-    attivo = models.BooleanField(default=True)
-    gruppo_ristretto = models.BooleanField(default=False)
-    data_adesione = models.DateField(blank=True, null=True)

@@ -200,6 +200,15 @@ class Command(BaseCommand):
             else:
                 risposta_mail=False
 
+            if r["In carica"]:
+                str_in_carica=r["In carica"].lower()
+                if str_in_carica ==u"si" or str_in_carica == u"sì":
+                    in_carica=True
+                else:
+                    in_carica=False
+            else:
+                in_carica=True
+
             # ADESIONE_SELECT = (
             #     ('0', 'Non risponde'),
             #     ('1', 'Aderisce'),
@@ -216,7 +225,7 @@ class Command(BaseCommand):
                 adesione ="0"
 
 
-            # metadata Deputato,Gruppo,Account twitter,Risposta twitter,Contatto mail,Lettura mail,Risposta mail,Adesione
+            # metadata Deputato,Gruppo,Account twitter,Risposta twitter,Contatto mail,Lettura mail,Risposta mail,Adesione,In carica
             parlamentare, created = Parlamentare.objects.get_or_create(
                 nome=r_nome,
                 cognome=r_cognome,
@@ -232,6 +241,7 @@ class Command(BaseCommand):
                     'risposta_mail': risposta_mail,
                     'ramo_parlamento':ramo,
                     'adesione': adesione,
+                    'in_carica': in_carica,
                 }
             )
             if created is False and options['update']:
@@ -243,6 +253,7 @@ class Command(BaseCommand):
                 parlamentare.risposta_mail=risposta_mail
                 parlamentare.ramo_parlamento=ramo
                 parlamentare.adesione=adesione
+                parlamentare.in_carica=in_carica
                 parlamentare.save()
 
                 updated=True
