@@ -7,7 +7,7 @@ from op_pcv.views import PcvHome
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    #url(r'^$', PcvHome.as_view(), name="home"),
+    url(r'^$', PcvHome.as_view(), name="home"),
     # url(r'^op_pcv/', include('op_pcv.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
