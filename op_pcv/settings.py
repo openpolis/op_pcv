@@ -2,6 +2,7 @@
 
 import os
 import logging
+import django.conf.global_settings as DEFAULT_SETTINGS
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -122,6 +123,13 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     "templates/"
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+    'op_pcv.context_processor.main_settings',
+    'django.core.context_processors.request',
+)
+
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
