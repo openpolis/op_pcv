@@ -3,28 +3,21 @@
 {% block js_header %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/graph_utils.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/variables.js"></script>
 {% endblock %}
 
 {% block middle-content %}
 
-    <div id="pie_senato"></div>
-    <div id="pie_camera"></div>
+    <div class="container">
+        <div class="row">
+            <div id="pie_senato" class="top_pie"></div>
+            <div id="pie_camera" class="top_pie"></div>
+        </div>
+    </div>
+
+
+
 <script>
-
-    var width = 250;
-    var height = 180;
-    var radius = 100;
-    var grad=Math.PI/180;
-
-    var label_array=[];
-    label_array["Adesione"]={};
-    label_array["Adesione"][0] = 'Non risponde';
-    label_array["Adesione"][1] = 'Aderisce';
-    label_array["Adesione"][2] = 'Non Aderisce';
-    label_array["Parlamentari"]={};
-    label_array["Parlamentari"][0] = 'Deputati';
-    label_array["Parlamentari"][1] = 'Senatori';
-
 
     var totale=[];
     totale[0]=[], totale[1]=[];
@@ -46,52 +39,8 @@
         {% endfor %}
     ];
 
-
-    var color = d3.scale.category20();
-    {#    pie Camera#}
-    var svg = d3.select("#pie_camera").
-            append("svg").
-            attr("width", width).
-            attr("height",height).
-            append("g").
-            attr("transform", "translate(" + radius*1.5 + "," + radius*1.5 +")");
-
-    var arc = d3.svg.arc().innerRadius(radius - (radius/3)).outerRadius(radius - ((radius - radius/3)/10));
-
-    var pie = d3.layout.pie().sort(null).startAngle(-90*grad).endAngle(90*grad);
-
-    svg.selectAll("path").
-            data(pie(totale[0]['data'])).
-            enter().
-            append("path").
-            attr("d",arc).
-            attr("fill",function(d, i) { return color(i); }).
-            transition().
-            duration(500).
-            attrTween("d", sweep);
-
-
-    {#    pie Senato#}
-    var svg = d3.select("#pie_senato").
-            append("svg").
-            attr("width", width).
-            attr("height",height).
-            append("g").
-            attr("transform", "translate(" + radius*1.5 + "," + radius*1.5 +")");
-
-    var arc = d3.svg.arc().innerRadius(radius - (radius/3)).outerRadius(radius - ((radius - radius/3)/10));
-
-    var pie = d3.layout.pie().sort(null).startAngle(-90*grad).endAngle(90*grad);
-
-    svg.selectAll("path").
-            data(pie(totale[1]['data'])).
-            enter().
-            append("path").
-            attr("d",arc).
-            attr("fill",
-            function(d, i) { return color(i); }).transition().duration(500).attrTween("d", sweep);
-
-
+    draw_arc("pie_camera", totale[0]["data"]);
+    draw_arc("pie_senato", totale[1]["data"]);
 
 </script>
 
