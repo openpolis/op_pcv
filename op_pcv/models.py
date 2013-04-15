@@ -84,8 +84,34 @@ class Parlamentare(models.Model):
         return Parlamentare.get_n_parlamentari_incarica('0')
 
     # returns all parlamentari / deputati / senatori in a state
+    @classmethod
     def get_status(self, status, ramo=None):
         return self.get_parlamentari_incarica(ramo).filter(adesione=status)
+
+
+    @classmethod
+    def get_parlamentari_aderenti(cls):
+        return Parlamentare.get_status('1')
+    @classmethod
+    def get_parlamentari_non_aderenti(cls):
+        return Parlamentare.get_status('2')
+    @classmethod
+    def get_parlamentari_silenti(cls):
+        return Parlamentare.get_status('0')
+
+    @classmethod
+    def get_n_parlamentari_aderenti(cls):
+        return Parlamentare.get_parlamentari_aderenti().count()
+
+    @classmethod
+    def get_n_parlamentari_non_aderenti(cls):
+        return Parlamentare.get_parlamentari_non_aderenti().count()
+
+    @classmethod
+    def get_n_parlamentari_silenti(cls):
+        return Parlamentare.get_parlamentari_silenti().count()
+
+
 
     @classmethod
     def get_deputati_aderenti(cls):
@@ -154,23 +180,16 @@ class GruppoParlamentare(models.Model):
     data_creazione = models.DateField(blank=True, null=True)
 
 
-    def get_parlamentari(self):
-        return Parlamentare.objects.filter(gruppo_parlamentare=self)
+    @classmethod
+    def get_gruppi(cls):
+        return GruppoParlamentare.objects.all()
 
-    def get_senatori(self):
-        return Parlamentare.objects.filter(ramo_parlamento='1',gruppo_parlamentare=self)
-    def get_deputati(self):
-        return Parlamentare.objects.filter(ramo_parlamento='0',gruppo_parlamentare=self)
+    def get_parlamentari(self, ramo=None):
+        return Parlamentare.get_parlamentari_incarica(ramo).filter(gruppo_parlamentare=self)
 
     # returns all parlamentari / deputati / senatori in a state
     def get_status(self, status, ramo=None):
-        if ramo is not None:
-            if ramo =='1':
-                return self.get_senatori().filter(adesione=status)
-            elif ramo=='0':
-                return self.get_deputati().filter(adesione=status)
-        else:
-            return  self.get_parlamentari().filter(adesione=status)
+        return self.get_parlamentari(ramo).filter(adesione=status)
 
     def get_aderenti(self, ramo=None):
         return self.get_status('1',ramo)
@@ -182,5 +201,14 @@ class GruppoParlamentare(models.Model):
         return self.get_status('0',ramo)
 
     def get_perc_aderenti(self, ramo=None):
-        return Parlamentare.get_deputati_incarica
+        return self.get_aderenti(ramo)/self.get_parlamentari(ramo)
+
+    def get_perc_non_aderenti(self, ramo=None):
+        return self.get_non_aderenti(ramo)/self.get_parlamentari(ramo)
+
+    def get_perc_silenti(self, ramo=None):
+        return self.get_silenti(ramo)/self.get_parlamentari(ramo)
+
+
+
 
