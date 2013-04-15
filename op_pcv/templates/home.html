@@ -43,7 +43,12 @@
         {% endfor %}
     ];
 
-    draw_arc("pie_camera", totale[0]["data"]);
+    totale[1]["data"] = [{"label":"one", "value":20},
+        {"label":"two", "value":50},
+        {"label":"three", "value":30}];
+
+
+{#    draw_arc("pie_camera", totale[0]["data"]);#}
     draw_arc("pie_senato", totale[1]["data"]);
 
 </script>
