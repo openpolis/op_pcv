@@ -48,6 +48,11 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}ico/apple-touch-icon-57-precomposed.png">
 
+{# add this code#}
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-516c0e78663ccbd3"></script>
+{#end add this code#}
+
 </head>
 <body>
 
@@ -55,9 +60,22 @@
 <div class="wrapper">
     <!-- HEADER -->
     <div class="container header">
-        <div class="row hero-unit">
+        <div class="row ">
 {#            here goes the header#}
-        #parlamentocasadivetro header
+            <div class="span6">
+                #parlamentocasadivetro
+            </div>
+            <div class="span6">
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style ">
+                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                    <a class="addthis_button_tweet" style="width: 90px;"></a>
+                    <a class="addthis_button_google_plusone" g:plusone:annotation="bubble"></a>
+                </div>
+
+                <!-- AddThis Button END -->
+            </div>
+
         </div>
     </div>
 
@@ -71,7 +89,9 @@
 
     <div class="container">
         <div class="row">
-          footer
+            <div class="span12">
+                footer
+            </div>
         </div>
     </div>
 </div>

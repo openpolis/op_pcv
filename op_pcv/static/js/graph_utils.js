@@ -20,8 +20,6 @@ function draw_arc(div_id, data){
         append("g").
         attr("transform", "translate(" + radius*1.5 + "," + radius*1.5 +")");
 
-
-
     var pie = d3.layout.pie().sort(null).startAngle(-90*grad).endAngle(90*grad);
 
     svg.selectAll("path").

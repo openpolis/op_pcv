@@ -4,6 +4,7 @@ var width = 250;
 var height = 180;
 var radius = 100;
 var arc = d3.svg.arc().innerRadius(radius - (radius/3)).outerRadius(radius - ((radius - radius/3)/10));
+
 //pie chart labelling
 var label_array=[];
 label_array["Adesione"]={};
