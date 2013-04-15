@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-
+from datetime import datetime
+from django.contrib.markup.templatetags.markup import markdown
 from django.db import models
 
 
@@ -209,6 +210,35 @@ class GruppoParlamentare(models.Model):
     def get_perc_silenti(self, ramo=None):
         return self.get_silenti(ramo)/self.get_parlamentari(ramo)
 
+
+
+class Entry(models.Model):
+    COLONNA_SELECT = (
+        ('0', 'Sinistra'),
+        ('1', 'Destra'),
+    )
+    title= models.CharField(max_length=255)
+    author=models.CharField(max_length=255, null=True, blank=True)
+    body= models.TextField()
+    body_html = models.TextField(editable=False, default="")
+    published_at= models.DateTimeField(default=datetime.now())
+    published=models.BooleanField(default=False)
+    colonna=models.CharField(max_length=3,choices=COLONNA_SELECT, default=False)
+
+    def __unicode__(self):
+        return u"%s - %s" %(self.published_at.date(), self.title)
+
+
+    class Meta():
+        verbose_name= 'articolo'
+        verbose_name_plural= 'News'
+
+    def save(self):
+        super(Entry, self).save()
+        if self.body:
+            self.body_html= markdown(self.body)
+
+        super(Entry, self).save()
 
 
 
