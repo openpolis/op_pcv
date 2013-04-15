@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
-from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento
+from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 
 
 class PcvHome(TemplateView):
@@ -11,7 +11,8 @@ class PcvHome(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PcvHome,self).get_context_data(**kwargs)
 
-        context['adesione_codes']=[0,1,2]
+        context['news_left']=Entry.get_news_left()
+        context['news_right']=Entry.get_news_right()
 
         context['totale']={}
         context['totale'][0]={}

@@ -233,12 +233,24 @@ class Entry(models.Model):
         verbose_name= 'articolo'
         verbose_name_plural= 'News'
 
-    def save(self):
-        super(Entry, self).save()
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+
         if self.body:
             self.body_html= markdown(self.body)
 
         super(Entry, self).save()
 
+    @classmethod
+    def get_news_left(cls):
+        if Entry.objects.filter(published=True, colonna='0', body__isnull=False).order_by('-published_at').count():
+            return Entry.objects.filter(published=True, colonna='0', body__isnull=False).order_by('-published_at')[:1][0]
+        else:
+            return None
 
-
+    @classmethod
+    def get_news_right(cls):
+        if Entry.objects.filter(published=True, colonna='1', body__isnull=False).order_by('-published_at').count():
+            return Entry.objects.filter(published=True, colonna='1', body__isnull=False).order_by('-published_at')[:1][0]
+        else:
+            return None

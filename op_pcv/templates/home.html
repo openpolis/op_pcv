@@ -6,7 +6,7 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/variables.js"></script>
 {% endblock %}
 
-{% block middle-content %}
+{% block top-content %}
 
     <div class="container">
         <div class="row">
@@ -49,4 +49,31 @@
 </script>
 
 
+{% endblock %}
+
+
+{% block middle-content %}
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                A che punto siamo
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                {% if news_left %}
+                    {{ news_left.body_html|safe }}
+                {% else %}
+                    Nessuna news
+                {% endif %}
+            </div>
+            <div class="span6">
+                {% if news_right %}
+                    {{ news_right.body_html|safe }}
+                {% else %}
+                    Nessuna news
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
