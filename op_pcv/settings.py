@@ -4,31 +4,36 @@ import os
 import logging
 import django.conf.global_settings as DEFAULT_SETTINGS
 
-DEBUG = True
-TEMPLATE_DEBUG = True
-DEVELOPMENT = True
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-REPO_ROOT = os.path.abspath(os.path.dirname(PROJECT_ROOT))
+import environ
+root = environ.Path(__file__) - 2  # three folder back (/a/b/c/ - 3 = /)
 
-
-
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+# set default values and casting
+env = environ.Env(
+    DEBUG=(False, bool),
 )
+env.read_env(root('.env'))
 
-MANAGERS = ADMINS
+DEBUG = env('DEBUG')  # False if not in os.environ
+TEMPLATE_DEBUG = DEBUG
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'op_pcv',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'admin',
-        'PASSWORD': '5PYo2O4d541n1QK',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
-    }
+    'default': env.db(),  # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
 }
+
+MEDIA_ROOT = root('assets')
+MEDIA_URL = '/media/'
+STATIC_ROOT = root('static')
+STATIC_URL = '/static/'
+
+SECRET_KEY = env('SECRET_KEY') # Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
+
+REPO_ROOT = root()
+PROJECT_ROOT = root('op_pcv')
+
+ADMINS = ()
+MANAGERS = ADMINS
+
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -57,24 +62,6 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
-
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
-
-# URL prefix for static files.
-# Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
 
 
 # Additional locations of static files
@@ -92,8 +79,6 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'h4@bx$so^*+x01in@t=n3_sra3)33bntxgdp0ut2cc-cy#6s0#'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
