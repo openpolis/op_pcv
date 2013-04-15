@@ -2,12 +2,8 @@
 <meta charset="utf-8" xmlns="http://www.w3.org/1999/html">
 <html>
 <head>
-    <title>Parlamento Casa di Vetro</title>
 
-    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
-    <meta charset="utf-8">
-
-{#    <meta itemprop="name" content="">#}
+{#    <meta itemprop="name" content="Parlamento Casa di Vetro">#}
 {#    <meta itemprop="description" content="">#}
 {#    <meta itemprop="image" content="http://www.openricostruzione.it/static/img/favicon_grande.png">#}
     <title>Parlamento Casa di Vetro - {% block title %} {% endblock %}</title>
@@ -17,6 +13,10 @@
 
 
     {% block css_header %}
+    {% endblock %}
+
+    {% block js_header %}
+
     {% endblock %}
 
 
@@ -50,8 +50,6 @@
 
 </head>
 <body>
-
-<script src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
 
 
 <div class="wrapper">

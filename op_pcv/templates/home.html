@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block js_header %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/graph_utils.js"></script>
+{% endblock %}
 
+{% block middle-content %}
 
+    <div id="pie_senato"></div>
+    <div id="pie_camera"></div>
 <script>
 
     var width = 250;
@@ -29,26 +35,26 @@
     totale[1]['data']=[];
 
     totale[0]["data"]=[
-    {% for k,v in totale.0.items %}
-        {{ v }},
-    {% endfor %}
+        {% for k,v in totale.0.items %}
+            {{ v }},
+        {% endfor %}
     ];
 
     totale[1]["data"]=[
-    {% for k,v in totale.1.items %}
-        {{ v }},
-    {% endfor %}
+        {% for k,v in totale.1.items %}
+            {{ v }},
+        {% endfor %}
     ];
 
 
     var color = d3.scale.category20();
-{#    pie Camera#}
-    var svg = d3.select("#graph").
-                append("svg").
-                attr("width", width).
-                attr("height",height).
-                append("g").
-                attr("transform", "translate(" + radius*1.5 + "," + radius*1.5 +")");
+    {#    pie Camera#}
+    var svg = d3.select("#pie_camera").
+            append("svg").
+            attr("width", width).
+            attr("height",height).
+            append("g").
+            attr("transform", "translate(" + radius*1.5 + "," + radius*1.5 +")");
 
     var arc = d3.svg.arc().innerRadius(radius - (radius/3)).outerRadius(radius - ((radius - radius/3)/10));
 
@@ -65,8 +71,8 @@
             attrTween("d", sweep);
 
 
-{#    pie Senato#}
-    var svg = d3.select("#graph").
+    {#    pie Senato#}
+    var svg = d3.select("#pie_senato").
             append("svg").
             attr("width", width).
             attr("height",height).
@@ -86,14 +92,8 @@
             function(d, i) { return color(i); }).transition().duration(500).attrTween("d", sweep);
 
 
-    function sweep(a) {
-
-        var i = d3.interpolate({startAngle: -90*grad, endAngle: -90*grad},a);
-        return function(t) {
-            return arc(i(t));
-        };
-    }
 
 </script>
+
 
 {% endblock %}
