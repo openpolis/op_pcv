@@ -13,17 +13,14 @@ class PcvHome(TemplateView):
 
         context['news_left']=Entry.get_news_left()
         context['news_right']=Entry.get_news_right()
-
-        context['totale']={}
-        context['totale'][0]={}
-        context['totale'][1]={}
-        context['totale'][1][0]=Parlamentare.get_n_senatori_silenti()
-        context['totale'][1][1]=Parlamentare.get_n_senatori_aderenti()
-        context['totale'][1][2]=Parlamentare.get_n_senatori_non_aderenti()
-
-        context['totale'][0][0]=Parlamentare.get_n_deputati_silenti()
-        context['totale'][0][1]=Parlamentare.get_n_deputati_aderenti()
-        context['totale'][0][2]=Parlamentare.get_n_deputati_non_aderenti()
+        context['pie_senato']={}
+        context['pie_senato']['non_aderenti']=Parlamentare.get_n_senatori_silenti()+Parlamentare.get_n_senatori_non_aderenti()
+        context['pie_senato']['aderenti']=Parlamentare.get_n_senatori_aderenti()
+        context['pie_senato']['totale']=Parlamentare.get_n_senatori_incarica()
+        context['pie_camera']={}
+        context['pie_camera']['non_aderenti']=Parlamentare.get_n_deputati_silenti()+Parlamentare.get_n_deputati_non_aderenti()
+        context['pie_camera']['aderenti']=Parlamentare.get_n_deputati_aderenti()
+        context['pie_camera']['totale']=Parlamentare.get_n_deputati_incarica()
 
         gruppi=GruppoParlamentare.get_gruppi()
         context['dati_gruppi']=[]
@@ -31,9 +28,8 @@ class PcvHome(TemplateView):
 
             mydict={}
             mydict["sigla"]=g.sigla
-            mydict["aderenti_tot"]=g.get_aderenti()
-            mydict["non_aderenti_tot"]=g.get_non_aderenti()
-            mydict["silenti_tot"]=g.get_silenti()
+            mydict["aderenti_tot"]=g.get_n_aderenti()
+            mydict["non_aderenti_tot"]=g.get_n_non_aderenti()+g.get_n_silenti()
             context['dati_gruppi'].append(mydict)
 
 

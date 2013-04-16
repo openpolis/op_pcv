@@ -161,11 +161,11 @@ class Parlamentare(models.Model):
 
     @classmethod
     def get_n_deputati_silenti(cls):
-        return Parlamentare.get_deputati_non_aderenti().count()
+        return Parlamentare.get_deputati_silenti().count()
 
     @classmethod
     def get_n_senatori_silenti(cls):
-        return Parlamentare.get_senatori_non_aderenti().count()
+        return Parlamentare.get_senatori_silenti().count()
 
 
 
@@ -200,6 +200,15 @@ class GruppoParlamentare(models.Model):
 
     def get_silenti(self, ramo=None):
         return self.get_status('0',ramo)
+
+    def get_n_aderenti(self, ramo=None):
+        return self.get_status('1',ramo).count()
+
+    def get_n_non_aderenti(self, ramo=None):
+        return self.get_status('2',ramo).count()
+
+    def get_n_silenti(self, ramo=None):
+        return self.get_status('0',ramo).count()
 
     def get_perc_aderenti(self, ramo=None):
         return self.get_aderenti(ramo)/self.get_parlamentari(ramo)

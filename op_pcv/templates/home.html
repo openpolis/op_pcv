@@ -23,33 +23,26 @@
 
 <script>
 
-    var totale=[];
-    totale[0]=[], totale[1]=[];
 
-    totale[0]["label"]=label_array["Parlamentari"][0];
-    totale[0]['data']=[];
-    totale[1]["label"]=label_array["Parlamentari"][1];
-    totale[1]['data']=[];
+    var pie_camera_data=[
+        {"label":"aderenti", "value":{{ pie_camera.aderenti }} },
+        {"label":"non aderenti", "value":{{ pie_camera.non_aderenti }} }
+    ];
+    var pie_camera_label=[
+        {"label":"Deputati", "value":{{ pie_camera.totale }} }
+    ]
 
-    totale[0]["data"]=[
-        {% for k,v in totale.0.items %}
-            {{ v }},
-        {% endfor %}
+    var pie_senato_data=[
+        {"label":"aderenti", "value":{{ pie_senato.aderenti }} },
+        {"label":"non aderenti", "value":{{ pie_senato.non_aderenti }} }
     ];
 
-    totale[1]["data"]=[
-        {% for k,v in totale.1.items %}
-            {{ v }},
-        {% endfor %}
+    var pie_senato_label=[
+        {"label":"Senatori", "value":{{ pie_senato.totale }} }
     ];
 
-    totale[1]["data"] = [{"label":"one", "value":20},
-        {"label":"two", "value":50},
-        {"label":"three", "value":30}];
-
-
-{#    draw_arc("pie_camera", totale[0]["data"]);#}
-    draw_arc("pie_senato", totale[1]["data"]);
+    draw_arc("pie_camera", pie_camera_data, pie_camera_label);
+    draw_arc("pie_senato", pie_senato_data, pie_senato_label);
 
 </script>
 
