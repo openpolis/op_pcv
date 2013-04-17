@@ -2,6 +2,7 @@
 
 import os
 import logging
+import django.conf.global_settings as DEFAULT_SETTINGS
 
 import environ
 root = environ.Path(__file__) - 2  # three folder back (/a/b/c/ - 3 = /)
@@ -62,6 +63,7 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -107,6 +109,13 @@ TEMPLATE_DIRS = (
     "templates/"
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+    'op_pcv.context_processor.main_settings',
+    'django.core.context_processors.request',
+)
+
+
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,6 +128,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'op_pcv',
+    'django_extensions',
     'south',
 
 )

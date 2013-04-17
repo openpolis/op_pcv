@@ -1,9 +1,84 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Parlamento Casa di Vetro</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block js_header %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/graph_utils.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/variables.js"></script>
+{% endblock %}
+
+{% block top-content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <div id="pie_senato" class="top_pie"></div>
+            </div>
+            <div class="span6">
+                <div id="pie_camera" class="top_pie"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+
+    var totale=[];
+    totale[0]=[], totale[1]=[];
+
+    totale[0]["label"]=label_array["Parlamentari"][0];
+    totale[0]['data']=[];
+    totale[1]["label"]=label_array["Parlamentari"][1];
+    totale[1]['data']=[];
+
+    totale[0]["data"]=[
+        {% for k,v in totale.0.items %}
+            {{ v }},
+        {% endfor %}
+    ];
+
+    totale[1]["data"]=[
+        {% for k,v in totale.1.items %}
+            {{ v }},
+        {% endfor %}
+    ];
+
+    totale[1]["data"] = [{"label":"one", "value":20},
+        {"label":"two", "value":50},
+        {"label":"three", "value":30}];
+
+
+{#    draw_arc("pie_camera", totale[0]["data"]);#}
+    draw_arc("pie_senato", totale[1]["data"]);
+
+</script>
+
+
+{% endblock %}
+
+
+{% block middle-content %}
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                A che punto siamo
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                {% if news_left %}
+                    {{ news_left.body_html|safe }}
+                {% else %}
+                    Nessuna news
+                {% endif %}
+            </div>
+            <div class="span6">
+                {% if news_right %}
+                    {{ news_right.body_html|safe }}
+                {% else %}
+                    Nessuna news
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
