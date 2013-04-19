@@ -20,7 +20,7 @@ function draw_arc(div_id, data, label){
         attr("width", width).
         attr("height",height).
         append("g").
-        attr("transform", "translate(" + radius*1.5 + "," + (radius*1.5+80) +")");
+        attr("transform", "translate(" + radius*1.5 + "," + (radius*1.5+100) +")");
 
     var pie = d3.layout.
         pie().
@@ -43,17 +43,20 @@ function draw_arc(div_id, data, label){
         .text(label[0].value + " " + label[0].label);
 
     var fontsize=14;
-    var mystring = label[0].value + " " + label[0].label;
-    var x_offset = -(width/3 );
-    var y_offset = height - 50;
+    var x_offset = -(width/3.6 );
+    var y_offset = height -70;
 
-//    alert('x:'+x_offset+";"+"y:"+y_offset);
-
+    //stampa il n. di aderenti/ non aderenti
     svg.append("svg:text")
         .attr("transform", "translate("+x_offset+",-"+y_offset+")")
         .attr("text-anchor", "middle")
-        .text(label[0].value + " " + label[0].label);
+        .text(data[0].value + " " + data[0].label);
 
+
+    svg.append("svg:text")
+        .attr("transform", "translate("+ (-x_offset)+",-"+y_offset+")")
+        .attr("text-anchor", "middle")
+        .text(data[1].value + " " + data[1].label);
 
 
 }
