@@ -9,7 +9,7 @@ root = environ.Path(__file__) - 2  # three folder back (/a/b/c/ - 3 = /)
 
 # set default values and casting
 env = environ.Env(
-    DEBUG=(False, bool),
+    DEBUG=(bool, False),
 )
 env.read_env(root('.env'))
 
