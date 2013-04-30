@@ -110,20 +110,13 @@ function draw_arc(div_id, data, label){
 
     };
 
-
-    for(i=0;i<2;i++){
+    //aggiunge le linee di connessione fra grafico e labels
+    for( var i=0;i<2;i++){
         var temp = place_label(arcs[i], label_radius);
         connection_lines[i].x2=temp.x;
         connection_lines[i].y2=temp.y;
     }
 
-
-    //aggiunge le linee di connessione fra grafico e labels
-
-
-
-
-    //disegna le linee di connessione fra il punto di highlight e gli altri punti
     svg.selectAll().
         data(connection_lines).
         sort(null).
@@ -135,7 +128,5 @@ function draw_arc(div_id, data, label){
         attr("y2",function(d) { return d.y2;}).
         attr("stroke","black").
         attr("class","connection-line");
-
-
 
 }

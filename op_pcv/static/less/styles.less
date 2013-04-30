@@ -36,7 +36,8 @@ body{
 }
 
 .top_pie{
-
+  overflow: hidden;
+  max-height: 252px!important;
 }
 
 .bold_label{
@@ -44,4 +45,29 @@ body{
 }
 .connection-line{
 
+}
+
+#achepuntosiamo{
+  background-color: white;
+  padding: @spacing-30;
+  border-radius: 3px;
+
+
+  .title{
+    font-family: 'Bitter', serif;
+    color: @subtitle-color;
+    font-size: @slogan-size;
+    margin-bottom: 15px;
+  }
+
+  .subtitle{
+    color: @title-background;
+    font-size: @slogan-size;
+    margin-bottom: 15px;
+  }
+
+  .content{
+    color: #000000;
+    font-size: @content-size;
+  }
 }

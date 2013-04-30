@@ -1,7 +1,7 @@
 //pie chart
 var grad=Math.PI/180;
 var width = 380;
-var height = 260;
+var height = 255;
 var radius = 100;
 var label_radius = radius+(radius/1.7);
 var arc_width = 50;
