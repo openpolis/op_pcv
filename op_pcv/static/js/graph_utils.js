@@ -1,3 +1,16 @@
+function place_label(obj, r)
+{
+    //figure out the center point of the arc, at radius r
+    var ao = -Math.PI / 2 ;
+    var aa = ((obj.endAngle-obj.startAngle)/2)+obj.startAngle;
+    var tx = Math.cos(aa + ao);
+    var ty = Math.sin(aa + ao) ;
+    tx *= r;
+    ty *= r;
+    return {"x": tx, "y": ty }
+
+}
+
 
 function sweep(a) {
 
@@ -22,14 +35,16 @@ function draw_arc(div_id, data, label){
         append("g").
         attr("transform", "translate(" + radius*1.8 + "," + (radius*1.5+100) +")");
 
-    var pie = d3.layout.
+    var pie_chart = d3.layout.
         pie().
         sort(null).
         value(function(d) { return d.value; }).
         startAngle(-90*grad).endAngle(90*grad);
 
+    var arcs = pie_chart(data);
+
     svg.selectAll("path").
-        data(pie(data)).
+        data(pie_chart(data)).
         enter().
         append("path").
         attr("d",arc).
@@ -57,6 +72,7 @@ function draw_arc(div_id, data, label){
         .attr("text-anchor", "middle")
         .text( label[0].label);
 
+
     //stampa il n. di aderenti/ non aderenti
     svg.append("svg:text")
         .attr("transform", "translate("+offset_x_n+",-"+offset_y_n+")")
@@ -80,6 +96,45 @@ function draw_arc(div_id, data, label){
         .attr("transform", "translate("+(-offset_x_n)+",-"+offset_y_label+")")
         .attr("text-anchor", "middle")
         .text(data[1].label);
+
+    var connection_lines=[];
+
+    connection_lines[0]={
+        x1:offset_x_n,
+        y1:-offset_y_line
+
+    };
+    connection_lines[1]={
+        x1:-offset_x_n,
+        y1:-offset_y_line
+
+    };
+
+
+    for(i=0;i<2;i++){
+        var temp = place_label(arcs[i], label_radius);
+        connection_lines[i].x2=temp.x;
+        connection_lines[i].y2=temp.y;
+    }
+
+
+    //aggiunge le linee di connessione fra grafico e labels
+
+
+
+
+    //disegna le linee di connessione fra il punto di highlight e gli altri punti
+    svg.selectAll().
+        data(connection_lines).
+        sort(null).
+        enter().
+        append("line").
+        attr("x1",function(d) { return d.x1;}).
+        attr("y1",function(d) { return d.y1;}).
+        attr("x2",function(d) { return d.x2;}).
+        attr("y2",function(d) { return d.y2;}).
+        attr("stroke","black").
+        attr("class","connection-line");
 
 
 
