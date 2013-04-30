@@ -21,6 +21,9 @@ DATABASES = {
     'default': env.db(),  # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
 }
 
+# rss feeds for openpolis blog, twitter account and facebook page
+OP_BLOG_FEED = "http://feeds.feedburner.com/openpolis?format=xml"
+
 MEDIA_ROOT = root('assets')
 MEDIA_URL = '/media/'
 STATIC_ROOT = root('static')
@@ -132,6 +135,13 @@ INSTALLED_APPS = (
     'south',
 
 )
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+        }
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
