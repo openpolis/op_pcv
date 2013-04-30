@@ -7,7 +7,7 @@ var arc_width = 50;
 
 
 var offset_x_n = -(width/3.6 );
-var offset_y_n = height -70;
+var offset_y_n = height -80;
 var offset_y_label = offset_y_n-20;
 
 var offset_ntot= -25;

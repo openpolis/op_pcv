@@ -79,7 +79,7 @@ function draw_arc(div_id, data, label){
     svg.append("svg:text")
         .attr("transform", "translate("+(-offset_x_n)+",-"+offset_y_label+")")
         .attr("text-anchor", "middle")
-        .text(data[0].label);
+        .text(data[1].label);
 
 
 
