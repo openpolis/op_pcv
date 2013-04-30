@@ -10,10 +10,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="span6">
+            <div class="span5 offset1">
                 <div id="pie_senato" class="top_pie"></div>
             </div>
-            <div class="span6">
+            <div class="span5 ">
                 <div id="pie_camera" class="top_pie"></div>
             </div>
         </div>
@@ -24,20 +24,20 @@
 <script>
 
     var pie_camera_data=[
-        {"label":"Aderenti", "value":{{ pie_camera.aderenti }} },
-        {"label":"Non aderenti", "value":{{ pie_camera.non_aderenti }} }
+        {"label":"ADERISCONO", "value":{{ pie_camera.aderenti }} },
+        {"label":"NON ADERISCONO", "value":{{ pie_camera.non_aderenti }} }
     ];
     var pie_camera_label=[
-        {"label":"Deputati", "value":{{ pie_camera.totale }} }
+        {"label":"DEPUTATI", "value":{{ pie_camera.totale }} }
     ]
 
     var pie_senato_data=[
-        {"label":"Aderenti", "value":{{ pie_senato.aderenti }} },
-        {"label":"Non aderenti", "value":{{ pie_senato.non_aderenti }} }
+        {"label":"ADERISCONO", "value":{{ pie_senato.aderenti }} },
+        {"label":"NON ADERISCONO", "value":{{ pie_senato.non_aderenti }} }
     ];
 
     var pie_senato_label=[
-        {"label":"Senatori", "value":{{ pie_senato.totale }} }
+        {"label":"SENATORI", "value":{{ pie_senato.totale }} }
     ];
 
     draw_arc("pie_camera", pie_camera_data, pie_camera_label);

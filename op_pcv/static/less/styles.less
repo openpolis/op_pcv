@@ -1,35 +1,44 @@
 @import "bootstrap/bootstrap.less";
 @import "styles-responsive.less";
-@import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(http://fonts.googleapis.com/css?family=Bitter);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 //PCV custom Css
 
 body{
-  font-family: 'Arial', sans-serif;
-  background-color: white;
-}
-
-.ui-autocomplete{
-  z-index: 1000!important;
-}
-
-//placeholder color
-input::-webkit-input-placeholder{
-  color:#555;
-}
-input:-moz-placeholder {
-  color:#555;
-}
-input[placeholder], [placeholder], *[placeholder]
-{
-  color:#555;
+  font-family: 'Open Sans', sans-serif;
+  background-color: @page-background;
+  color: black;
 }
 
 .header{
   margin-top: @spacing-single;
 
-  .top_pie{
-
-    max-width: 300px;
-    float:left;
+  #main-title{
+    font-family: 'Bitter', serif;
+    font-size:  @title-size;
+    line-height: @title-size;
+    color: white;
+    text-align: center;
+    background-color: @title-background;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
+
+  #main-intro{
+    color: black;
+    font-size: @intro-size;
+    line-height: 45px;
+    text-align: center;
+    margin-top: @spacing-single;
+    margin-bottom: @spacing-single;
+  }
+}
+
+.top_pie{
+
+}
+
+.bold_label{
+  font-weight: bold;
 }
