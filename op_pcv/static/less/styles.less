@@ -11,6 +11,24 @@ body{
   color: black;
 }
 
+.title{
+  font-family: 'Bitter', serif;
+  color: @subtitle-color;
+  font-size: @slogan-size;
+  margin-bottom: 15px;
+}
+
+.subtitle{
+  color: @title-background;
+  font-size: @slogan-size;
+  margin-bottom: 15px;
+}
+
+.content{
+  color: #000000;
+  font-size: @content-size;
+}
+
 .header{
   margin-top: @spacing-single;
 
@@ -53,33 +71,19 @@ body{
   padding: @spacing-30;
   overflow: hidden;
 
-  .title{
-    font-family: 'Bitter', serif;
-    color: @subtitle-color;
-    font-size: @slogan-size;
-    margin-bottom: 15px;
 
-  }
-
-  .subtitle{
-    color: @title-background;
-    font-size: @slogan-size;
-    margin-bottom: 15px;
-  }
-
-  .content{
-
-    color: #000000;
-    font-size: @content-size;
-  }
 }
+
+#pcv_navbar .navbar{
+  margin-bottom: 0;
+}
+
 
 #pcv_navbar.stuck {
   position:fixed;
   top:0;
   box-shadow:0;
 }
-
 
 
 #pcv_inner_navbar{
@@ -136,4 +140,41 @@ body{
 #pcv_tabs{
   background-color: #000000;
   color: #ffffff;
+
+  .tab-content{
+    overflow: hidden;
+  }
+
+  #presidenti_img{
+    width: 100%;
+  }
+
+  .content{
+    color: #ffffff;
+  }
+
+  .tab-pane{
+    padding: @spacing-30;
+  }
+
+  .tab-pane#promesse{
+    padding:0;
+
+    .title{
+      padding-top: @spacing-30;
+      padding-bottom:0;
+      padding-left: @spacing-30;
+      padding-right: @spacing-30;
+    }
+    .content{
+      padding-bottom: @spacing-30;
+      padding-top:0;
+      padding-left: @spacing-30;
+      padding-right: @spacing-30;
+    }
+
+
+  }
+
+
 }
