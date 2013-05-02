@@ -102,17 +102,28 @@ function draw_arc(div_id, data, label){
     connection_lines[0]={
         x1:offset_x_n,
         y1:-offset_y_line
-
     };
     connection_lines[1]={
         x1:-offset_x_n,
         y1:-offset_y_line
-
     };
 
+    connection_lines[2]={};
+    connection_lines[3]={};
+
+    var i,temp;
+
     //aggiunge le linee di connessione fra grafico e labels
-    for( var i=0;i<2;i++){
-        var temp = place_label(arcs[i], label_radius);
+    for( i=0;i<2;i++){
+        temp = place_label(arcs[i], outer_label_radius);
+        connection_lines[i].x2=temp.x;
+        connection_lines[i].y2=temp.y;
+        connection_lines[i+2].x1 = temp.x;
+        connection_lines[i+2].y1 = temp.y;
+    }
+
+    for(i=2; i<4; i++){
+        temp = place_label(arcs[i-2], inner_label_radius);
         connection_lines[i].x2=temp.x;
         connection_lines[i].y2=temp.y;
     }

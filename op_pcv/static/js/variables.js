@@ -3,7 +3,8 @@ var grad=Math.PI/180;
 var width = 380;
 var height = 255;
 var radius = 100;
-var label_radius = radius+(radius/1.7);
+var outer_label_radius = radius+(radius/1.5);
+var inner_label_radius = radius+(radius/1.8);
 var arc_width = 50;
 
 

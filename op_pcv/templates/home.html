@@ -53,11 +53,15 @@
             collapseEffect: 'hide',
             collapseSpeed: 0,
             onCollapse: function () {
-                $('body').scrollTop($('div.topAnchor').offset().top);
+
+                //se sono piu' in basso del div non scrollare
+                var amount = $('div.topAnchor').offset().top;
+                if($(document).scrollTop()<amount)
+                    $('body, html').animate({scrollTop : amount},800);
             },
             afterExpand: function () {
 
-                var amount = $('div.bottomAnchor').offset().top;
+                var amount = $('div.topAnchor').offset().top;
                 $('body, html').animate({scrollTop : amount},800);
             },
             expandPrefix:     '...', // default is '... '
@@ -84,21 +88,20 @@
                         <div class="span12 title">
                             A che punto siamo
                         </div>
+                        <div class="topAnchor"></div>
                     </div>
                     <div class="row-fluid">
                         <div class="span12 subtitle">
                             {{ blogpost.title }}
-                            <div class="topAnchor"></div>
+
                         </div>
                     </div>
                     <div class="row-fluid">
                         <div class="span12 content expandable">
                             {{ blogpost.content.0.value|safe }}
-
                         </div>
                     </div>
                 </div>
-                <div class="bottomAnchor"></div>
             </div>
         </div>
         <div class="row" id="pcv_navbar">
