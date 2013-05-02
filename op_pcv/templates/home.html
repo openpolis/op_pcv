@@ -47,9 +47,22 @@
     $(document).ready(function() {
         $('div.expandable').expander({
             slicePoint: 550,
+            preserveWords: true,
+            expandEffect: 'show',
+            expandSpeed: 0,
+            collapseEffect: 'hide',
+            collapseSpeed: 0,
+            onCollapse: function () {
+                $('body').scrollTop($('div.topAnchor').offset().top);
+            },
+            afterExpand: function () {
+{#                $('body').scrollTop($('div.bottomAnchor').offset().top);#}
+                var amount = $('div.bottomAnchor').offset().top;
+                $('body, html').animate({scrollTop : amount},800);
+            },
             expandPrefix:     '...', // default is '... '
             expandText:       '<BR>Leggi tutto <i class="icon-caret-down"></i>', // default is 'read more'
-            userCollapseText: '<BR>Chiudi <i class="icon-caret-up"></i>'  // default is 'read less'
+            userCollapseText: 'Chiudi <i class="icon-caret-up"></i>'  // default is 'read less'
         });
     });
 
@@ -71,15 +84,18 @@
                 </div>
                 <div class="row-fluid">
                     <div class="span12 subtitle">
-                        Post title goes here #parlamentocasadivetro
+                        {{ blogpost.title }}
+                        <div class="topAnchor"></div>
                     </div>
                 </div>
                 <div class="row-fluid">
                     <div class="span12 content expandable">
-                        Post content: Sed vulputate imperdiet nulla, tristique interdum mauris laoreet id. Sed pharetra pellentesque ornare. Nunc viverra malesuada congue. Etiam malesuada, justo sit amet interdum consectetur, orci diam facilisis leo, eu aliquam lorem mi luctus dui. Nunc sodales egestas augue, eget tincidunt orci accumsan at. Nulla at dapibus nisl. Cras ultrices sem vitae dolor sodales aliquam mattis ante gravida. Quisque vel nibh velit, id iaculis sapien. Aliquam mauris diam, luctus nec fringilla ac, vulputate sed quam. Cras nunc purus, euismod id lobortis eget, scelerisque a felis. Suspendisse eu leo sem, vel bibendum lacus. Cras urna elit, consectetur eget varius sed, ultricies vitae nulla. Phasellus et felis odio, ut auctor arcu. Nunc convallis, tellus eu gravida blandit, libero mi hendrerit eros, ac cursus nulla mi eget felis. Sed vel orci mi.
+                        {{ blogpost.content.0.value|safe }}
+
                     </div>
-                </div>
+                </div><div class="bottomAnchor"></div>
             </div>
+
         </div>
 
     </div>

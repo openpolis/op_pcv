@@ -23,6 +23,7 @@ DATABASES = {
 
 # rss feeds for openpolis blog, twitter account and facebook page
 OP_BLOG_FEED = "http://feeds.feedburner.com/openpolis?format=xml"
+OP_BLOG_PCV_TAG = "parlamentocasadivetro"
 
 MEDIA_ROOT = root('assets')
 MEDIA_URL = '/media/'

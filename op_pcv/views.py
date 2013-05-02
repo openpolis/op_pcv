@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from django.core.cache import cache
-from settings import OP_BLOG_FEED
+from settings import OP_BLOG_FEED,OP_BLOG_PCV_TAG
 
 class PcvHome(TemplateView):
     template_name = "home.html"
@@ -34,11 +34,25 @@ class PcvHome(TemplateView):
 
 
         # feeds are extracted and cached for one hour (memcached)
-        feeds = cache.get('op_associazione_home_feeds')
-        if feeds is None:
-            feeds = {}
-            feeds['blog'] = feedparser.parse(OP_BLOG_FEED)
-            cache.set('op_associazione_home_feeds', feeds, 3600)
+        blogpost = cache.get('op_associazione_home_feeds')
+
+        if blogpost is None:
+
+            feeds = feedparser.parse(OP_BLOG_FEED)
+            i=0
+            trovato=False
+            while i<len(feeds.entries) and not trovato:
+                for tag in feeds.entries[i].tags:
+                    if tag.term == OP_BLOG_PCV_TAG:
+                        trovato=True
+
+                if not trovato:
+                    i += 1
+
+            blogpost = feeds.entries[i]
+            cache.set('op_associazione_home_feeds', blogpost , 3600)
+
+        context['blogpost']=blogpost
 
 
         return context
