@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from django.core.cache import cache
-from settings import OP_BLOG_FEED,OP_BLOG_PCV_TAG
+from settings import OP_BLOG_FEED,OP_BLOG_PCV_TAG,OP_BLOG_CACHETIME
 
 class PcvHome(TemplateView):
     template_name = "home.html"
@@ -50,9 +50,8 @@ class PcvHome(TemplateView):
                     i += 1
 
             blogpost = feeds.entries[i]
-            cache.set('op_associazione_home_feeds', blogpost , 3600)
+            cache.set('op_associazione_home_feeds', blogpost , OP_BLOG_CACHETIME)
 
         context['blogpost']=blogpost
-
 
         return context

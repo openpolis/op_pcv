@@ -49,15 +49,16 @@ body{
 
 #achepuntosiamo{
   background-color: white;
-  padding: @spacing-30;
   border-radius: 3px;
-
+  padding: @spacing-30;
+  overflow: hidden;
 
   .title{
     font-family: 'Bitter', serif;
     color: @subtitle-color;
     font-size: @slogan-size;
     margin-bottom: 15px;
+
   }
 
   .subtitle{
@@ -67,7 +68,72 @@ body{
   }
 
   .content{
+
     color: #000000;
     font-size: @content-size;
   }
+}
+
+#pcv_navbar.stuck {
+  position:fixed;
+  top:0;
+  box-shadow:0;
+}
+
+
+
+#pcv_inner_navbar{
+  min-height: 40px;
+  margin-right: @spacing-double;
+  margin-left: @spacing-double;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+
+  background-image: -moz-linear-gradient(top, @navbar-top, @navbar-bottom);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@navbar-top), to(@navbar-bottom));
+  background-image: -webkit-linear-gradient(top, @navbar-top, @navbar-bottom);
+  background-image: -o-linear-gradient(top, @navbar-top, @navbar-bottom);
+  background-image: linear-gradient(to bottom, @navbar-top, @navbar-bottom);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@navbar-top', endColorstr='@navbar-bottom', GradientType=0);
+  border: 0;
+  -webkit-border-radius: @navbar-border-radius;
+  -moz-border-radius: @navbar-border-radius;
+  border-radius: @navbar-border-radius;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+
+  .brand{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  li.active a{
+    background-color: @navbar-selected;
+    -webkit-box-shadow: none;
+  }
+
+  .nav li a{
+    padding: 20px @spacing-half 20px;
+  }
+
+  #openpolis_logo{
+    a{
+      padding-top: @spacing-half;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+      float:right;
+      img{
+        height: 35px;
+      }
+    }
+  }
+}
+
+#pcv_tabs{
+  background-color: #000000;
+  color: #ffffff;
 }

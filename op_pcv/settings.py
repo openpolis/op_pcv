@@ -24,6 +24,8 @@ DATABASES = {
 # rss feeds for openpolis blog, twitter account and facebook page
 OP_BLOG_FEED = "http://feeds.feedburner.com/openpolis?format=xml"
 OP_BLOG_PCV_TAG = "parlamentocasadivetro"
+# caches the last blog post about PCV for 30mins
+OP_BLOG_CACHETIME = 1800
 
 MEDIA_ROOT = root('assets')
 MEDIA_URL = '/media/'
