@@ -116,12 +116,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#campagna" data-toggle="tab">
+                                <a href="#campagna">
                                     Campagna
                                 </a>
                             </li>
                             <li>
-                                <a href="#adesioni" data-toggle="tab">
+                                <a href="#adesioni" >
                                     Adesioni
                                 </a>
                             </li>
@@ -149,30 +149,12 @@
                             <img src="{{ STATIC_URL }}img/presidenti.jpg"/>
                         </div>
                     </div>
-                    <div class="tab-pane default_padding" id="campagna">
-                        <div class="title">
-                            Le campagna
-                        </div>
-                        <div class="content">
-                            Ut vel metus magna, eu sagittis eros. Pellentesque vehicula magna non diam ultrices dictum vel vel libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nec felis purus, a dignissim erat. Praesent ut lorem nibh, vel tincidunt arcu. Fusce quis nulla sit amet est tempor egestas. Fusce non purus nibh. Morbi egestas interdum sapien, sit amet condimentum nisi fermentum at. In ante turpis, adipiscing at posuere vitae, ornare ac nisl.
-                        </div>
-
-                    </div>
-                    <div class="tab-pane default_padding" id="adesioni">
-                        <div class="title">
-                            Le adesioni
-                        </div>
-                        <div class="content">
-                            Pellentesque ligula lorem, lacinia et malesuada in, mattis at turpis. Nunc sit amet aliquet turpis. Vivamus aliquam dictum viverra. Vivamus adipiscing blandit rutrum. Fusce ultricies odio a odio cursus suscipit. Sed rhoncus luctus viverra. Nulla eros diam, lacinia non sollicitudin quis, rutrum vitae tortor.
-
-                            Sed fringilla faucibus sem, id tempus risus rhoncus eget. Duis sed dolor erat, ac vestibulum est. Cras dapibus ante ut leo dictum blandit. Pellentesq
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        {# LA CAMPAGNA #}
+        <div class="row"><a name="campagna" style="display: hidden;"></a>
             <div class="span10 offset1 white_bg">
                 <div class="tabbable"> <!-- Only required for left/right tabs -->
                     <ul class="nav nav-tabs default_padding" id="middle_tabs">
@@ -273,9 +255,8 @@
                                 </div>
                                 <div class="span6">
                                     {# twitter live feed#}
-                                  <a class="twitter-timeline" href="https://twitter.com/search?q=%23parlamentocasadivetro" data-widget-id="330246930733076480">Tweets about "#parlamentocasadivetro"</a>
+                                    <a class="twitter-timeline" href="https://twitter.com/search?q=%23parlamento" data-widget-id="330302930123112449">Tweets about "#parlamento"</a>
                                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
                                 </div>
                             </div>
                         </div>
@@ -296,12 +277,108 @@
                             </p>
                         </div>
                         <div class="tab-pane default_padding" id="mondo_tab">
+                            <span class="title">
+                                Pubblicit&agrave; dei lavori delle commissioni nel mondo
+                            </span>
+
+                            <img src="{{ STATIC_URL }}img/commissioni_mondo.jpg">
+
                             <p>
                                 erdum porta, turpis turpis posuere ipsum, sed mollis lectus eros nec lectus. Maecenas viverra consequat ipsum quis lobortis. Maecenas nec velit nibh, eget luctus nulla. Sed a nisi magna. Proin sapien libero, elementum ac iaculis vitae, condimentum quis sem. Nullam consequat faucibus tempus. Nulla volutpat porttitor scelerisque. Nam fermentum, sem non laoreet porttitor, risus mauris sagittis felis, in mattis lectus mi volutpat mi. Etiam euismod justo leo. Donec ullamcorper adipiscing arcu non dignissim. Donec tincidunt justo velit, quis fringilla sem.
 
                                 Quisque sit amet dui turpis, non mollis massa. Curabitur vel rutrum nunc. Fusce eget sapien vel ligula pellentesque egestas a ut nunc. Pellentesque tincidunt malesuada lacus id ultricies. Mauris congue, nisi et dignissim mollis, nibh metus tristique ligula, vel sagittis felis est ut nunc. Sed ac augue massa, eget aliquam nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras id diam eget elit egestas sagittis quis et risus. Mauris est dolor, molestie at dapibus in, vestibulum id nisi. Phasellus vitae magna libero. Fusce dignissim pellentesque ante. Morbi non elementum dolor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        {# LE ADESIONI #}
 
+        <div class="row"><a name="adesioni" style="display: hidden;"></a>
+            <div class="span10 offset1 white_bg">
+                <div class="tabbable"> <!-- Only required for left/right tabs -->
+                    <ul class="nav nav-tabs default_padding" id="adesioni_tabs">
+                        <li class="active">
+                            <a href="#adesioni_tab" data-toggle="tab">
+                                <span class="title">
+                                    La adesioni
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#adesionigruppi_tab" data-toggle="tab">
+                                <span class="title">
+                                    Le adesioni nei gruppi
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane default_padding active " id="adesioni_tab">
+                            <div class="row-fluid">
+                                <div class="span12" id="intro">
+                                    sit amet dui turpis, non mollis massa. Curabitur vel rutrum nunc. Fusce eget sapien vel ligula pellentesque egestas a ut nunc. Pellentesque tincidunt malesuada lacus id ultricies. Mauris congue, nisi et dignissim mollis, nibh metus tristique ligula, vel sagittis felis est ut nunc. Sed ac augue massa, eget aliquam nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras id diam eget elit egestas sagittis quis et risus. Mauris est dolor, molestie at dapibus in, vestibulum id nisi. Phasellus vitae magna libero. Fusce dignissim pellentesque ante. Morbi non elementum dolor.
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <div class="row-fluid">
+                                        <div class="span12">
+                                            <span class="title">Deputati</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="span6">
+                                {#   pills senatori #}
+                                    <div class="row-fluid">
+                                        <div class="span12">
+                                            <span class="title">Senatori</span>
+                                        </div>
+                                    </div>
+                                    <div class="row-fluid">
+                                       <div class="span12">
+                                           <ul class="nav nav-pills">
+                                               <li class="active">
+                                                   <a href="#sen_aderiscono" data-toggle="pill">
+                                                       <span class="subtitle">
+                                                            Aderiscono
+                                                       </span>
+                                                   </a>
+                                               </li>
+                                               <li class="">
+                                                   <a href="#sen_nonaderiscono" data-toggle="pill">
+                                                       <span class="subtitle">
+                                                            Non Aderiscono
+                                                       </span>
+                                                   </a>
+                                               </li>
+                                           </ul>
+                                       </div>
+                                    </div>
+                                {#  liste senatori #}
+                                    <div class="tab-content">
+                                        <div class="tab-pane default_padding active " id="sen_aderiscono">
+                                           bla2
+                                        </div>
+
+                                        <div class="tab-pane default_padding" id="sen_nonaderiscono">
+                                            <p>
+                                               bla
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane default_padding" id="adesionigruppi_tab">
+                            <p>
+                                turpis posuere ipsum, sed mollis lectus eros nec lectus. Maecenas viverra consequat ipsum quis lobortis. Maecenas nec velit nibh, eget luctus nulla. Sed a nisi magna. Proin sapien libero, elementum ac iaculis vitae, condimentum quis sem. Nullam consequat faucibus tempus. Nulla volutpat porttitor scelerisque. Nam fermentum, sem non laoreet porttitor, risus mauris sagittis felis, in mattis lectus mi volutpat mi. Etiam euismod justo leo. Donec ullamcorper adipiscing arcu non dignissim. Donec tincidunt justo velit, quis fringilla sem.
+
+                                Quisque sit amet dui turpis, non mollis massa. Curabitur vel rutrum nunc. Fusce eget sapien vel ligula pellentesque egestas a ut nunc. Pellentesque tincidunt malesuada lacus id ultricies. Mauris congue, nisi et dignissim mollis, nibh metus tristique ligula, vel sagittis felis est ut nunc. Sed ac augue massa, eget aliquam nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras id diam eget elit egestas sagittis quis et risus. Mauris est dolor, molestie at dapibus in, vestibulum id nisi. Phasellus vitae magna libero. Fusce dignissim pellentesque ante. Morbi non elementum dolor.
                             </p>
                         </div>
                     </div>

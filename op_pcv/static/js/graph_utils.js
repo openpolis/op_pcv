@@ -77,7 +77,7 @@ function draw_arc(div_id, data, label){
     svg.append("svg:text")
         .attr("transform", "translate("+offset_x_n+",-"+offset_y_n+")")
         .attr("text-anchor", "middle")
-        .attr("class","bold_label")
+        .attr("class","big_bold_label")
         .text(data[0].value);
 
     svg.append("svg:text")
@@ -89,7 +89,7 @@ function draw_arc(div_id, data, label){
     svg.append("svg:text")
         .attr("transform", "translate("+ (-offset_x_n)+",-"+offset_y_n+")")
         .attr("text-anchor", "middle")
-        .attr("class","bold_label")
+        .attr("class","big_bold_label")
         .text(data[1].value);
 
     svg.append("svg:text")
