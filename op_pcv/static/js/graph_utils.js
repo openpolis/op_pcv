@@ -97,6 +97,8 @@ function draw_arc(div_id, data, label){
         .attr("text-anchor", "middle")
         .text(data[1].label);
 
+
+    //aggiunge le linee di connessione fra grafico e labels
     var connection_lines=[];
 
     connection_lines[0]={
@@ -110,10 +112,8 @@ function draw_arc(div_id, data, label){
 
     connection_lines[2]={};
     connection_lines[3]={};
-
     var i,temp;
 
-    //aggiunge le linee di connessione fra grafico e labels
     for( i=0;i<2;i++){
         temp = place_label(arcs[i], outer_label_radius);
         connection_lines[i].x2=temp.x;

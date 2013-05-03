@@ -29,6 +29,21 @@ body{
   font-size: @content-size;
 }
 
+.black_bg{
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.white_bg{
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.default_padding{
+  padding: @spacing-30;
+}
+
+
 .header{
   margin-top: @spacing-single;
 
@@ -66,12 +81,8 @@ body{
 }
 
 #achepuntosiamo{
-  background-color: white;
   border-radius: 3px;
-  padding: @spacing-30;
   overflow: hidden;
-
-
 }
 
 #pcv_navbar .navbar{
@@ -139,8 +150,6 @@ body{
 
 #pcv_tabs{
   min-height: 500px;
-  background-color: #000000;
-  color: #ffffff;
 
   .tab-content{
     overflow: hidden;
@@ -154,28 +163,27 @@ body{
     color: #ffffff;
   }
 
-  .tab-pane{
-    padding: @spacing-30;
-  }
-
   .tab-pane#promesse{
-    padding:0;
-
+//    padding: 0;
     .title{
-      padding-top: @spacing-30;
       padding-bottom:0;
-      padding-left: @spacing-30;
-      padding-right: @spacing-30;
     }
     .content{
-      padding-bottom: @spacing-30;
       padding-top:0;
-      padding-left: @spacing-30;
-      padding-right: @spacing-30;
     }
+  }
+}
 
+#middle_tabs{
+  margin-top:@spacing-single;
+  padding-bottom: 0;
+  border-bottom: 1px solid #dddddd;
 
+  .active .title{
+    color:@title-background;
   }
 
-
+  a:hover{
+    background-color: #ffffff;
+  }
 }

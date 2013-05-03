@@ -83,7 +83,7 @@
     <div class="container">
         <div class="row">
             <div class="span10 offset1" >
-                <div id="achepuntosiamo">
+                <div id="achepuntosiamo" class="white_bg default_padding">
                     <div class="row-fluid">
                         <div class="span12 title">
                             A che punto siamo
@@ -136,20 +136,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="span10 offset1" id="pcv_tabs">
+            <div class="span10 offset1 black_bg" id="pcv_tabs">
                 <div class="tab-content">
                     <div class="tab-pane active" id="promesse">
-                        <div class="title">
+                        <div class="title default_padding">
                             Le promesse
                         </div>
-                        <div class="content">
+                        <div class="content default_padding">
                             Pellentesque vehicula magna non diam ultrices dictum vel vel libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nec felis purus, a dignissim erat. Praesent ut lorem nibh, vel tincidunt arcu. Fusce quis nulla sit amet est tempor egestas. Fusce non purus nibh. Morbi egestas interdum sapien, sit amet condimentum nisi fermentum at. In ante turpis
                         </div>
                         <div id="presidenti_img">
                             <img src="{{ STATIC_URL }}img/presidenti.jpg"/>
                         </div>
                     </div>
-                    <div class="tab-pane" id="campagna">
+                    <div class="tab-pane default_padding" id="campagna">
                         <div class="title">
                             Le campagna
                         </div>
@@ -158,7 +158,7 @@
                         </div>
 
                     </div>
-                    <div class="tab-pane" id="adesioni">
+                    <div class="tab-pane default_padding" id="adesioni">
                         <div class="title">
                             Le adesioni
                         </div>
@@ -166,6 +166,143 @@
                             Pellentesque ligula lorem, lacinia et malesuada in, mattis at turpis. Nunc sit amet aliquet turpis. Vivamus aliquam dictum viverra. Vivamus adipiscing blandit rutrum. Fusce ultricies odio a odio cursus suscipit. Sed rhoncus luctus viverra. Nulla eros diam, lacinia non sollicitudin quis, rutrum vitae tortor.
 
                             Sed fringilla faucibus sem, id tempus risus rhoncus eget. Duis sed dolor erat, ac vestibulum est. Cras dapibus ante ut leo dictum blandit. Pellentesq
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span10 offset1 white_bg">
+                <div class="tabbable"> <!-- Only required for left/right tabs -->
+                    <ul class="nav nav-tabs default_padding" id="middle_tabs">
+                        <li class="active">
+                            <a href="#campagna_tab" data-toggle="tab">
+                                <span class="title">
+                                    La campagna
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#appello_tab" data-toggle="tab">
+                                <span class="title">
+                                    L'appello
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#commissioni_tab" data-toggle="tab">
+                                <span class="title">
+                                    Commissioni in numero
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mondo_tab" data-toggle="tab">
+                                <span class="title">
+                                    Nel mondo
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane default_padding active " id="campagna_tab">
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <p>
+                                        "Sogno che quest'aula diventi una casa di vetro e che questa scelta possa
+                                        contagiare tutte quante le altre istituzioni" dice il Presidente Grasso verso la
+                                        chiusura del suo
+                                        <a href="" >
+                                            discorso di insediamento
+                                        </a>
+                                        al Senato, facendo l'eco di
+                                        <a href="" >
+                                            quello pronunciato
+                                        </a>
+                                        la mattina dalla Presidente Boldrini: "Facciamo di questa Camera la
+                                        casa della buona politica. Rendiamo il Parlamento e il nostro lavoro
+                                        trasparenti". Magnifico, veramente.
+                                    </P><p>
+                                    Il sogno di Pietro e l'incitazione di Laura sono per la trasparenza del Senato e
+                                    della Camera. E non sono soli. La quasi totalità dei membri che siedono nelle
+                                    Aule presiedute da Grasso e Boldrini sono stati eletti sulla base di programmi
+                                    dei loro partiti che hanno tra i primi punti proprio la trasparenza.
+                                    Fuori, nelle piazze nelle strade negli articoli dei giornali in tv nei tweet e nei
+                                    blog, tutti vogliono pretendono urlano trasparenza! Diviso su tutto, il nostro
+                                    paese pare essere unanime su pochissime cose, una di queste è proprio la
+                                    necessità di trasparenza.
+                                </p><p>
+                                    Noi che i sogni abbiamo voglia di continuare a farli ma che abbiamo anche
+                                    l'urgenza di viverli, lanciamo non un appello, perché pare proprio che in questo
+                                    caso non ce ne sia bisogno, ma la proposta che produce direttamente e
+                                    concretamente un aumento del tasso di trasparenza del nostro Parlamento:
+                                    Commissioni aperte per un Parlamento trasparente!
+                                </p><p>
+                                    E' incredibile a dirsi ma i lavori delle Commissioni del Senato e della Camera, di
+                                    norma e per Regolamento, non sono pubblici. Non si sa chi prenda parte alle
+                                    riunioni - le presenze non sono pubblicate - non si sa cosa viene detto - i
+                                    resoconti sono solo riassunti sommari - e, assurdamente, non si conoscono i
+                                    voti, non si può sapere se i nostri rappresentanti hanno votato a favore o
+                                    contro una proposta di legge.
+                                </p><p>
+                                    Perciò prima di tutto bisogna modificare i Regolamenti per rendere pubblici e
+                                    trasparenti i lavori delle Commissioni parlamentari. E poi,
+                                    contemporaneamente, bisogna stabilire che il sistema di voto normale, in
+                                    Assemblea e nelle Commissioni, sia quello elettronico, in modo che si sappia
+                                    sempre chi è presente e cosa vota. Non se ne può più con quelle ridicole alzate
+                                    di mano con cui si approvano cose importanti di cui però non si può chiedere
+                                    conto a chi l'ha votate.
+                                </p><p>
+                                    <a href="#">
+                                        Questo è il testo
+                                    </a>
+                                    di una proposta di riforma del Regolamento del Senato pronta
+                                    per essere adottata. Ci abbiamo lavorato a lungo in passato, anche con l'aiuto
+                                    di tecnici e addetti ai lavori, ma è sempre mancata la volontà che invece viene
+                                    da tutti ribadita proprio adesso.
+                                </p><p>
+                                    Si può fare la stessa cosa alla Camera e passare nel giro di pochi atti e pochi
+                                    giorni da un Parlamento opaco a uno molto più trasparente.
+                                    Per questo non occorre neppure un Governo, è sufficiente la maggioranza
+                                    assoluta dei Deputati e dei Senatori e tante persone fuori a chiedere di passare
+                                    dai sogni al cambiamento della realtà.
+                                    #parlamentocasadivetro
+                                </p>
+
+                                </div>
+                                <div class="span6">
+                                    {# twitter live feed#}
+                                  <a class="twitter-timeline" href="https://twitter.com/search?q=%23parlamentocasadivetro" data-widget-id="330246930733076480">Tweets about "#parlamentocasadivetro"</a>
+                                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane default_padding" id="appello_tab">
+                            <p>
+                                turpis posuere ipsum, sed mollis lectus eros nec lectus. Maecenas viverra consequat ipsum quis lobortis. Maecenas nec velit nibh, eget luctus nulla. Sed a nisi magna. Proin sapien libero, elementum ac iaculis vitae, condimentum quis sem. Nullam consequat faucibus tempus. Nulla volutpat porttitor scelerisque. Nam fermentum, sem non laoreet porttitor, risus mauris sagittis felis, in mattis lectus mi volutpat mi. Etiam euismod justo leo. Donec ullamcorper adipiscing arcu non dignissim. Donec tincidunt justo velit, quis fringilla sem.
+
+                                Quisque sit amet dui turpis, non mollis massa. Curabitur vel rutrum nunc. Fusce eget sapien vel ligula pellentesque egestas a ut nunc. Pellentesque tincidunt malesuada lacus id ultricies. Mauris congue, nisi et dignissim mollis, nibh metus tristique ligula, vel sagittis felis est ut nunc. Sed ac augue massa, eget aliquam nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras id diam eget elit egestas sagittis quis et risus. Mauris est dolor, molestie at dapibus in, vestibulum id nisi. Phasellus vitae magna libero. Fusce dignissim pellentesque ante. Morbi non elementum dolor.
+                            </p>
+                        </div>
+                        <div class="tab-pane default_padding " id="commissioni_tab">
+                            <p>
+                                ipsum, sed mollis lectus eros nec lectus. Maecenas viverra consequat ipsum quis lobortis. Maecenas nec velit nibh, eget luctus nulla. Sed a nisi magna. Proin sapien libero, elementum ac iaculis vitae, condimentum quis sem. Nullam consequat faucibus tempus. Nulla volutpat porttitor scelerisque. Nam fermentum, sem non laoreet porttitor, risus mauris sagittis felis, in mattis lectus mi volutpat mi. Etiam euismod justo leo. Donec ullamcorper adipiscing arcu non dignissim. Donec tincidunt justo velit, quis fringilla sem.
+
+                                Quisque sit amet dui turpis, non mollis massa. Curabitur vel rutrum nunc. Fusce eget sapien vel ligula pellentesque egestas a ut nunc. Pellentesque tincidunt malesuada lacus id ultricies. Mauris congue, nisi et dignissim mollis, nibh metus tristique ligula, vel sagittis felis est ut nunc. Sed ac augue massa, eget aliquam nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras id diam eget elit egestas sagittis quis et risus. Mauris est dolor, molestie at dapibus in, vestibulum id nisi. Phasellus vitae magna libero. Fusce dignissim pellentesque ante. Morbi non elementum dolor.
+
+
+                            </p>
+                        </div>
+                        <div class="tab-pane default_padding" id="mondo_tab">
+                            <p>
+                                erdum porta, turpis turpis posuere ipsum, sed mollis lectus eros nec lectus. Maecenas viverra consequat ipsum quis lobortis. Maecenas nec velit nibh, eget luctus nulla. Sed a nisi magna. Proin sapien libero, elementum ac iaculis vitae, condimentum quis sem. Nullam consequat faucibus tempus. Nulla volutpat porttitor scelerisque. Nam fermentum, sem non laoreet porttitor, risus mauris sagittis felis, in mattis lectus mi volutpat mi. Etiam euismod justo leo. Donec ullamcorper adipiscing arcu non dignissim. Donec tincidunt justo velit, quis fringilla sem.
+
+                                Quisque sit amet dui turpis, non mollis massa. Curabitur vel rutrum nunc. Fusce eget sapien vel ligula pellentesque egestas a ut nunc. Pellentesque tincidunt malesuada lacus id ultricies. Mauris congue, nisi et dignissim mollis, nibh metus tristique ligula, vel sagittis felis est ut nunc. Sed ac augue massa, eget aliquam nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras id diam eget elit egestas sagittis quis et risus. Mauris est dolor, molestie at dapibus in, vestibulum id nisi. Phasellus vitae magna libero. Fusce dignissim pellentesque ante. Morbi non elementum dolor.
+
+
+                            </p>
                         </div>
                     </div>
                 </div>
