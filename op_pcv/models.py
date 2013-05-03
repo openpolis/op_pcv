@@ -60,7 +60,7 @@ class Parlamentare(models.Model):
     @classmethod
     def get_parlamentari_incarica(cls, ramo=None):
 
-        group = Parlamentare.objects.filter(in_carica = True)
+        group = Parlamentare.objects.filter(in_carica = True).order_by('cognome')
         if ramo is not None:
             group=group.filter(ramo_parlamento=ramo)
 
@@ -89,6 +89,11 @@ class Parlamentare(models.Model):
     def get_status(self, status, ramo=None):
         return self.get_parlamentari_incarica(ramo).filter(adesione=status)
 
+    # returns all parlamentari / deputati/senatori NOT in a state
+    @classmethod
+    def get_not_status(self,status, ramo=None):
+        return self.get_parlamentari_incarica(ramo).exclude(adesione=status)
+
 
     @classmethod
     def get_parlamentari_aderenti(cls):
@@ -99,6 +104,12 @@ class Parlamentare(models.Model):
     @classmethod
     def get_parlamentari_silenti(cls):
         return Parlamentare.get_status('0')
+
+    # da' tutti i parlamentari che hanno status diverso da 1 (adderente)
+    @classmethod
+    def get_parlamentari_neg_aderenti(cls):
+        return Parlamentare.get_not_status('1')
+
 
     @classmethod
     def get_n_parlamentari_aderenti(cls):
@@ -112,6 +123,9 @@ class Parlamentare(models.Model):
     def get_n_parlamentari_silenti(cls):
         return Parlamentare.get_parlamentari_silenti().count()
 
+    @classmethod
+    def get_n_parlamentari_neg_aderenti(cls):
+        return Parlamentare.get_parlamentari_neg_aderenti().count()
 
 
     @classmethod
@@ -121,7 +135,6 @@ class Parlamentare(models.Model):
     @classmethod
     def get_senatori_aderenti(cls):
         return Parlamentare.get_status('1','1')
-
 
     @classmethod
     def get_deputati_non_aderenti(cls):
@@ -141,6 +154,14 @@ class Parlamentare(models.Model):
         return Parlamentare.get_status('0','1')
 
 
+    @classmethod
+    def get_deputati_neg_aderenti(cls):
+        return Parlamentare.get_not_status('1','0')
+
+    @classmethod
+    def get_senatori_neg_aderenti(cls):
+        return Parlamentare.get_not_status('1','1')
+
     #n
     @classmethod
     def get_n_deputati_aderenti(cls):
@@ -149,7 +170,6 @@ class Parlamentare(models.Model):
     @classmethod
     def get_n_senatori_aderenti(cls):
         return Parlamentare.get_senatori_aderenti().count()
-
 
     @classmethod
     def get_n_deputati_non_aderenti(cls):
@@ -166,6 +186,16 @@ class Parlamentare(models.Model):
     @classmethod
     def get_n_senatori_silenti(cls):
         return Parlamentare.get_senatori_silenti().count()
+
+    @classmethod
+    def get_n_deputati_neg_aderenti(cls):
+        return Parlamentare.get_deputati_neg_aderenti().count()
+
+    @classmethod
+    def get_n_senatori_neg_aderenti(cls):
+        return Parlamentare.get_senatori_neg_aderenti().count()
+
+
 
 
 

@@ -303,7 +303,7 @@
                         <li class="active">
                             <a href="#adesioni_tab" data-toggle="tab">
                                 <span class="title">
-                                    La adesioni
+                                    Le adesioni
                                 </span>
                             </a>
                         </li>
@@ -324,9 +324,82 @@
                             </div>
                             <div class="row-fluid">
                                 <div class="span6">
+                                    {#   pills deputati #}
+                                    <div class="row-fluid">
+                                        <div class="span12 title">
+                                            Deputati
+                                        </div>
+                                    </div>
                                     <div class="row-fluid">
                                         <div class="span12">
-                                            <span class="title">Deputati</span>
+                                            <ul class="nav nav-pills">
+                                                <li class="active">
+                                                    <a href="#dep_aderiscono" data-toggle="pill">
+                                                       <span class="subtitle">
+                                                            Aderiscono ({{ n_dep_aderiscono }})
+                                                       </span>
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="#dep_nonaderiscono" data-toggle="pill">
+                                                       <span class="subtitle">
+                                                            Non Aderiscono ({{ n_dep_nonaderiscono }})
+                                                       </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {#  liste deputati #}
+                                    <div class="tab-content">
+                                        <div class="tab-pane active liste_adesioni" id="dep_aderiscono">
+                                            {% for p in dep_aderiscono %}
+                                                <div class="row-fluid riga_adesioni">
+                                                    <div class="span5">
+                                                        {{ p.nome }} {{ p.cognome|lower|capfirst }} ({{ p.gruppo_parlamentare.sigla }})
+                                                    </div>
+
+                                                    <div class="span1 adesioni_separator">-</div>
+
+                                                    <div class="span2 email">
+                                                        {% if p.account_mail %}
+                                                            <a href="mailto:{{ p.account_mail }}">
+                                                                Email
+                                                            </a>
+                                                        {% else %}
+                                                            &nbsp;
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="span1 adesioni_separator">-</div>
+
+                                                    <div class="span3">
+                                                        {% if p.account_twitter %}
+                                                            <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
+                                                               data-text="coinvolgi i parlamentari del tuo gruppo nella campagna #ParlamentoCasadiVetro"
+                                                               data-url="http://www.openpolis.it/campagne/parlamentocasadivetro"
+                                                               class="twitter-mention-button" data-lang="it">
+                                                                Tweet to @{{ p.account_twitter  }}
+                                                            </a>
+                                                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                                        {% endif %}
+                                                    </div>
+
+
+                                                </div>
+                                            {% endfor %}
+
+                                            <div class="row-fluid">
+                                                <div class="span7 riga_adesioni" style="border-bottom: 0;">
+                                                    <a href="#">> Vedi tutti </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane " id="dep_nonaderiscono">
+                                            <p>
+                                                bla
+                                            </p>
                                         </div>
                                     </div>
 
@@ -334,8 +407,8 @@
                                 <div class="span6">
                                 {#   pills senatori #}
                                     <div class="row-fluid">
-                                        <div class="span12">
-                                            <span class="title">Senatori</span>
+                                        <div class="span12 title">
+                                            Senatori
                                         </div>
                                     </div>
                                     <div class="row-fluid">
@@ -344,14 +417,14 @@
                                                <li class="active">
                                                    <a href="#sen_aderiscono" data-toggle="pill">
                                                        <span class="subtitle">
-                                                            Aderiscono
+                                                            Aderiscono ({{ n_sen_aderiscono }})
                                                        </span>
                                                    </a>
                                                </li>
                                                <li class="">
                                                    <a href="#sen_nonaderiscono" data-toggle="pill">
                                                        <span class="subtitle">
-                                                            Non Aderiscono
+                                                            Non Aderiscono ({{ n_sen_nonaderiscono }})
                                                        </span>
                                                    </a>
                                                </li>

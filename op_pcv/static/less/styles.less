@@ -216,4 +216,54 @@ body{
   #intro{
     margin-bottom: @spacing-30;
   }
+
+  .subtitle{
+    font-size: 18px;
+  }
+  .title{
+    margin-bottom: @spacing-half;
+  }
+
+  li:nth-child(2) a {
+    margin-left: @spacing-single;
+  }
+
+  .active{
+    a{
+      background-color: @subtitle-color;
+      border-radius: 20px;
+
+      .subtitle{
+        color:#ffffff;
+      }
+    }
+  }
+  a:hover{
+    border-radius: 20px;
+  }
+
+  .liste_adesioni{
+    padding-top:@spacing-30;
+    padding-bottom:@spacing-30;
+    text-align: justify;
+
+    a{
+      background-color: white;
+      border: 0;
+      border-radius: 0;
+    }
+    .riga_adesioni{
+      border-bottom: 1px solid #cccccc;
+      line-height: 30px;
+
+      .email{
+        width: 40px;
+      }
+
+      .adesioni_separator{
+        width: 5px;
+        margin-left: 5px;
+      }
+    }
+  }
 }

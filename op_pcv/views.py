@@ -54,4 +54,18 @@ class PcvHome(TemplateView):
 
         context['blogpost']=blogpost
 
+        # adesioni count and adesioni lists
+
+        context['n_dep_aderiscono']=Parlamentare.get_n_deputati_aderenti()
+        context['n_dep_nonaderiscono']=Parlamentare.get_n_deputati_neg_aderenti()
+
+        context['n_sen_aderiscono']=Parlamentare.get_n_senatori_aderenti()
+        context['n_sen_nonaderiscono']=Parlamentare.get_n_senatori_neg_aderenti()
+
+        context['dep_aderiscono'] = Parlamentare.get_deputati_aderenti()[:10]
+        context['sen_aderiscono'] = Parlamentare.get_senatori_aderenti()[:10]
+
+        context['dep_neg_aderiscono'] = Parlamentare.get_deputati_neg_aderenti()[:10]
+        context['sen_neg_aderiscono'] = Parlamentare.get_senatori_neg_aderenti()[:10]
+
         return context
