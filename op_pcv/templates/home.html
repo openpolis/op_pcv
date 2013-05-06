@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load utils %}
 {% block js_header %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/graph_utils.js"></script>
@@ -375,7 +375,7 @@
                                                     <div class="span4 twitter">
                                                         {% if p.account_twitter %}
                                                             <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                               data-text="coinvolgi i parlamentari del tuo gruppo nella campagna #ParlamentoCasadiVetro"
+                                                               data-text=", coinvolgi i parlamentari del tuo gruppo nella campagna #ParlamentoCasadiVetro"
                                                                data-url="http://www.openpolis.it/campagne/parlamentocasadivetro"
                                                                class="twitter-mention-button" data-lang="it" data-size="medium">
                                                             </a>
@@ -416,7 +416,7 @@
                                                     <div class="span4 twitter">
                                                         {% if p.account_twitter %}
                                                             <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                               data-text="coinvolgi i parlamentari del tuo gruppo nella campagna #ParlamentoCasadiVetro"
+                                                               data-text=", per un #ParlamentoCasadiVetro chiediamo la trasparenza delle commissioni parlamentari. Ci stai?"
                                                                data-url="http://www.openpolis.it/campagne/parlamentocasadivetro"
                                                                class="twitter-mention-button" data-lang="it" data-size="medium">
                                                             </a>
@@ -432,8 +432,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
 
                                 </div>
@@ -466,17 +464,88 @@
                                     </div>
                                 {#  liste senatori #}
                                     <div class="tab-content">
-                                        <div class="tab-pane default_padding active " id="sen_aderiscono">
-                                           bla2
+                                        <div class="tab-pane liste_adesioni active " id="sen_aderiscono">
+                                            {#  lista adesione senatori#}
+                                            {% for p in sen_aderiscono %}
+                                                <div class="row-fluid riga_adesioni">
+                                                    <div class="span6">
+                                                        <strong>
+                                                            {{ p.nome|truncatesmart:10 }} {{ p.cognome|lower|capfirst|truncatesmart:10 }} ({{ p.gruppo_parlamentare.sigla }})
+                                                        </strong>
+                                                    </div>
+
+                                                    <div class="span1 email">
+                                                        {% if p.account_mail %}
+                                                            <a href="mailto:{{ p.account_mail }}">
+                                                                Email
+                                                            </a>
+                                                        {% else %}
+                                                            &nbsp;
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="span4 twitter">
+                                                        {% if p.account_twitter %}
+                                                            <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
+                                                               data-text=", coinvolgi i parlamentari del tuo gruppo nella campagna #ParlamentoCasadiVetro"
+                                                               data-url="http://www.openpolis.it/campagne/parlamentocasadivetro"
+                                                               class="twitter-mention-button" data-lang="it" data-size="medium">
+                                                            </a>
+                                                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+
+                                            <div class="row-fluid">
+                                                <div class="span7 riga_adesioni" style="border-bottom: 0;">
+                                                    <a href="#">> Vedi tutti </a>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="tab-pane default_padding" id="sen_nonaderiscono">
-                                            <p>
-                                               bla
-                                            </p>
+                                        <div class="tab-pane liste_adesioni " id="sen_nonaderiscono">
+                                            {#  lista senatori non aderenti#}
+                                            {% for p in sen_neg_aderiscono %}
+                                                <div class="row-fluid riga_adesioni">
+                                                    <div class="span5">
+                                                        <strong>
+                                                            {{ p.nome|truncatesmart:10 }} {{ p.cognome|lower|capfirst|truncatesmart:10 }} ({{ p.gruppo_parlamentare.sigla }})
+                                                        </strong>
+                                                    </div>
+
+                                                    <div class="span1 email">
+                                                        {% if p.account_mail %}
+                                                            <a href="mailto:{{ p.account_mail }}">
+                                                                Email
+                                                            </a>
+                                                        {% else %}
+                                                            &nbsp;
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="span5 twitter">
+                                                        {% if p.account_twitter %}
+                                                            <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
+                                                               data-text=", per un #ParlamentoCasadiVetro chiediamo la trasparenza delle commissioni parlamentari. Ci stai?"
+                                                               data-url="http://www.openpolis.it/campagne/parlamentocasadivetro"
+                                                               class="twitter-mention-button" data-lang="it" data-size="medium">
+                                                            </a>
+                                                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+
+                                            <div class="row-fluid">
+                                                <div class="span7 riga_adesioni" style="border-bottom: 0;">
+                                                    <a href="#">> Vedi tutti </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
