@@ -353,15 +353,16 @@
                                     {#  liste deputati #}
                                     <div class="tab-content">
                                         <div class="tab-pane active liste_adesioni" id="dep_aderiscono">
+                                        {#  lista adesione deputati#}
                                             {% for p in dep_aderiscono %}
                                                 <div class="row-fluid riga_adesioni">
-                                                    <div class="span5">
-                                                        {{ p.nome }} {{ p.cognome|lower|capfirst }} ({{ p.gruppo_parlamentare.sigla }})
+                                                    <div class="span6">
+                                                        <strong>
+                                                            {{ p.nome }} {{ p.cognome|lower|capfirst }} ({{ p.gruppo_parlamentare.sigla }})
+                                                        </strong>
                                                     </div>
 
-                                                    <div class="span1 adesioni_separator">-</div>
-
-                                                    <div class="span2 email">
+                                                    <div class="span1 email">
                                                         {% if p.account_mail %}
                                                             <a href="mailto:{{ p.account_mail }}">
                                                                 Email
@@ -371,21 +372,16 @@
                                                         {% endif %}
                                                     </div>
 
-                                                    <div class="span1 adesioni_separator">-</div>
-
-                                                    <div class="span3">
+                                                    <div class="span4 twitter">
                                                         {% if p.account_twitter %}
                                                             <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
                                                                data-text="coinvolgi i parlamentari del tuo gruppo nella campagna #ParlamentoCasadiVetro"
                                                                data-url="http://www.openpolis.it/campagne/parlamentocasadivetro"
-                                                               class="twitter-mention-button" data-lang="it">
-                                                                Tweet to @{{ p.account_twitter  }}
+                                                               class="twitter-mention-button" data-lang="it" data-size="medium">
                                                             </a>
                                                             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                                                         {% endif %}
                                                     </div>
-
-
                                                 </div>
                                             {% endfor %}
 
@@ -396,11 +392,48 @@
                                             </div>
                                         </div>
 
-                                        <div class="tab-pane " id="dep_nonaderiscono">
-                                            <p>
-                                                bla
-                                            </p>
+                                        <div class="tab-pane liste_adesioni " id="dep_nonaderiscono">
+
+                                            {#  lista deputati non aderenti#}
+                                            {% for p in dep_neg_aderiscono %}
+                                                <div class="row-fluid riga_adesioni">
+                                                    <div class="span6">
+                                                        <strong>
+                                                            {{ p.nome }} {{ p.cognome|lower|capfirst }} ({{ p.gruppo_parlamentare.sigla }})
+                                                        </strong>
+                                                    </div>
+
+                                                    <div class="span1 email">
+                                                        {% if p.account_mail %}
+                                                            <a href="mailto:{{ p.account_mail }}">
+                                                                Email
+                                                            </a>
+                                                        {% else %}
+                                                            &nbsp;
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="span4 twitter">
+                                                        {% if p.account_twitter %}
+                                                            <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
+                                                               data-text="coinvolgi i parlamentari del tuo gruppo nella campagna #ParlamentoCasadiVetro"
+                                                               data-url="http://www.openpolis.it/campagne/parlamentocasadivetro"
+                                                               class="twitter-mention-button" data-lang="it" data-size="medium">
+                                                            </a>
+                                                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+
+                                            <div class="row-fluid">
+                                                <div class="span7 riga_adesioni" style="border-bottom: 0;">
+                                                    <a href="#">> Vedi tutti </a>
+                                                </div>
+                                            </div>
                                         </div>
+
+
                                     </div>
 
                                 </div>
