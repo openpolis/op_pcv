@@ -358,7 +358,7 @@
                                                 <div class="row-fluid riga_adesioni">
                                                     <div class="span6">
                                                         <strong>
-                                                            {{ p.nome }} {{ p.cognome|lower|capfirst }} ({{ p.gruppo_parlamentare.sigla }})
+                                                            {{ p.nome|truncatesmart:12 }} {{ p.cognome|lower|capfirst|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
                                                         </strong>
                                                     </div>
 
@@ -399,7 +399,7 @@
                                                 <div class="row-fluid riga_adesioni">
                                                     <div class="span6">
                                                         <strong>
-                                                            {{ p.nome }} {{ p.cognome|lower|capfirst }} ({{ p.gruppo_parlamentare.sigla }})
+                                                            {{ p.nome|truncatesmart:12 }} {{ p.cognome|lower|capfirst|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
                                                         </strong>
                                                     </div>
 
@@ -470,7 +470,7 @@
                                                 <div class="row-fluid riga_adesioni">
                                                     <div class="span6">
                                                         <strong>
-                                                            {{ p.nome|truncatesmart:10 }} {{ p.cognome|lower|capfirst|truncatesmart:10 }} ({{ p.gruppo_parlamentare.sigla }})
+                                                            {{ p.nome|truncatesmart:12 }} {{ p.cognome|lower|capfirst|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
                                                         </strong>
                                                     </div>
 
@@ -510,7 +510,7 @@
                                                 <div class="row-fluid riga_adesioni">
                                                     <div class="span5">
                                                         <strong>
-                                                            {{ p.nome|truncatesmart:10 }} {{ p.cognome|lower|capfirst|truncatesmart:10 }} ({{ p.gruppo_parlamentare.sigla }})
+                                                            {{ p.nome|truncatesmart:12 }} {{ p.cognome|lower|capfirst|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
                                                         </strong>
                                                     </div>
 
