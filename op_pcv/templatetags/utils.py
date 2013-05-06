@@ -2,6 +2,8 @@ from django import template
 
 register = template.Library()
 
+# truncate long phrases keeping whole words
+
 @register.filter
 def truncatesmart(value, limit=80):
     """
@@ -24,6 +26,9 @@ def truncatesmart(value, limit=80):
 
     # Return the string itself if length is smaller or equal to the limit
     if len(value) <= limit:
+        return value
+    # Returns the whole string if there is only one word in the string
+    if len(value.split(' ')) < 2:
         return value
 
     # Cut the string
