@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% load utils %}
+{% load staticfiles %}
+
 {% block js_header %}
-    <script type="text/javascript" src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/graph_utils.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/variables.js"></script>
+    <script type="text/javascript" src="{% static "js/d3.v3.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/graph_utils.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/variables.js" %}"></script>
 {% endblock %}
 
 {% block top-content %}
@@ -128,7 +130,7 @@
                         </ul>
                         <div id="openpolis_logo">
                             <a href="http://www.openpolis.it" target="_blank">
-                                <img src="{{ STATIC_URL }}img/openpolis.png"/>
+                                <img src="{% static "img/openpolis.png" %}"/>
                             </a>
                         </div>
                     </div>
@@ -146,7 +148,7 @@
                             Pellentesque vehicula magna non diam ultrices dictum vel vel libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nec felis purus, a dignissim erat. Praesent ut lorem nibh, vel tincidunt arcu. Fusce quis nulla sit amet est tempor egestas. Fusce non purus nibh. Morbi egestas interdum sapien, sit amet condimentum nisi fermentum at. In ante turpis
                         </div>
                         <div id="presidenti_img">
-                            <img src="{{ STATIC_URL }}img/presidenti.jpg"/>
+                            <img src="{% static "img/presidenti.jpg" %}"/>
                         </div>
                     </div>
                 </div>
@@ -281,7 +283,7 @@
                                 Pubblicit&agrave; dei lavori delle commissioni nel mondo
                             </span>
 
-                            <img src="{{ STATIC_URL }}img/commissioni_mondo.jpg">
+                            <img src="{% static "img/commissioni_mondo.jpg" %}">
 
                             <p>
                                 erdum porta, turpis turpis posuere ipsum, sed mollis lectus eros nec lectus. Maecenas viverra consequat ipsum quis lobortis. Maecenas nec velit nibh, eget luctus nulla. Sed a nisi magna. Proin sapien libero, elementum ac iaculis vitae, condimentum quis sem. Nullam consequat faucibus tempus. Nulla volutpat porttitor scelerisque. Nam fermentum, sem non laoreet porttitor, risus mauris sagittis felis, in mattis lectus mi volutpat mi. Etiam euismod justo leo. Donec ullamcorper adipiscing arcu non dignissim. Donec tincidunt justo velit, quis fringilla sem.
