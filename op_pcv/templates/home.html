@@ -45,6 +45,11 @@
 
 
     $(document).ready(function() {
+
+        $('#pcv_navbar').affix({
+            offset:"888"
+            });
+
         $('div.expandable').expander({
             slicePoint: 550,
             preserveWords: true,
@@ -69,7 +74,8 @@
             userCollapseText: 'Chiudi <i class="icon-caret-up"></i>'  // default is 'read less'
         });
 
-        $('#pcv_navbar').waypoint('sticky');
+{#        $('#pcv_navbar').waypoint('sticky');#}
+
     });
 
 
@@ -104,10 +110,10 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="pcv_navbar">
+        <div class="row affix" id="pcv_navbar" data-spy="affix" data-offset-top="200">
             <div class="span12">
-                <div class="navbar">
-                    <div class="navbar-inner" id="pcv_inner_navbar">
+                <div class="navbar" >
+                    <div class="navbar-inner" id="pcv_inner_navbar" >
                         <a class="brand" href="#PageTop">#ParlamentoCasaDiVetro</a>
                         <ul class="nav">
                             <li>
@@ -149,13 +155,13 @@
         </div>
 
         {# LA CAMPAGNA #}
-        <div class="row"><a name="campagna" style="display: hidden;"></a>
+        <div class="row">
             <div class="span10 offset1 white_bg">
                 <div class="tabbable"> <!-- Only required for left/right tabs -->
                     <ul class="nav nav-tabs default_padding" id="middle_tabs">
                         <li class="active">
                             <a href="#campagna_tab" data-toggle="tab">
-                                <span class="title">
+                                <span class="title" id="campagna">
                                     La campagna
                                 </span>
                             </a>
@@ -321,11 +327,11 @@
 
         {# LE ADESIONI #}
 
-        <div class="row"><a name="adesioni" style="display: hidden;"></a>
+        <div class="row">
             <div class="span10 offset1 white_bg">
                 <div class="tabbable"> <!-- Only required for left/right tabs -->
                     <ul class="nav nav-tabs default_padding" id="adesioni_tabs">
-                        <li class="active">
+                        <li class="active" id="adesioni">
                             <a href="#adesioni_tab" data-toggle="tab">
                                 <span class="title">
                                     Le adesioni
