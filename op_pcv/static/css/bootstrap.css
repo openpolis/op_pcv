@@ -1,4 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(http://fonts.googleapis.com/css?family=Bitter);
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 /*!
  * Bootstrap v2.1.1
@@ -8892,24 +8894,310 @@ a.badge:hover {
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  background-color: #bce3f5;
+}
+
+.title {
+  margin-bottom: 15px;
+  font-family: 'Bitter', serif;
+  font-size: 25px;
+  color: #8aa8b3;
+}
+
+.subtitle {
+  margin-bottom: 15px;
+  font-size: 25px;
+  color: #3caadb;
+}
+
+.content {
+  font-size: 15px;
+  color: #000000;
+}
+
+.black_bg {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.white_bg {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.default_padding {
+  padding: 30px;
+}
+
+.header {
+  margin-top: 25px;
+}
+
+.header #main-title {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: 'Bitter', serif;
+  font-size: 61px;
+  line-height: 61px;
+  color: white;
+  text-align: center;
+  background-color: #3caadb;
+}
+
+.header #main-intro {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 40px;
+  line-height: 45px;
+  color: black;
+  text-align: center;
+}
+
+.top_pie {
+  max-height: 252px!important;
+  overflow: hidden;
+}
+
+.bold_label {
+  font-weight: bold;
+}
+
+.big_bold_label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#achepuntosiamo {
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+#pcv_navbar .navbar {
+  margin-bottom: 0;
+}
+
+#pcv_navbar.stuck {
+  position: fixed;
+  top: 0;
+  box-shadow: 0;
+}
+
+#pcv_inner_navbar {
+  min-height: 40px;
+  padding-top: 0;
+  padding-right: 35px;
+  padding-bottom: 0;
+  padding-left: 35px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-image: -moz-linear-gradient(top, #3ba7d8, #2c88b1);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3ba7d8), to(#2c88b1));
+  background-image: -webkit-linear-gradient(top, #3ba7d8, #2c88b1);
+  background-image: -o-linear-gradient(top, #3ba7d8, #2c88b1);
+  background-image: linear-gradient(to bottom, #3ba7d8, #2c88b1);
+  background-repeat: repeat-x;
+  border: 0;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@navbar-top', endColorstr='@navbar-bottom', GradientType=0);
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+
+#pcv_inner_navbar .brand {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#pcv_inner_navbar li.active a {
+  background-color: #8aa8b3;
+  -webkit-box-shadow: none;
+}
+
+#pcv_inner_navbar .nav li a {
+  padding: 20px 15px 20px;
+}
+
+#pcv_inner_navbar #openpolis_logo a {
+  float: right;
+  padding-top: 15px;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+#pcv_inner_navbar #openpolis_logo a img {
+  height: 35px;
+}
+
+#pcv_tabs {
+  min-height: 500px;
+}
+
+#pcv_tabs .tab-content {
+  overflow: hidden;
+}
+
+#pcv_tabs #presidenti_img {
+  width: 100%;
+}
+
+#pcv_tabs .content {
+  color: #ffffff;
+}
+
+#pcv_tabs .tab-pane#promesse .title {
+  padding-bottom: 0;
+}
+
+#pcv_tabs .tab-pane#promesse .content {
+  padding-top: 0;
+}
+
+#middle_tabs {
+  padding-bottom: 0;
+  margin-top: 25px;
+  border-bottom: 1px solid #dddddd;
+}
+
+#middle_tabs .active .title {
+  color: #3caadb;
+}
+
+#middle_tabs a:hover {
+  background-color: #ffffff;
+}
+
+#adesioni_tabs {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 25px;
+  border-bottom: 1px solid #dddddd;
+}
+
+#adesioni_tabs .active .title {
+  color: #3caadb;
+}
+
+#adesioni_tabs a:hover {
+  background-color: #ffffff;
+}
+
+#adesioni_tab {
+  padding-top: 10px;
+}
+
+#adesioni_tab #intro {
+  margin-bottom: 30px;
+}
+
+#adesioni_tab .subtitle {
+  font-size: 18px;
+}
+
+#adesioni_tab .title {
+  margin-bottom: 15px;
+}
+
+#adesioni_tab li:nth-child(2) a {
+  margin-left: 25px;
+}
+
+#adesioni_tab .active a {
+  background-color: #8aa8b3;
+  border-radius: 20px;
+}
+
+#adesioni_tab .active a .subtitle {
+  color: #ffffff;
+}
+
+#adesioni_tab a:hover {
+  border-radius: 20px;
+}
+
+#adesioni_tab .liste_adesioni {
+  padding-bottom: 30px;
+  padding-left: 0;
+  overflow: hidden;
+}
+
+#adesioni_tab .liste_adesioni a {
   background-color: white;
+  border: 0;
+  border-radius: 0;
 }
 
-.ui-autocomplete {
-  z-index: 1000!important;
+#adesioni_tab .liste_adesioni .riga_adesioni {
+  line-height: 30px;
+  border-bottom: 1px solid #cccccc;
 }
 
-input::-webkit-input-placeholder {
-  color: #555;
+#adesioni_tab .liste_adesioni .riga_adesioni .email {
+  width: 30px;
+  margin-right: 8px;
+  margin-left: 8px;
 }
 
-input:-moz-placeholder {
-  color: #555;
+#adesioni_tab .liste_adesioni .riga_adesioni .twitter {
+  margin-left: 10px;
 }
 
-input[placeholder],
-[placeholder],
-*[placeholder] {
-  color: #555;
+#adesioni_tab .liste_adesioni .riga_adesioni .twitter iframe {
+  vertical-align: middle;
+}
+
+#adesioni_tab .liste_adesioni .riga_adesioni .adesioni_separator {
+  width: 5px;
+  margin-left: 5px;
+}
+
+#footer {
+  background-color: #3caadb;
+}
+
+#footer .title,
+#footer .content {
+  color: white;
+}
+
+#footer .box-footer {
+  padding: 15px;
+  margin-top: 30px;
+  margin-right: 0;
+  margin-bottom: 30px;
+  margin-left: 0;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+#footer .box-footer .media {
+  margin-top: 15px;
+}
+
+#footer .box-footer hr {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid #7cc0b2;
+  border-bottom: 1px solid #ffffff;
+}
+
+#footer .box-footer p {
+  margin-left: 48px;
+  font-size: 0.9em;
+  line-height: 1.2em;
+  color: #939698;
+  text-align: left;
+}
+
+#footer .box-footer p#iban {
+  margin-left: 0;
 }
