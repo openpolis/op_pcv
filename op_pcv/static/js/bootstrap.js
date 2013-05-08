@@ -1977,7 +1977,12 @@
       'bottom' : offsetTop != null && scrollTop <= offsetTop ?
       'top'    : false
 
+
     if (this.affixed === affix) return
+
+      //STEFANO HACK to make navbar work at the bottom
+      if (affix=='bottom' && this.affixed==false )
+            return
 
     this.affixed = affix
     this.unpin = affix == 'bottom' ? position.top - scrollTop : null
