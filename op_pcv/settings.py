@@ -10,11 +10,12 @@ root = environ.Path(__file__) - 2  # three folder back (/a/b/c/ - 3 = /)
 # set default values and casting
 env = environ.Env(
     DEBUG=(bool, False),
+    TEMPLATE_DEBUG=(bool, False),
 )
 env.read_env(root('.env'))
 
-DEBUG = env('DEBUG')  # False if not in os.environ
-TEMPLATE_DEBUG = DEBUG
+DEBUG = env('DEBUG')
+TEMPLATE_DEBUG = env('TEMPLATE_DEBUG')
 
 
 DATABASES = {
@@ -43,7 +44,7 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

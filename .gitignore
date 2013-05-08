@@ -4,3 +4,4 @@ dati/
 migrations/
 log/
 csv/
+/static/
