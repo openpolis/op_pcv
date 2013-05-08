@@ -15,6 +15,7 @@ body{
   font-family: 'Bitter', serif;
   color: @subtitle-color;
   font-size: @slogan-size;
+  line-height: @slogan-size;
   margin-bottom: 15px;
 }
 
@@ -43,6 +44,10 @@ body{
   padding: @spacing-30;
 }
 
+.default_padding.content{
+  padding-top:0;
+}
+
 
 .header{
   margin-top: @spacing-single;
@@ -60,11 +65,11 @@ body{
 
   #main-intro{
     color: black;
-    font-size: @intro-size;
-    line-height: 45px;
+    font-size: 30px;
+    line-height: 30px;
     text-align: center;
     margin-top: @spacing-single;
-    margin-bottom: @spacing-single;
+    margin-bottom: 15px;
   }
 }
 
@@ -78,14 +83,10 @@ body{
 }
 
 .big_bold_label{
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 36px;
+  font-weight: normal;
 }
 
-
-.connection-line{
-
-}
 
 #achepuntosiamo{
   border-radius: 3px;
@@ -160,6 +161,7 @@ body{
   }
 
   #presidenti_img{
+    margin-top:@spacing-30;
     width: 100%;
   }
 
@@ -189,6 +191,10 @@ body{
   a:hover{
     background-color: #ffffff;
   }
+}
+
+#appello_tab{
+  p{margin-bottom: 20px;}
 }
 
 #adesioni_tabs{
