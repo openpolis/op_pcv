@@ -13,6 +13,7 @@ class PcvHome(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PcvHome,self).get_context_data(**kwargs)
 
+        # data for pie charts
         context['pie_senato']={}
         context['pie_senato']['non_aderenti']=Parlamentare.get_n_senatori_silenti()+Parlamentare.get_n_senatori_non_aderenti()
         context['pie_senato']['aderenti']=Parlamentare.get_n_senatori_aderenti()
@@ -22,18 +23,30 @@ class PcvHome(TemplateView):
         context['pie_camera']['aderenti']=Parlamentare.get_n_deputati_aderenti()
         context['pie_camera']['totale']=Parlamentare.get_n_deputati_incarica()
 
-        gruppi=GruppoParlamentare.get_gruppi()
-        context['dati_gruppi']=[]
-        for g in gruppi:
+        # data for adesioni coloumn charts
+        gruppi_camera=GruppoParlamentare.get_gruppi(0)
+        context['col_camera']=[]
+        for g in gruppi_camera:
 
             mydict={}
             mydict["sigla"]=g.sigla
             mydict["aderenti_tot"]=g.get_n_aderenti()
             mydict["non_aderenti_tot"]=g.get_n_non_aderenti()+g.get_n_silenti()
-            context['dati_gruppi'].append(mydict)
+            context['col_camera'].append(mydict)
+
+        gruppi_senato=GruppoParlamentare.get_gruppi(1)
+        context['col_senato']=[]
+        for g in gruppi_senato:
+
+            mydict={}
+            mydict["sigla"]=g.sigla
+            mydict["aderenti_tot"]=g.get_n_aderenti()
+            mydict["non_aderenti_tot"]=g.get_n_non_aderenti()+g.get_n_silenti()
+            context['col_senato'].append(mydict)
 
 
-        # feeds are extracted and cached for one hour (memcached)
+
+    # feeds are extracted and cached for one hour (memcached)
         blogpost = cache.get('op_associazione_home_feeds')
 
         if blogpost is None:
@@ -67,5 +80,6 @@ class PcvHome(TemplateView):
 
         context['dep_neg_aderiscono'] = Parlamentare.get_deputati_neg_aderenti()[:10]
         context['sen_neg_aderiscono'] = Parlamentare.get_senatori_neg_aderenti()[:10]
+
 
         return context

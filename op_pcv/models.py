@@ -212,8 +212,16 @@ class GruppoParlamentare(models.Model):
 
 
     @classmethod
-    def get_gruppi(cls):
-        return GruppoParlamentare.objects.all()
+    def get_gruppi(cls, ramo=None):
+        if ramo is None:
+            return GruppoParlamentare.objects.all()
+        else:
+            # tutti i gruppi con almeno un parlamentare per quel ruolo del Parlamento
+            temp=Parlamentare.objects.filter(ramo_parlamento=ramo).distinct('gruppo_parlamentare')
+            gruppi=[]
+            for t in temp:
+                gruppi.append(t.gruppo_parlamentare)
+            return gruppi
 
     def get_parlamentari(self, ramo=None):
         return Parlamentare.get_parlamentari_incarica(ramo).filter(gruppo_parlamentare=self)
