@@ -8903,6 +8903,7 @@ body {
   margin-bottom: 15px;
   font-family: 'Bitter', serif;
   font-size: 25px;
+  line-height: 25px;
   color: #8aa8b3;
 }
 
@@ -8913,6 +8914,7 @@ body {
 }
 
 .content {
+  margin-bottom: 15px;
   font-size: 15px;
   color: #000000;
 }
@@ -8929,6 +8931,10 @@ body {
 
 .default_padding {
   padding: 30px;
+}
+
+.default_padding.content {
+  padding-top: 0;
 }
 
 .header {
@@ -8948,9 +8954,9 @@ body {
 
 .header #main-intro {
   margin-top: 25px;
-  margin-bottom: 25px;
-  font-size: 40px;
-  line-height: 45px;
+  margin-bottom: 15px;
+  font-size: 30px;
+  line-height: 30px;
   color: black;
   text-align: center;
 }
@@ -8965,8 +8971,8 @@ body {
 }
 
 .big_bold_label {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 36px;
+  font-weight: normal;
 }
 
 #achepuntosiamo {
@@ -8974,14 +8980,13 @@ body {
   border-radius: 3px;
 }
 
-#pcv_navbar .navbar {
-  margin-bottom: 0;
+.affix {
+  top: 0;
 }
 
-#pcv_navbar.stuck {
-  position: fixed;
-  top: 0;
-  box-shadow: 0;
+#pcv_navbar .navbar {
+  min-height: 1px;
+  margin-bottom: 0;
 }
 
 #pcv_inner_navbar {
@@ -9044,6 +9049,7 @@ body {
 
 #pcv_tabs #presidenti_img {
   width: 100%;
+  margin-top: 30px;
 }
 
 #pcv_tabs .content {
@@ -9070,6 +9076,10 @@ body {
 
 #middle_tabs a:hover {
   background-color: #ffffff;
+}
+
+#appello_tab p {
+  margin-bottom: 20px;
 }
 
 #adesioni_tabs {
@@ -9181,6 +9191,10 @@ body {
 
 #footer .box-footer .media {
   margin-top: 15px;
+}
+
+#footer .box-footer .content {
+  font-size: 13px;
 }
 
 #footer .box-footer hr {
