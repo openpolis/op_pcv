@@ -67,11 +67,16 @@
         {# column charts for gruppi #}
         $(function () {
             $('#adesioni_camera_graph').highcharts({
+                colors:[ '#60b887', '#ff7e79'],
+                credits: {
+                    enabled: false
+                },
                 chart: {
-                    type: 'column'
+                    type: 'column',
+                    height: 250
                 },
                 title: {
-                    text: 'TITOLO DA INSERIRE?'
+                    text: 'TITOLO GRAFICO CAMERA?'
                 },
                 xAxis: {
                     categories: [
@@ -83,7 +88,7 @@
                 yAxis: {
                     min: 0,
                     title: {
-                        text: 'Adesioni parlamentari'
+                        text: 'Adesioni deputati'
                     }
                 },
                 tooltip: {
@@ -97,10 +102,70 @@
                 },
                 series: [{
                     name: 'Aderiscono',
-                    data: [5, 3]
+                    data: [
+                        {% for g in col_camera %}
+                        {{ g.aderenti_tot }}{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                    ]
                 }, {
                     name: 'Non aderiscono',
-                    data: [2, 2]
+                    data: [
+                        {% for g in col_camera %}
+                            {{ g.non_aderenti_tot }}{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ]
+                }]
+            });
+
+            $('#adesioni_senato_graph').highcharts({
+                colors:[ '#60b887', '#ff7e79'],
+                credits: {
+                    enabled: false
+                },
+
+                chart: {
+                    type: 'column',
+                    height: 250
+                },
+                title: {
+                    text: 'TITOLO GRAFICO SENATO?'
+                },
+                xAxis: {
+                    categories: [
+                        {% for g in col_senato %}
+                            '{{ g.sigla }}'{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ]
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Adesioni senatori'
+                    }
+                },
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                    shared: true
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'percent'
+                    }
+                },
+                series: [{
+                    name: 'Aderiscono',
+                    data: [
+                        {% for g in col_senato %}
+                            {{ g.aderenti_tot }}{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ]
+                }, {
+                    name: 'Non aderiscono',
+                    data: [
+                        {% for g in col_senato %}
+                            {{ g.non_aderenti_tot }}{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ]
                 }]
             });
         });
@@ -647,13 +712,13 @@
                             </div>
                         {# UNCOMMENT IN PRODUCTION!!! #}
 {#                            <div class="tab-pane default_padding" id="adesionigruppi_tab">#}
-                        <div class="tab-pane active default_padding" id="adesionigruppi_tab">
+                        <div class="tab-pane active default_padding adesioni_tabs" id="adesionigruppi_tab">
                                 <div class="row-fluid">
                                     <div class="span12 content" >
                                         Una riga di spiegazione
                                     </div>
                                 </div>
-                                <div class="row-fluid" id="adesioni_camera_g">
+                                <div class="row-fluid" class="col_chart">
                                     <div class="span12 content" >
                                         <div id="adesioni_camera_graph">
 
@@ -661,9 +726,12 @@
 
                                     </div>
                                 </div>
-                                <div class="row-fluid" id="adesioni_senato_g">
+                                <div class="row-fluid" class="col_chart">
                                     <div class="span12 content" >
-                                        grafico senato
+                                        <div id="adesioni_senato_graph">
+
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="">
