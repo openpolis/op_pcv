@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
@@ -24,29 +25,40 @@ class PcvHome(TemplateView):
         context['pie_camera']['totale']=Parlamentare.get_n_deputati_incarica()
 
         # data for adesioni coloumn charts
-        gruppi_camera=GruppoParlamentare.get_gruppi(0)
-        context['col_camera']=[]
-        for g in gruppi_camera:
 
+        context['col_camera']=[]
+
+        # sets fixed order for groups in the col chart
+        ordine_gruppi_camera=["PD","PDL","M5S","SC","SEL","LEGA","MISTO","FDI"]
+        ordine_gruppi_senato=["PD","PDL","M5S","SC","LEGA","GAL","GPA-PSI","MISTO", "test"]
+
+        for sigla in ordine_gruppi_camera:
+            try:
+                g = GruppoParlamentare.objects.get(sigla=sigla)
+            except ObjectDoesNotExist:
+                pass
             mydict={}
             mydict["sigla"]=g.sigla
-            mydict["aderenti_tot"]=g.get_n_aderenti()
-            mydict["non_aderenti_tot"]=g.get_n_non_aderenti()+g.get_n_silenti()
+            mydict["aderenti_tot"]=g.get_n_aderenti(0)
+            mydict["non_aderenti_tot"]=g.get_n_non_aderenti(0)+g.get_n_silenti(0)
             context['col_camera'].append(mydict)
 
-        gruppi_senato=GruppoParlamentare.get_gruppi(1)
+
         context['col_senato']=[]
-        for g in gruppi_senato:
+
+        for sigla in ordine_gruppi_senato:
+            try:
+                g = GruppoParlamentare.objects.get(sigla=sigla)
+            except ObjectDoesNotExist:
+                pass
 
             mydict={}
             mydict["sigla"]=g.sigla
-            mydict["aderenti_tot"]=g.get_n_aderenti()
-            mydict["non_aderenti_tot"]=g.get_n_non_aderenti()+g.get_n_silenti()
+            mydict["aderenti_tot"]=g.get_n_aderenti(1)
+            mydict["non_aderenti_tot"]=g.get_n_non_aderenti(1)+g.get_n_silenti(1)
             context['col_senato'].append(mydict)
 
-
-
-    # feeds are extracted and cached for one hour (memcached)
+        # feeds are extracted and cached for one hour (memcached)
         blogpost = cache.get('op_associazione_home_feeds')
 
         if blogpost is None:
