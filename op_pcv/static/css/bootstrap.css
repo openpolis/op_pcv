@@ -8984,6 +8984,10 @@ body {
   top: 0;
 }
 
+#pcv_navbar {
+  z-index: 99999;
+}
+
 #pcv_navbar .navbar {
   min-height: 1px;
   margin-bottom: 0;
@@ -9056,11 +9060,11 @@ body {
   color: #ffffff;
 }
 
-#pcv_tabs .tab-pane#promesse .title {
+#pcv_tabs .tab-pane#campagna .title {
   padding-bottom: 0;
 }
 
-#pcv_tabs .tab-pane#promesse .content {
+#pcv_tabs .tab-pane#campagna .content {
   padding-top: 0;
 }
 
@@ -9082,86 +9086,86 @@ body {
   margin-bottom: 20px;
 }
 
-#adesioni_tabs {
+#adesioni_buttons {
   padding-top: 0;
   padding-bottom: 0;
   margin-top: 25px;
   border-bottom: 1px solid #dddddd;
 }
 
-#adesioni_tabs .active .title {
+#adesioni_buttons .active .title {
   color: #3caadb;
 }
 
-#adesioni_tabs a:hover {
+#adesioni_buttons a:hover {
   background-color: #ffffff;
 }
 
-#adesioni_tab {
+.adesioni_tabs {
   padding-top: 10px;
 }
 
-#adesioni_tab #intro {
+.adesioni_tabs #intro {
   margin-bottom: 30px;
 }
 
-#adesioni_tab .subtitle {
+.adesioni_tabs .subtitle {
   font-size: 18px;
 }
 
-#adesioni_tab .title {
+.adesioni_tabs .title {
   margin-bottom: 15px;
 }
 
-#adesioni_tab li:nth-child(2) a {
+.adesioni_tabs li:nth-child(2) a {
   margin-left: 25px;
 }
 
-#adesioni_tab .active a {
+.adesioni_tabs .active a {
   background-color: #8aa8b3;
   border-radius: 20px;
 }
 
-#adesioni_tab .active a .subtitle {
+.adesioni_tabs .active a .subtitle {
   color: #ffffff;
 }
 
-#adesioni_tab a:hover {
+.adesioni_tabs a:hover {
   border-radius: 20px;
 }
 
-#adesioni_tab .liste_adesioni {
+.adesioni_tabs .liste_adesioni {
   padding-bottom: 30px;
   padding-left: 0;
   overflow: hidden;
 }
 
-#adesioni_tab .liste_adesioni a {
+.adesioni_tabs .liste_adesioni a {
   background-color: white;
   border: 0;
   border-radius: 0;
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni {
+.adesioni_tabs .liste_adesioni .riga_adesioni {
   line-height: 30px;
   border-bottom: 1px solid #cccccc;
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni .email {
+.adesioni_tabs .liste_adesioni .riga_adesioni .email {
   width: 30px;
   margin-right: 8px;
   margin-left: 8px;
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni .twitter {
+.adesioni_tabs .liste_adesioni .riga_adesioni .twitter {
   margin-left: 10px;
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni .twitter iframe {
+.adesioni_tabs .liste_adesioni .riga_adesioni .twitter iframe {
   vertical-align: middle;
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni .adesioni_separator {
+.adesioni_tabs .liste_adesioni .riga_adesioni .adesioni_separator {
   width: 5px;
   margin-left: 5px;
 }

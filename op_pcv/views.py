@@ -62,7 +62,7 @@ class PcvHome(TemplateView):
         # feeds are extracted and cached for one hour (memcached)
         blogpost = cache.get('op_associazione_home_feeds')
 
-        
+
         blogpost=None
         if blogpost is None:
             # sets the timeout for the socket connection

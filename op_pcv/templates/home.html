@@ -6,7 +6,72 @@
     <script type="text/javascript" src="{% static "js/d3.v3.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/graph_utils.js" %}"></script>
     <script type="text/javascript" src="{% static "js/variables.js" %}"></script>
+
+
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/it_IT/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-980632-14']);
+        _gaq.push(['_setDomainName', 'openpolis.it']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+
+
+
 {% endblock %}
+
+
+{% block social_tags %}
+
+    {#  facebook#}
+    <meta property="og:title" content="Supporta e diffondi la campagna Parlamento Casa di vetro!"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="{% static "img/fb_img.png" %}"/>
+    <meta property="og:description" content="Chiediamo trasparenza nei lavori delle commissioni. Molti parlamentari sono d'accordo ma dobbiamo raggiungere la maggioranza assoluta. Aiutaci!"/>
+    <meta property="og:url" content="http://parlamentocasadivetro.openpolis.it"/>
+
+
+    {#    twitter#}
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@openpolis">
+    <meta name="twitter:title" content="Supporta e diffondi la campagna Parlamento Casa di vetro!">
+    <meta name="twitter:description" content="Chiediamo trasparenza nei lavori delle commissioni. Molti parlamentari sono d'accordo ma dobbiamo raggiungere la maggioranza assoluta. Facciamoglielo sapere!">
+    <meta name="twitter:creator" content="@openpolis">
+    <meta name="twitter:image:src" content="{% static "img/tw_img.png" %}">
+    <meta name="twitter:domain" content="http://parlamentocasadivetro.openpolis.it">
+
+    {#    plus#}
+
+    <!-- Update your html tag to include the itemscope and itemtype attributes. -->
+    <html itemscope itemtype="http://schema.org/Article">
+
+    <!-- Add the following three tags inside head. -->
+    <meta itemprop="name" content="Supporta e diffondi la campagna Parlamento Casa di vetro!">
+    <meta itemprop="description" content="Chiediamo trasparenza dei lavori nelle commissioni parlamentari. &Egrave; una riforma dai costi minimi che può essere attuata subito. Molti parlamentari sono d'accordo ma dobbiamo arrivare alla maggioranza assoluta. Facciamoglielo sapere!">
+    <meta itemprop="image" content="{% static "img/gplus_img.png" %}">
+
+
+
+{% endblock %}
+
 
 {% block top-content %}
 
