@@ -1,3 +1,4 @@
+import socket
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render_to_response
@@ -61,21 +62,27 @@ class PcvHome(TemplateView):
         # feeds are extracted and cached for one hour (memcached)
         blogpost = cache.get('op_associazione_home_feeds')
 
+        
+        blogpost=None
         if blogpost is None:
-
+            # sets the timeout for the socket connection
+            socket.setdefaulttimeout(150)
             feeds = feedparser.parse(OP_BLOG_FEED)
-            i=0
-            trovato=False
-            while i<len(feeds.entries) and not trovato:
-                for tag in feeds.entries[i].tags:
-                    if tag.term == OP_BLOG_PCV_TAG:
-                        trovato=True
+            if feeds is not None:
+                i=0
+                trovato=False
+                while i<len(feeds.entries) and not trovato:
+                    if 'tags' in feeds.entries[i]:
+                        for tag in feeds.entries[i].tags:
+                            if tag.term == OP_BLOG_PCV_TAG:
+                                trovato=True
 
-                if not trovato:
-                    i += 1
+                    if not trovato:
+                        i += 1
 
-            blogpost = feeds.entries[i]
-            cache.set('op_associazione_home_feeds', blogpost , OP_BLOG_CACHETIME)
+                if trovato is True:
+                    blogpost = feeds.entries[i]
+                    cache.set('op_associazione_home_feeds', blogpost , OP_BLOG_CACHETIME)
 
         context['blogpost']=blogpost
 
