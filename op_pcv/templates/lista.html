@@ -49,64 +49,97 @@
 <body >
 
 
-<div class="wrapper">
-    <!-- HEADER -->
-    <div class="container header">
-        <div class="row ">
-            <div class="span12">
-                <a name="PageTop"></a>
-                Adesioni dei Parlamentari alla campagna "Parlamento Casa di vetro"
+    <div class="wrapper">
+        <!-- HEADER -->
+        <div class="container header">
+            <div class="row ">
+                <div class="span12">
+                    <a name="PageTop"></a>
+                    Adesioni dei Parlamentari alla campagna "Parlamento Casa di vetro"
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="span4">
-                <a href="#">
-                    Deputati ({{ n_deputati }})
-                </a>
+            <div class="row">
+                <div class="span4">
+                    <a href="#">
+                        Deputati ({{ n_deputati }})
+                    </a>
+                </div>
+                <div class="span4">
+                    <a href="#">
+                        Senatori ({{ n_senatori }})
+                    </a>
+                </div>
+                <div class="span4">
+                    <a href="#">
+                        Tutti ({{ n_totale }})
+                    </a>
+                </div>
             </div>
-            <div class="span4">
-                <a href="#">
-                    Senatori ({{ n_senatori }})
-                </a>
+            {#        table header #}
+            <div class="row">
+                <div class="span3">
+                    Nome
+                </div>
+                <div class="span3">
+                    <a href="#">
+                        Cognome  <i class="icon-caret-down"></i>
+                    </a>
+                </div>
+                <div class="span1">
+                    <a href="#">
+                        Gruppo  <i class="icon-caret-down"></i>
+                    </a>
+                </div>
+                <div class="span2">
+                    <a href="#">
+                        Adesione  <i class="icon-caret-down"></i>
+                    </a>
+                </div>
+                <div class="span1">
+                    Email
+                </div>
+                <div class="span2">
+                    Twitter
+                </div>
             </div>
-            <div class="span4">
-                <a href="#">
-                    Tutti ({{ n_totale }})
-                </a>
+
+            {#        list #}
+
+            {% for parlamentare in object_list %}
+
+            <div class="row">
+                <div class="span3">
+                    {{ parlamentare.nome }}
+                </div>
+                <div class="span3">
+                    {{ parlamentare.cognome }}
+                </div>
+                <div class="span1">
+                    {{ parlamentare.gruppo_parlamentare.sigla|lower|capfirst }}
+                </div>
+                <div class="span2">
+                    {{ parlamentare.adesione }}
+                </div>
+                <div class="span1">
+                    {{ parlamentare.account_mail }}
+                </div>
+                <div class="span2">
+                    {% if parlamentare.account_twitter %}
+                        <a href="https://twitter.com/intent/tweet?screen_name={{ parlamentare.account_twitter  }}"
+                           data-text="per un #openparlamento chiediamo la trasparenza delle commissioni parlamentari.Ci stai?"
+                           data-url="http://bit.ly/15p2ltP"
+                           data-hashtags="opensenato"
+                           class="twitter-mention-button" data-lang="it" data-size="medium">
+                        </a>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="span3">
-                Nome
-            </div>
-            <div class="span3">
-                <a href="#">
-                    Cognome  <i class="icon-caret-down"></i>
-                </a>
-            </div>
-            <div class="span1">
-                <a href="#">
-                    Gruppo  <i class="icon-caret-down"></i>
-                </a>
-            </div>
-            <div class="span2">
-                <a href="#">
-                    Adesione  <i class="icon-caret-down"></i>
-                </a>
-            </div>
-            <div class="span1">
-                Email
-            </div>
-            <div class="span2">
-                Twitter
-            </div>
+            {% endfor %}
 
         </div>
     </div>
 </div>
-
-
-
-</div>
+{#    LOAD TWITTER WIDGET#}
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </body>
 </html>

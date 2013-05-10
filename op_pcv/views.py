@@ -76,6 +76,10 @@ class PcvHome(TemplateView):
             mydict["non_aderenti_tot"]=g.get_n_non_aderenti(1)+g.get_n_silenti(1)
             context['col_senato'].append(mydict)
 
+        context['gruppi_didascalia']=GruppoParlamentare.get_gruppi()
+
+
+
         # feeds are extracted and cached for one hour (memcached)
         blogpost = cache.get('op_associazione_home_feeds')
 

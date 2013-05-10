@@ -178,7 +178,7 @@
                 xAxis: {
                     categories: [
                         {% for g in col_camera %}
-                            '{{ g.sigla }}'{% if not forloop.last %},{% endif %}
+                            '{{ g.sigla|lower|capfirst }}'{% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ]
                 },
@@ -230,7 +230,7 @@
                 xAxis: {
                     categories: [
                         {% for g in col_senato %}
-                            '{{ g.sigla }}'{% if not forloop.last %},{% endif %}
+                            '{{ g.sigla|lower|capfirst }}'{% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ]
                 },
@@ -509,7 +509,7 @@
                                         </p>
                                     </div>
                                     <div class="span6">
-                                        twitter live feed
+{#                                        twitter live feed#}
                                         <a class="twitter-timeline" href="https://twitter.com/search?q=%23openparlamento" data-widget-id="330254406656331776">Tweet su "#openparlamento"</a>
                                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
@@ -523,7 +523,17 @@
                                     Quanto hanno lavorato le Commissioni e le Aule di Camera e Senato nella XVI Legislatura
                                 </div>
                                 <div class="content">
-                                    ipsum, sed mollis lectus eros nec lectus. Maecenas viverra consequat ipsum quis lobortis. Maecenas nec velit nibh, eget luctus nulla. Sed a nisi magna. Proin sapien libero, elementum ac iaculis vitae, condimentum quis sem. Nullam consequat faucibus tempus. Nulla volutpat porttitor scelerisque. Nam fermentum, sem non laoreet porttitor, risus mauris sagittis felis, in mattis lectus mi volutpat mi. Etiam euismod justo leo. Donec ullamcorper adipiscing arcu non dignissim. Donec tincidunt justo velit, quis fringilla sem.
+                                    <p>
+                                        La campagna Parlamento Casa di vetro chiede la trasparenza dei lavori delle
+                                        Commissioni parlamentari perchè è lì che avviene la parte principale dell'attività
+                                        istituzionale di Deputati e Senatori.
+                                    </p>
+                                    <p>
+                                        Questo sia in termini qualitativi, il cuore del
+                                        processo legislativo si svolge nelle Commissioni, che in termini
+                                        quantitativi, i Parlamentari sono impegnati nelle
+                                        Commissioni 3 volte in più di quanto non lo siano in Aula.
+                                    </p>
                                 </div>
                                 <img src="{% static "img/grafici_commissioni.png" %}">
                             </div>
@@ -532,7 +542,15 @@
                                     Pubblicit&agrave; dei lavori delle commissioni nel mondo
                                 </div>
                                 <div class="content">
-                                    erdum porta, turpis turpis posuere ipsum, sed mollis lectus eros nec lectus. Maecenas viverra consequat ipsum quis lobortis. Maecenas nec velit nibh, eget luctus nulla. Sed a nisi magna. Proin sapien libero, elementum ac iaculis vitae, condimentum quis sem. Nullam consequat faucibus tempus. Nulla volutpat porttitor scelerisque. Nam fermentum, sem non laoreet porttitor, risus mauris sagittis felis, in mattis lectus mi volutpat mi. Etiam euismod justo leo. Donec ullamcorper adipiscing arcu non dignissim. Donec tincidunt justo velit, quis fringilla sem.
+                                    <p>
+                                        La campagna Parlamento Casa di vetro chiede che ogni seduta di ciascuna
+                                        Commissione parlamentare venga rendicontata attraverso la pubblicazione
+                                        del resoconto stenografico, delle presenze e del dettaglio delle votazioni.
+                                    </p>
+                                    <p>
+                                        In questo modo, l'Italia diventerebbe uno dei Paesi concretamente più
+                                        impegnati nella trasparenza e accountability delle sue Istituzioni.
+                                    </p>
                                 </div>
 
                                 </p>
@@ -625,12 +643,11 @@
                                                         <div class="span4 twitter">
                                                             {% if p.account_twitter %}
                                                                 <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                                   data-text=", coinvolgi i deputati del tuo gruppo per un #openparlamento"
-                                                                   data-hashtags="opencamera"
+                                                                   data-text=",coinvolgi i tuoi colleghi nella campagna #ParlamentoCasadiVetro"
+                                                                   data-hashtags="openparlamento,opencamera"
                                                                    data-url="http://bit.ly/15p2ltP"
                                                                    class="twitter-mention-button" data-lang="it" data-size="medium">
                                                                 </a>
-{#                                                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>#}
                                                             {% endif %}
                                                         </div>
                                                     </div>
@@ -667,12 +684,11 @@
                                                         <div class="span4 twitter">
                                                             {% if p.account_twitter %}
                                                                 <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                                   data-text="per un #openparlamento chiediamo la trasparenza delle commissioni parlamentari.Ci stai?"
-                                                                   data-hashtags="opencamera"
+                                                                   data-text="la trasparenza delle commissioni parlamentari per un #ParlamentoCasadiVetro.Ci stai?"
+                                                                   data-hashtags="openparlamento"
                                                                    data-url="http://bit.ly/15p2ltP"
                                                                    class="twitter-mention-button" data-lang="it" data-size="medium">
                                                                 </a>
-{#                                                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>#}
                                                             {% endif %}
                                                         </div>
                                                     </div>
@@ -739,9 +755,9 @@
                                                         <div class="span4 twitter">
                                                             {% if p.account_twitter %}
                                                                 <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                                   data-text=", coinvolgi i senatori del tuo gruppo per un #openparlamento"
+                                                                   data-text=",coinvolgi i tuoi colleghi nella campagna #ParlamentoCasadiVetro"
+                                                                   data-hashtags="openparlamento,opensenato"
                                                                    data-url="http://bit.ly/15p2ltP"
-                                                                   data-hashtags="opensenato"
                                                                    class="twitter-mention-button" data-lang="it" data-size="medium">
                                                                 </a>
 {#                                                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>#}
@@ -780,14 +796,11 @@
                                                         <div class="span4 twitter">
                                                             {% if p.account_twitter %}
                                                                 <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                                   data-text="per un #openparlamento chiediamo la trasparenza delle commissioni parlamentari.Ci stai?"
+                                                                   data-text="la trasparenza delle commissioni parlamentari per un #ParlamentoCasadiVetro.Ci stai?"
+                                                                   data-hashtags="openparlamento"
                                                                    data-url="http://bit.ly/15p2ltP"
-                                                                   data-hashtags="opensenato"
                                                                    class="twitter-mention-button" data-lang="it" data-size="medium">
                                                                 </a>
-{#                                                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>#}
-
-
                                                             {% endif %}
                                                         </div>
                                                     </div>
@@ -806,12 +819,21 @@
                         <div class="tab-pane default_padding adesioni_tabs" id="adesionigruppi_tab">
                                 <div class="row-fluid">
                                     <div class="span12 content" >
-                                        Una riga di spiegazione
+                                        <p>
+                                            Funzioni, organi e procedure della Camera e del Senato sono definiti dai
+                                            rispettivi Regolamenti, che ogni ramo del Parlamento ha adottato
+                                            e può modificare, in modo autonomo e separato, attraverso il voto
+                                            favorevole della maggioranza assoluta dei suoi componenti.
+                                        </p>
+
+                                        <p>Occorre l'adesione di almeno 316 Deputati e 158 Senatori.
+                                        A seguire quanti Parlamentati hanno dato la propria disponibilità suddivisi per gruppo
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row-fluid" id="col_chart_camera">
                                     <div class="span12"  >
-                                        <div id="adesioni_camera_graph" >
+                                        <div id="adesioni_camera_graph" class="adesioni_colgraph" >
 
                                         </div>
 
@@ -819,10 +841,20 @@
                                 </div>
                                 <div class="row-fluid" id="col_chart_senato">
                                     <div class="span12" >
-                                        <div id="adesioni_senato_graph">
+                                        <div id="adesioni_senato_graph" class="adesioni_colgraph" >
 
                                         </div>
 
+                                    </div>
+                                </div>
+                                <div class="row-fluid" >
+                                    <div class="span12" >
+                                        <ul style="list-style: none;font-size: 12px;">
+                                            {% for gruppo in gruppi_didascalia %}
+                                            <li style="display: inline;">{{ gruppo.sigla|lower|capfirst }}: {{ gruppo.nome }}</li>
+                                                {% if not forloop.last %},{% endif %}
+                                            {% endfor %}
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
