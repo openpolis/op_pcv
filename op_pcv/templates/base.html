@@ -1,4 +1,3 @@
-
 {% load staticfiles %}
 
 <!DOCTYPE html>
@@ -57,7 +56,7 @@
     <link rel="apple-touch-icon-precomposed" href="{% static "ico/apple-touch-icon-57-precomposed.png" %}">
 
 {# add this code#}
-    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-516c0e78663ccbd3"></script>
 {#end add this code#}
 
@@ -65,7 +64,7 @@
     {% endblock %}
 
 </head>
-<body data-spy="scroll" data-target="#pcv_navbar">
+<body class="light_blue_bg" data-spy="scroll" data-target="#pcv_navbar">
 
 
 <div class="wrapper">

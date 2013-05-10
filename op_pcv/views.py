@@ -2,11 +2,28 @@ import socket
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render_to_response
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from django.core.cache import cache
 from settings import OP_BLOG_FEED,OP_BLOG_PCV_TAG,OP_BLOG_CACHETIME
+
+
+
+class PcvLista(ListView):
+    model=Parlamentare
+    template_name = "lista.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(PcvLista, self).get_context_data(**kwargs)
+        context['n_deputati']=Parlamentare.get_n_deputati_incarica()
+        context['n_senatori']=Parlamentare.get_n_senatori_incarica()
+        context['n_totale']=Parlamentare.get_n_parlamentari_incarica()
+
+        return context
+
+    def get_queryset(self):
+        return  Parlamentare.objects.all()
 
 class PcvHome(TemplateView):
     template_name = "home.html"
@@ -31,7 +48,7 @@ class PcvHome(TemplateView):
 
         # sets fixed order for groups in the col chart
         ordine_gruppi_camera=["PD","PDL","M5S","SC","SEL","LEGA","MISTO","FDI"]
-        ordine_gruppi_senato=["PD","PDL","M5S","SC","LEGA","GAL","GPA-PSI","MISTO", "test"]
+        ordine_gruppi_senato=["PD","PDL","M5S","SC","LEGA","GAL","GPA-PSI","MISTO"]
 
         for sigla in ordine_gruppi_camera:
             try:
