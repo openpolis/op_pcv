@@ -8,7 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', PcvHome.as_view(), name="home"),
-    url(r'^lista/(?P<tipologia>[-\w]*)$', PcvLista.as_view(), name="lista"),
+    url(r'^lista$', PcvLista.as_view(), name="lista"),
     # url(r'^op_pcv/', include('op_pcv.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

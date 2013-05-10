@@ -2,7 +2,7 @@ import socket
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render_to_response
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from django.core.cache import cache
@@ -10,8 +10,8 @@ from settings import OP_BLOG_FEED,OP_BLOG_PCV_TAG,OP_BLOG_CACHETIME
 
 
 
-class PcvLista(ListView):
-    model=Parlamentare
+class PcvLista(TemplateView):
+
     template_name = "lista.html"
 
     def get_context_data(self, **kwargs):
@@ -20,10 +20,13 @@ class PcvLista(ListView):
         context['n_senatori']=Parlamentare.get_n_senatori_incarica()
         context['n_totale']=Parlamentare.get_n_parlamentari_incarica()
 
+        context['lista_deputati']=Parlamentare.get_deputati_incarica()
+        context['lista_senatori']=Parlamentare.get_senatori_incarica()
+        context['lista_completa']=Parlamentare.get_parlamentari_incarica()
+
         return context
 
-    def get_queryset(self):
-        return  Parlamentare.get_parlamentari_incarica()
+
 
 class PcvHome(TemplateView):
     template_name = "home.html"

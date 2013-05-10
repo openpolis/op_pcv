@@ -1,3 +1,4 @@
+{% load utils %}
 {% load staticfiles %}
 
 <!DOCTYPE html>
@@ -51,7 +52,7 @@
 
     <div class="wrapper">
         <!-- HEADER -->
-        <div class="container header">
+        <div class="container" id="lista_completa">
             <div class="row ">
                 <div class="span12">
                     <a name="PageTop"></a>
@@ -59,92 +60,264 @@
                 </div>
             </div>
             <div class="row">
-                <div class="span4">
-                    <a href="#">
-                        Deputati ({{ n_deputati }})
-                    </a>
-                </div>
-                <div class="span4">
-                    <a href="#">
-                        Senatori ({{ n_senatori }})
-                    </a>
-                </div>
-                <div class="span4">
-                    <a href="#">
-                        Tutti ({{ n_totale }})
-                    </a>
-                </div>
-            </div>
-            {#        table header #}
-            <div class="row">
-                <div class="span3">
-                    Nome
-                </div>
-                <div class="span3">
-                    <a href="#">
-                        Cognome  <i class="icon-caret-down"></i>
-                    </a>
-                </div>
-                <div class="span1">
-                    <a href="#">
-                        Gruppo  <i class="icon-caret-down"></i>
-                    </a>
-                </div>
-                <div class="span2">
-                    <a href="#">
-                        Adesione  <i class="icon-caret-down"></i>
-                    </a>
-                </div>
-                <div class="span1">
-                    Email
-                </div>
-                <div class="span2">
-                    Twitter
-                </div>
-            </div>
-
-            {#        list #}
-
-            {% for parlamentare in object_list %}
-
-            <div class="row">
-                <div class="span2">
-                    {{ parlamentare.nome }}
-                </div>
-                <div class="span2">
-                    {{ parlamentare.cognome }}
-                </div>
-                <div class="span1">
-                    {{ parlamentare.gruppo_parlamentare.sigla|lower|capfirst }}
-                </div>
-                <div class="span2">
-                    {{ parlamentare.adesione }}
-                </div>
-                <div class="span1">
-                    {% if parlamentare.account_mail %}
-                        <a href="mailto:{{ parlamentare.account_mail }}">
-                            Email
-                        </a>
-                    {% else %}
-                        &nbsp;
-                    {% endif %}
-                </div>
-                <div class="span4">
-                    {% if parlamentare.account_twitter %}
-                        <div id="custom-tweet-button">
-                            <button class="btn">
-                                <a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fpages%2Ftweet-button"
-                                   target="_blank">
-                                    Twitta a @{{ parlamentare.account_twitter }}
-                                </a>
-                            </button>
+                <div class="span12">
+                    <div class="tabbable"> <!-- Only required for left/right tabs -->
+                    <ul class="nav nav-tabs default_padding" id="middle_tabs">
+                        <li class="active">
+                            <a href="#deputati_tab" data-toggle="tab">
+                                <span class="title">
+                                    Deputati ({{ n_deputati }})
+                                </span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#senatori_tab" data-toggle="tab">
+                                <span class="title">
+                                    Senatori ({{ n_senatori }})
+                                </span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#totale_tab" data-toggle="tab">
+                                <span class="title">
+                                    Tutti ({{ n_totale }}
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                        <div class="tab-content">
+                        <div class="tab-pane default_padding active " id="deputati_tab">
+                            {#        table header #}
+                            <div class="row-fluid">
+                                <div class="span2">
+                                    Nome
+                                </div>
+                                <div class="span2">
+                                    <a href="#">
+                                        Cognome  <i class="icon-caret-down"></i>
+                                    </a>
+                                </div>
+                                <div class="span1">
+                                    <a href="#">
+                                        Gruppo  <i class="icon-caret-down"></i>
+                                    </a>
+                                </div>
+                                <div class="span2">
+                                    <a href="#">
+                                        Adesione  <i class="icon-caret-down"></i>
+                                    </a>
+                                </div>
+                                <div class="span1">
+                                    Email
+                                </div>
+                                <div class="span4">
+                                    Twitter
+                                </div>
+                            </div>
+        
+                            {#        list #}
+        
+                            {% for parlamentare in lista_deputati %}
+        
+                                <div class="row-fluid">
+                                    <div class="span2">
+                                        {{ parlamentare.nome|truncatesmart:30  }}
+                                    </div>
+                                    <div class="span2">
+                                        {{ parlamentare.cognome|lower|capfirst|truncatesmart:30 }}
+                                    </div>
+                                    <div class="span1">
+                                        {{ parlamentare.gruppo_parlamentare.sigla|lower|capfirst }}
+                                    </div>
+                                    <div class="span2">
+                                        {% if parlamentare.adesione == 1 %}
+                                            Aderisce
+                                        {% else %}
+                                            Non aderisce
+                                        {% endif %}
+        
+                                    </div>
+                                    <div class="span1">
+                                        {% if parlamentare.account_mail %}
+                                            <a href="mailto:{{ parlamentare.account_mail }}">
+                                                Email
+                                            </a>
+                                        {% else %}
+                                            &nbsp;
+                                        {% endif %}
+                                    </div>
+                                    <div class="span4">
+                                        {% if parlamentare.account_twitter %}
+                                            <div id="custom-tweet-button">
+                                                <button class="btn btn-info">
+                                                    <a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fpages%2Ftweet-button"
+                                                       target="_blank">
+                                                        Twitta a @{{ parlamentare.account_twitter }}
+                                                    </a>
+                                                </button>
+                                            </div>
+        
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
-
-                    {% endif %}
+                        <div class="tab-pane default_padding  " id="senatori_tab">
+                            {#        table header #}
+                            <div class="row-fluid">
+                                <div class="span2">
+                                    Nome
+                                </div>
+                                <div class="span2">
+                                    <a href="#">
+                                        Cognome  <i class="icon-caret-down"></i>
+                                    </a>
+                                </div>
+                                <div class="span1">
+                                    <a href="#">
+                                        Gruppo  <i class="icon-caret-down"></i>
+                                    </a>
+                                </div>
+                                <div class="span2">
+                                    <a href="#">
+                                        Adesione  <i class="icon-caret-down"></i>
+                                    </a>
+                                </div>
+                                <div class="span1">
+                                    Email
+                                </div>
+                                <div class="span4">
+                                    Twitter
+                                </div>
+                            </div>
+        
+                            {#        list #}
+        
+                            {% for parlamentare in lista_senatori %}
+        
+                                <div class="row-fluid">
+                                    <div class="span2">
+                                        {{ parlamentare.nome|truncatesmart:30  }}
+                                    </div>
+                                    <div class="span2">
+                                        {{ parlamentare.cognome|lower|capfirst|truncatesmart:30 }}
+                                    </div>
+                                    <div class="span1">
+                                        {{ parlamentare.gruppo_parlamentare.sigla|lower|capfirst }}
+                                    </div>
+                                    <div class="span2">
+                                        {% if parlamentare.adesione == 1 %}
+                                            Aderisce
+                                        {% else %}
+                                            Non aderisce
+                                        {% endif %}
+        
+                                    </div>
+                                    <div class="span1">
+                                        {% if parlamentare.account_mail %}
+                                            <a href="mailto:{{ parlamentare.account_mail }}">
+                                                Email
+                                            </a>
+                                        {% else %}
+                                            &nbsp;
+                                        {% endif %}
+                                    </div>
+                                    <div class="span4">
+                                        {% if parlamentare.account_twitter %}
+                                            <div id="custom-tweet-button">
+                                                <button class="btn btn-info">
+                                                    <a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fpages%2Ftweet-button"
+                                                       target="_blank">
+                                                        Twitta a @{{ parlamentare.account_twitter }}
+                                                    </a>
+                                                </button>
+                                            </div>
+        
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="tab-pane default_padding  " id="totale_tab">
+                            {#        table header #}
+                            <div class="row-fluid">
+                                <div class="span2">
+                                    Nome
+                                </div>
+                                <div class="span2">
+                                    <a href="#">
+                                        Cognome  <i class="icon-caret-down"></i>
+                                    </a>
+                                </div>
+                                <div class="span1">
+                                    <a href="#">
+                                        Gruppo  <i class="icon-caret-down"></i>
+                                    </a>
+                                </div>
+                                <div class="span2">
+                                    <a href="#">
+                                        Adesione  <i class="icon-caret-down"></i>
+                                    </a>
+                                </div>
+                                <div class="span1">
+                                    Email
+                                </div>
+                                <div class="span4">
+                                    Twitter
+                                </div>
+                            </div>
+        
+                            {#        list #}
+        
+                            {% for parlamentare in lista_completa %}
+        
+                                <div class="row-fluid">
+                                    <div class="span2">
+                                        {{ parlamentare.nome|truncatesmart:30  }}
+                                    </div>
+                                    <div class="span2">
+                                        {{ parlamentare.cognome|lower|capfirst|truncatesmart:30 }}
+                                    </div>
+                                    <div class="span1">
+                                        {{ parlamentare.gruppo_parlamentare.sigla|lower|capfirst }}
+                                    </div>
+                                    <div class="span2">
+                                        {% if parlamentare.adesione == 1 %}
+                                            Aderisce
+                                        {% else %}
+                                            Non aderisce
+                                        {% endif %}
+        
+                                    </div>
+                                    <div class="span1">
+                                        {% if parlamentare.account_mail %}
+                                            <a href="mailto:{{ parlamentare.account_mail }}">
+                                                Email
+                                            </a>
+                                        {% else %}
+                                            &nbsp;
+                                        {% endif %}
+                                    </div>
+                                    <div class="span4">
+                                        {% if parlamentare.account_twitter %}
+                                            <div id="custom-tweet-button">
+                                                <button class="btn btn-info">
+                                                    <a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fpages%2Ftweet-button"
+                                                       target="_blank">
+                                                        Twitta a @{{ parlamentare.account_twitter }}
+                                                    </a>
+                                                </button>
+                                            </div>
+        
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
-
         </div>
     </div>
 </div>
