@@ -8896,6 +8896,9 @@ a.badge:hover {
 body {
   font-family: 'Open Sans', sans-serif;
   color: black;
+}
+
+.light_blue_bg {
   background-color: #bce3f5;
 }
 
@@ -8965,9 +8968,9 @@ body {
 
 .header #main-intro {
   margin-top: 25px;
-  margin-bottom: 15px;
+  margin-bottom: 45px;
   font-size: 30px;
-  line-height: 30px;
+  line-height: 35px;
   color: black;
   text-align: center;
 }
@@ -9146,7 +9149,7 @@ body {
 }
 
 .adesioni_tabs .liste_adesioni {
-  padding-bottom: 30px;
+  padding-bottom: 15px;
   padding-left: 0;
   overflow: hidden;
 }
@@ -9179,6 +9182,10 @@ body {
 .adesioni_tabs .liste_adesioni .riga_adesioni .adesioni_separator {
   width: 5px;
   margin-left: 5px;
+}
+
+.adesioni_tabs .adesioni_colgraph {
+  margin-bottom: 30px;
 }
 
 #footer {
