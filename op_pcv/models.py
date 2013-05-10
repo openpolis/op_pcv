@@ -56,11 +56,17 @@ class Parlamentare(models.Model):
     account_mail = models.EmailField(max_length=100, blank=True)
     lettura_mail = models.BooleanField(default=False)
     risposta_mail = models.BooleanField(default=False)
+    big = models.BooleanField(default=False)
 
+    # get the Parlamentari in charge for the Ramo specified.
+    # if BIG is not None then the order is on Big field and then alphabetical
     @classmethod
-    def get_parlamentari_incarica(cls, ramo=None):
+    def get_parlamentari_incarica(cls, ramo=None, big=None):
+        if big is not True:
+            group = Parlamentare.objects.filter(in_carica = True).order_by('cognome')
+        else:
+            group = Parlamentare.objects.filter(in_carica = True).order_by('-big','cognome')
 
-        group = Parlamentare.objects.filter(in_carica = True).order_by('cognome')
         if ramo is not None:
             group=group.filter(ramo_parlamento=ramo)
 
@@ -86,13 +92,13 @@ class Parlamentare(models.Model):
 
     # returns all parlamentari / deputati / senatori in a state
     @classmethod
-    def get_status(self, status, ramo=None):
-        return self.get_parlamentari_incarica(ramo).filter(adesione=status)
+    def get_status(self, status, ramo=None,big=None):
+        return self.get_parlamentari_incarica(ramo,big).filter(adesione=status)
 
     # returns all parlamentari / deputati/senatori NOT in a state
     @classmethod
-    def get_not_status(self,status, ramo=None):
-        return self.get_parlamentari_incarica(ramo).exclude(adesione=status)
+    def get_not_status(self,status, ramo=None,big=None):
+        return self.get_parlamentari_incarica(ramo,big).exclude(adesione=status)
 
 
     @classmethod
@@ -129,12 +135,12 @@ class Parlamentare(models.Model):
 
 
     @classmethod
-    def get_deputati_aderenti(cls):
-        return Parlamentare.get_status('1','0')
+    def get_deputati_aderenti(cls, big=None):
+        return Parlamentare.get_status('1','0',big)
 
     @classmethod
-    def get_senatori_aderenti(cls):
-        return Parlamentare.get_status('1','1')
+    def get_senatori_aderenti(cls,big=None):
+        return Parlamentare.get_status('1','1',big)
 
     @classmethod
     def get_deputati_non_aderenti(cls):
@@ -155,12 +161,12 @@ class Parlamentare(models.Model):
 
 
     @classmethod
-    def get_deputati_neg_aderenti(cls):
-        return Parlamentare.get_not_status('1','0')
+    def get_deputati_neg_aderenti(cls, big=None):
+        return Parlamentare.get_not_status('1','0',big)
 
     @classmethod
-    def get_senatori_neg_aderenti(cls):
-        return Parlamentare.get_not_status('1','1')
+    def get_senatori_neg_aderenti(cls,big=None):
+        return Parlamentare.get_not_status('1','1',big)
 
     #n
     @classmethod

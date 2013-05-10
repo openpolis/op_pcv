@@ -23,7 +23,7 @@ class PcvLista(ListView):
         return context
 
     def get_queryset(self):
-        return  Parlamentare.objects.all()
+        return  Parlamentare.get_parlamentari_incarica()
 
 class PcvHome(TemplateView):
     template_name = "home.html"
@@ -115,11 +115,11 @@ class PcvHome(TemplateView):
         context['n_sen_aderiscono']=Parlamentare.get_n_senatori_aderenti()
         context['n_sen_nonaderiscono']=Parlamentare.get_n_senatori_neg_aderenti()
 
-        context['dep_aderiscono'] = Parlamentare.get_deputati_aderenti()[:10]
-        context['sen_aderiscono'] = Parlamentare.get_senatori_aderenti()[:10]
+        context['dep_aderiscono'] = Parlamentare.get_deputati_aderenti(True)[:10]
+        context['sen_aderiscono'] = Parlamentare.get_senatori_aderenti(True)[:10]
 
-        context['dep_neg_aderiscono'] = Parlamentare.get_deputati_neg_aderenti()[:10]
-        context['sen_neg_aderiscono'] = Parlamentare.get_senatori_neg_aderenti()[:10]
+        context['dep_neg_aderiscono'] = Parlamentare.get_deputati_neg_aderenti(True)[:10]
+        context['sen_neg_aderiscono'] = Parlamentare.get_senatori_neg_aderenti(True)[:10]
 
 
         return context
