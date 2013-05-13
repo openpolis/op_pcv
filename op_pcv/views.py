@@ -16,6 +16,14 @@ class PcvLista(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PcvLista, self).get_context_data(**kwargs)
+
+        tipo = kwargs['tipologia']
+
+        if tipo == "deputati" or tipo=="senatori" or tipo=="":
+            context['tipologia'] = tipo
+        else:
+            context['tipologia'] = ""
+
         context['n_deputati']=Parlamentare.get_n_deputati_incarica()
         context['n_senatori']=Parlamentare.get_n_senatori_incarica()
         context['n_totale']=Parlamentare.get_n_parlamentari_incarica()

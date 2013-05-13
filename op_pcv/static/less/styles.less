@@ -46,7 +46,11 @@ body{
 }
 
 .default_padding{
-  padding: @spacing-30;
+  @media (min-width: 767px){
+    padding: @spacing-30;
+  }
+
+
 }
 
 .default_padding.content{
@@ -199,6 +203,20 @@ body{
     }
   }
 }
+#lista_tabs{
+
+  padding-bottom: 0;
+  border-bottom: 1px solid #dddddd;
+
+  .active .title{
+    color:@title-background;
+  }
+
+  a:hover{
+    background-color: #ffffff;
+  }
+}
+
 
 #middle_tabs{
   margin-top:@spacing-single;

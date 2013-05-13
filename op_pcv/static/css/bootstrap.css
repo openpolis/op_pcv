@@ -8932,8 +8932,10 @@ body {
   background-color: #ffffff;
 }
 
-.default_padding {
-  padding: 30px;
+@media (min-width: 767px) {
+  .default_padding {
+    padding: 30px;
+  }
 }
 
 .default_padding.content {
@@ -9080,6 +9082,19 @@ body {
 
 #pcv_tabs .tab-pane#campagna .content {
   padding-top: 0;
+}
+
+#lista_tabs {
+  padding-bottom: 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+#lista_tabs .active .title {
+  color: #3caadb;
+}
+
+#lista_tabs a:hover {
+  background-color: #ffffff;
 }
 
 #middle_tabs {
