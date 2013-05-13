@@ -15,6 +15,13 @@ body{
   background-color: @page-background;
 }
 
+.affix{
+  @media(max-width: 768px){
+    position: relative;
+
+  }
+}
+
 .title{
   font-family: 'Bitter', serif;
   color: @subtitle-color;
@@ -25,7 +32,12 @@ body{
 
 .subtitle{
   color: @title-background;
-  font-size: @slogan-size;
+  @media (min-width: 767px){
+    font-size: @slogan-size;
+  }
+  @media (min-width: 767px){
+    font-size: @content-size!important;
+  }
   margin-bottom: 15px;
 }
 
@@ -49,6 +61,9 @@ body{
   @media (min-width: 767px){
     padding: @spacing-30;
   }
+  @media (max-width: 767px){
+    padding: 10px;
+  }
 
 
 }
@@ -59,10 +74,38 @@ body{
 
 
 //ADDTHIS BUTTONS STYLES
+
 .addthis_floating_style.addthis_counter_style{
-  width: 78px !important;
+  @media(min-width:768px){
+    left:20px;
+    top:50px;
+    width: 78px!important;
+  }
+  @media(max-width:767px){
+    width: 250px !important;
+    top:50px
+  }
 }
+
+
 .addthis_floating_style{
+
+//smaller than 767px
+  @media(max-width: 767px){
+      position: relative;
+      top: 10px!important;
+
+    .addthis_internal_container{
+      width: 250px!important;
+      a{
+        float: left;
+      }
+      .addthis_counter{
+        width: 50px;
+      }
+    }
+  }
+
   padding-top: 10px;
   padding-left: 5px;
   padding-right: 5px;
@@ -75,8 +118,18 @@ body{
 
   #main-title{
     font-family: 'Bitter', serif;
-    font-size:  @title-size;
-    line-height: @title-size;
+
+    @media(max-width: 767px){
+      font-size:  @medium-size;
+      line-height: @medium-size;
+    }
+
+    @media(min-width: 768px){
+      font-size:  @title-size;
+      line-height: @title-size;
+    }
+
+
     color: white;
     text-align: center;
     background-color: @title-background;
@@ -86,8 +139,14 @@ body{
 
   #main-intro{
     color: black;
-    font-size: 30px;
-    line-height: 35px;
+    @media(max-width: 768px){
+      font-size: 20px;
+      line-height: 20px;
+    }
+    @media(min-width: 768px){
+      font-size: 30px;
+      line-height: 35px;
+    }
     text-align: center;
     margin-top: @spacing-single;
     margin-bottom: 45px;
@@ -104,7 +163,13 @@ body{
 }
 
 .big_bold_label{
-  font-size: 36px;
+  @media(min-width: 768px){
+    font-size: 36px;
+  }
+  @media(max-width: 768px){
+    font-size: 18px;
+  }
+
   font-weight: normal;
 }
 

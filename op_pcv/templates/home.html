@@ -141,11 +141,15 @@
 
     $(document).ready(function() {
 
-
-        {# fixed navbar #}
-        $('#pcv_navbar').affix({
-            offset:"860"
+        if(window.innerWidth>600){
+            {# fixed navbar #}
+            
+            $('#pcv_navbar').affix({
+                offset:"860"
             });
+        }
+
+
 
         {#  scrollspy for the navbar #}
         $(function() {
