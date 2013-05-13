@@ -8927,7 +8927,7 @@ body {
   }
 }
 
-@media (min-width: 767px) {
+@media (max-width: 767px) {
   .subtitle {
     font-size: 15px !important;
   }
@@ -9056,6 +9056,12 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 800px) {
+  .top_pie {
+    text-align: center;
+  }
+}
+
 .bold_label {
   font-weight: bold;
 }
@@ -9064,13 +9070,13 @@ body {
   font-weight: normal;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .big_bold_label {
     font-size: 36px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .big_bold_label {
     font-size: 18px;
   }
@@ -9097,11 +9103,7 @@ body {
 #pcv_inner_navbar {
   min-height: 40px;
   padding-top: 0;
-  padding-right: 35px;
   padding-bottom: 0;
-  padding-left: 35px;
-  margin-right: 50px;
-  margin-left: 50px;
   background-image: -moz-linear-gradient(top, #3ba7d8, #2c88b1);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3ba7d8), to(#2c88b1));
   background-image: -webkit-linear-gradient(top, #3ba7d8, #2c88b1);
@@ -9116,6 +9118,15 @@ body {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+
+@media (min-width: 1024px) {
+  #pcv_inner_navbar {
+    padding-right: 35px;
+    padding-left: 35px;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
 }
 
 #pcv_inner_navbar .brand {
@@ -9140,8 +9151,16 @@ body {
   padding-left: 0;
 }
 
-#pcv_inner_navbar #openpolis_logo a img {
-  height: 35px;
+@media (min-width: 1024px) {
+  #pcv_inner_navbar #openpolis_logo a img {
+    height: 35px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #pcv_inner_navbar #openpolis_logo a img {
+    width: 100px;
+  }
 }
 
 #pcv_tabs {
@@ -9154,7 +9173,18 @@ body {
 
 #pcv_tabs #presidenti_img {
   width: 100%;
-  margin-top: 30px;
+}
+
+@media (min-width: 1024px) {
+  #pcv_tabs #presidenti_img {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #pcv_tabs #presidenti_img {
+    margin-top: 0;
+  }
 }
 
 #pcv_tabs .content {
@@ -9272,11 +9302,18 @@ body {
 .adesioni_tabs .liste_adesioni .riga_adesioni .email {
   width: 30px;
   margin-right: 8px;
-  margin-left: 8px;
 }
 
-.adesioni_tabs .liste_adesioni .riga_adesioni .twitter {
-  margin-left: 10px;
+@media (min-width: 800px) {
+  .adesioni_tabs .liste_adesioni .riga_adesioni .email {
+    margin-left: 8px;
+  }
+}
+
+@media (min-width: 800px) {
+  .adesioni_tabs .liste_adesioni .riga_adesioni .twitter {
+    margin-left: 10px;
+  }
 }
 
 .adesioni_tabs .liste_adesioni .riga_adesioni .twitter iframe {

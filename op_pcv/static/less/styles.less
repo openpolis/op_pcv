@@ -35,7 +35,7 @@ body{
   @media (min-width: 767px){
     font-size: @slogan-size;
   }
-  @media (min-width: 767px){
+  @media (max-width: 767px){
     font-size: @content-size!important;
   }
   margin-bottom: 15px;
@@ -156,6 +156,10 @@ body{
 .top_pie{
   overflow: hidden;
   max-height: 252px!important;
+
+  @media(max-width:800px){
+    text-align: center;
+  }
 }
 
 .bold_label{
@@ -163,10 +167,10 @@ body{
 }
 
 .big_bold_label{
-  @media(min-width: 768px){
+  @media(min-width: 900px){
     font-size: 36px;
   }
-  @media(max-width: 768px){
+  @media(max-width: 900px){
     font-size: 18px;
   }
 
@@ -194,10 +198,15 @@ body{
 
 #pcv_inner_navbar{
   min-height: 40px;
-  margin-right: @spacing-double;
-  margin-left: @spacing-double;
-  padding-left: 35px;
-  padding-right: 35px;
+
+  @media(min-width:1024px){
+    margin-right: @spacing-double;
+    margin-left: @spacing-double;
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+
   padding-top: 0px;
   padding-bottom: 0px;
 
@@ -237,7 +246,15 @@ body{
       padding-right: 0px;
       float:right;
       img{
-        height: 35px;
+
+        @media(min-width: 1024px){
+          height: 35px;
+        }
+        @media(max-width: 1024px){
+          width: 100px;
+        }
+
+
       }
     }
   }
@@ -251,7 +268,13 @@ body{
   }
 
   #presidenti_img{
-    margin-top:@spacing-30;
+    @media(min-width:1024px){
+      margin-top:@spacing-30;
+    }
+    @media(max-width:1024px){
+      margin-top:0;
+    }
+
     width: 100%;
   }
 
@@ -373,13 +396,20 @@ body{
 
       .email{
         width: 30px;
-        margin-left: 8px;
+
+        @media(min-width:800px){
+          margin-left: 8px;
+        }
+
+
         margin-right: 8px;
       }
 
       .twitter
       {
-        margin-left: 10px;
+        @media(min-width:800px){
+          margin-left: 10px;
+        }
 
         iframe{
           vertical-align: middle;
