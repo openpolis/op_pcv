@@ -7,26 +7,44 @@
 
 body{
   font-family: 'Open Sans', sans-serif;
-  background-color: @page-background;
+
   color: black;
+}
+
+.light_blue_bg{
+  background-color: @page-background;
+}
+
+.affix{
+  @media(max-width: 768px){
+    position: relative;
+
+  }
 }
 
 .title{
   font-family: 'Bitter', serif;
   color: @subtitle-color;
   font-size: @slogan-size;
+  line-height: @slogan-size;
   margin-bottom: 15px;
 }
 
 .subtitle{
   color: @title-background;
-  font-size: @slogan-size;
+  @media (min-width: 767px){
+    font-size: @slogan-size;
+  }
+  @media (max-width: 767px){
+    font-size: @content-size!important;
+  }
   margin-bottom: 15px;
 }
 
 .content{
   color: #000000;
   font-size: @content-size;
+  margin-bottom: @spacing-half;
 }
 
 .black_bg{
@@ -40,7 +58,58 @@ body{
 }
 
 .default_padding{
-  padding: @spacing-30;
+  @media (min-width: 767px){
+    padding: @spacing-30;
+  }
+  @media (max-width: 767px){
+    padding: 10px;
+  }
+
+
+}
+
+.default_padding.content{
+  padding-top:0;
+}
+
+
+//ADDTHIS BUTTONS STYLES
+
+.addthis_floating_style.addthis_counter_style{
+  @media(min-width:768px){
+    left:20px;
+    top:50px;
+    width: 78px!important;
+  }
+  @media(max-width:767px){
+    width: 250px !important;
+    top:50px
+  }
+}
+
+
+.addthis_floating_style{
+
+//smaller than 767px
+  @media(max-width: 767px){
+      position: relative;
+      top: 10px!important;
+
+    .addthis_internal_container{
+      width: 250px!important;
+      a{
+        float: left;
+      }
+      .addthis_counter{
+        width: 50px;
+      }
+    }
+  }
+
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
 }
 
 
@@ -49,8 +118,18 @@ body{
 
   #main-title{
     font-family: 'Bitter', serif;
-    font-size:  @title-size;
-    line-height: @title-size;
+
+    @media(max-width: 767px){
+      font-size:  @medium-size;
+      line-height: @medium-size;
+    }
+
+    @media(min-width: 768px){
+      font-size:  @title-size;
+      line-height: @title-size;
+    }
+
+
     color: white;
     text-align: center;
     background-color: @title-background;
@@ -60,17 +139,27 @@ body{
 
   #main-intro{
     color: black;
-    font-size: @intro-size;
-    line-height: 45px;
+    @media(max-width: 768px){
+      font-size: 20px;
+      line-height: 20px;
+    }
+    @media(min-width: 768px){
+      font-size: 30px;
+      line-height: 35px;
+    }
     text-align: center;
     margin-top: @spacing-single;
-    margin-bottom: @spacing-single;
+    margin-bottom: 45px;
   }
 }
 
 .top_pie{
   overflow: hidden;
   max-height: 252px!important;
+
+  @media(max-width:800px){
+    text-align: center;
+  }
 }
 
 .bold_label{
@@ -78,38 +167,46 @@ body{
 }
 
 .big_bold_label{
-  font-size: 18px;
-  font-weight: bold;
+  @media(min-width: 900px){
+    font-size: 36px;
+  }
+  @media(max-width: 900px){
+    font-size: 18px;
+  }
+
+  font-weight: normal;
 }
 
-
-.connection-line{
-
-}
 
 #achepuntosiamo{
   border-radius: 3px;
   overflow: hidden;
 }
 
+.affix {
+  top: 0px;
+}​
+
+#pcv_navbar{
+   z-index: 99999;
+ }
+
 #pcv_navbar .navbar{
   margin-bottom: 0;
+  min-height: 1px;
 }
-
-
-#pcv_navbar.stuck {
-  position:fixed;
-  top:0;
-  box-shadow:0;
-}
-
 
 #pcv_inner_navbar{
   min-height: 40px;
-  margin-right: @spacing-double;
-  margin-left: @spacing-double;
-  padding-left: 35px;
-  padding-right: 35px;
+
+  @media(min-width:1024px){
+    margin-right: @spacing-double;
+    margin-left: @spacing-double;
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+
   padding-top: 0px;
   padding-bottom: 0px;
 
@@ -149,7 +246,15 @@ body{
       padding-right: 0px;
       float:right;
       img{
-        height: 35px;
+
+        @media(min-width: 1024px){
+          height: 35px;
+        }
+        @media(max-width: 1024px){
+          width: 100px;
+        }
+
+
       }
     }
   }
@@ -163,6 +268,13 @@ body{
   }
 
   #presidenti_img{
+    @media(min-width:1024px){
+      margin-top:@spacing-30;
+    }
+    @media(max-width:1024px){
+      margin-top:0;
+    }
+
     width: 100%;
   }
 
@@ -170,8 +282,7 @@ body{
     color: #ffffff;
   }
 
-  .tab-pane#promesse{
-//    padding: 0;
+  .tab-pane#campagna{
     .title{
       padding-bottom:0;
     }
@@ -180,6 +291,28 @@ body{
     }
   }
 }
+#lista_ul{
+
+  padding-bottom: 0;
+  border-bottom: 1px solid #dddddd;
+
+  .active .title{
+    color:@title-background;
+  }
+
+  a:hover{
+    background-color: #ffffff;
+  }
+}
+
+.lista_tabs{
+  .default_padding{
+
+      padding-top: 0px;
+
+  }
+}
+
 
 #middle_tabs{
   margin-top:@spacing-single;
@@ -195,7 +328,11 @@ body{
   }
 }
 
-#adesioni_tabs{
+#appello_tab{
+  p{margin-bottom: 20px;}
+}
+
+#adesioni_buttons{
   margin-top:@spacing-single;
   padding-top: 0;
   padding-bottom: 0;
@@ -210,7 +347,7 @@ body{
   }
 }
 
-#adesioni_tab{
+.adesioni_tabs{
   padding-top:10px;
 
   #intro{
@@ -243,7 +380,7 @@ body{
   }
 
   .liste_adesioni{
-    padding-bottom:@spacing-30;
+    padding-bottom:@spacing-half;
     padding-left: 0;
     overflow: hidden;
 
@@ -259,13 +396,20 @@ body{
 
       .email{
         width: 30px;
-        margin-left: 8px;
+
+        @media(min-width:800px){
+          margin-left: 8px;
+        }
+
+
         margin-right: 8px;
       }
 
       .twitter
       {
-        margin-left: 10px;
+        @media(min-width:800px){
+          margin-left: 10px;
+        }
 
         iframe{
           vertical-align: middle;
@@ -279,7 +423,57 @@ body{
       }
     }
   }
+
+  .adesioni_colgraph{
+    margin-bottom: 30px;
+  }
+
 }
+
+#lista_completa{
+  .subtitle{
+    line-height: @slogan-size;
+    font-size: @slogan-size;
+    margin-left: 20px;
+    font-family: 'Bitter', serif;
+    padding: 10px;
+  }
+  .btn a{
+    color: white;
+  }
+}
+
+// Datatables responsiveness
+
+div.dataTables_length label {
+  width: 460px;
+  float: left;
+  text-align: left;
+}
+
+div.dataTables_length select {
+  width: 75px;
+}
+
+div.dataTables_filter label {
+  float: right;
+  width: 460px;
+}
+
+div.dataTables_info {
+  padding-top: 8px;
+}
+
+div.dataTables_paginate {
+  float: right;
+  margin: 0;
+}
+
+table {
+  margin: 1em 0;
+  clear: both;
+}
+
 
 #footer{
   background-color: @title-background;
@@ -304,6 +498,10 @@ body{
       margin-top: 15px;
     }
 
+    .content{
+      font-size: 13px;
+    }
+
     hr {
       margin: 0;
       border: 0;
@@ -322,7 +520,5 @@ body{
       margin-left: 0px;
     }
   }
-
-
 
 }

@@ -8896,23 +8896,45 @@ a.badge:hover {
 body {
   font-family: 'Open Sans', sans-serif;
   color: black;
+}
+
+.light_blue_bg {
   background-color: #bce3f5;
+}
+
+@media (max-width: 768px) {
+  .affix {
+    position: relative;
+  }
 }
 
 .title {
   margin-bottom: 15px;
   font-family: 'Bitter', serif;
   font-size: 25px;
+  line-height: 25px;
   color: #8aa8b3;
 }
 
 .subtitle {
   margin-bottom: 15px;
-  font-size: 25px;
   color: #3caadb;
 }
 
+@media (min-width: 767px) {
+  .subtitle {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 767px) {
+  .subtitle {
+    font-size: 15px !important;
+  }
+}
+
 .content {
+  margin-bottom: 15px;
   font-size: 15px;
   color: #000000;
 }
@@ -8927,8 +8949,58 @@ body {
   background-color: #ffffff;
 }
 
-.default_padding {
-  padding: 30px;
+@media (min-width: 767px) {
+  .default_padding {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .default_padding {
+    padding: 10px;
+  }
+}
+
+.default_padding.content {
+  padding-top: 0;
+}
+
+@media (min-width: 768px) {
+  .addthis_floating_style.addthis_counter_style {
+    top: 50px;
+    left: 20px;
+    width: 78px!important;
+  }
+}
+
+@media (max-width: 767px) {
+  .addthis_floating_style.addthis_counter_style {
+    top: 50px;
+    width: 250px !important;
+  }
+}
+
+.addthis_floating_style {
+  padding-top: 10px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+@media (max-width: 767px) {
+  .addthis_floating_style {
+    position: relative;
+    top: 10px!important;
+  }
+  .addthis_floating_style .addthis_internal_container {
+    width: 250px!important;
+  }
+  .addthis_floating_style .addthis_internal_container a {
+    float: left;
+  }
+  .addthis_floating_style .addthis_internal_container .addthis_counter {
+    width: 50px;
+  }
 }
 
 .header {
@@ -8939,20 +9011,44 @@ body {
   padding-top: 15px;
   padding-bottom: 15px;
   font-family: 'Bitter', serif;
-  font-size: 61px;
-  line-height: 61px;
   color: white;
   text-align: center;
   background-color: #3caadb;
 }
 
+@media (max-width: 767px) {
+  .header #main-title {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header #main-title {
+    font-size: 61px;
+    line-height: 61px;
+  }
+}
+
 .header #main-intro {
   margin-top: 25px;
-  margin-bottom: 25px;
-  font-size: 40px;
-  line-height: 45px;
+  margin-bottom: 45px;
   color: black;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .header #main-intro {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header #main-intro {
+    font-size: 30px;
+    line-height: 35px;
+  }
 }
 
 .top_pie {
@@ -8960,13 +9056,30 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 800px) {
+  .top_pie {
+    text-align: center;
+  }
+}
+
 .bold_label {
   font-weight: bold;
 }
 
 .big_bold_label {
-  font-size: 18px;
-  font-weight: bold;
+  font-weight: normal;
+}
+
+@media (min-width: 900px) {
+  .big_bold_label {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 900px) {
+  .big_bold_label {
+    font-size: 18px;
+  }
 }
 
 #achepuntosiamo {
@@ -8974,24 +9087,23 @@ body {
   border-radius: 3px;
 }
 
-#pcv_navbar .navbar {
-  margin-bottom: 0;
+.affix {
+  top: 0;
 }
 
-#pcv_navbar.stuck {
-  position: fixed;
-  top: 0;
-  box-shadow: 0;
+#pcv_navbar {
+  z-index: 99999;
+}
+
+#pcv_navbar .navbar {
+  min-height: 1px;
+  margin-bottom: 0;
 }
 
 #pcv_inner_navbar {
   min-height: 40px;
   padding-top: 0;
-  padding-right: 35px;
   padding-bottom: 0;
-  padding-left: 35px;
-  margin-right: 50px;
-  margin-left: 50px;
   background-image: -moz-linear-gradient(top, #3ba7d8, #2c88b1);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3ba7d8), to(#2c88b1));
   background-image: -webkit-linear-gradient(top, #3ba7d8, #2c88b1);
@@ -9006,6 +9118,15 @@ body {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+
+@media (min-width: 1024px) {
+  #pcv_inner_navbar {
+    padding-right: 35px;
+    padding-left: 35px;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
 }
 
 #pcv_inner_navbar .brand {
@@ -9030,8 +9151,16 @@ body {
   padding-left: 0;
 }
 
-#pcv_inner_navbar #openpolis_logo a img {
-  height: 35px;
+@media (min-width: 1024px) {
+  #pcv_inner_navbar #openpolis_logo a img {
+    height: 35px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #pcv_inner_navbar #openpolis_logo a img {
+    width: 100px;
+  }
 }
 
 #pcv_tabs {
@@ -9046,15 +9175,44 @@ body {
   width: 100%;
 }
 
+@media (min-width: 1024px) {
+  #pcv_tabs #presidenti_img {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #pcv_tabs #presidenti_img {
+    margin-top: 0;
+  }
+}
+
 #pcv_tabs .content {
   color: #ffffff;
 }
 
-#pcv_tabs .tab-pane#promesse .title {
+#pcv_tabs .tab-pane#campagna .title {
   padding-bottom: 0;
 }
 
-#pcv_tabs .tab-pane#promesse .content {
+#pcv_tabs .tab-pane#campagna .content {
+  padding-top: 0;
+}
+
+#lista_ul {
+  padding-bottom: 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+#lista_ul .active .title {
+  color: #3caadb;
+}
+
+#lista_ul a:hover {
+  background-color: #ffffff;
+}
+
+.lista_tabs .default_padding {
   padding-top: 0;
 }
 
@@ -9072,88 +9230,144 @@ body {
   background-color: #ffffff;
 }
 
-#adesioni_tabs {
+#appello_tab p {
+  margin-bottom: 20px;
+}
+
+#adesioni_buttons {
   padding-top: 0;
   padding-bottom: 0;
   margin-top: 25px;
   border-bottom: 1px solid #dddddd;
 }
 
-#adesioni_tabs .active .title {
+#adesioni_buttons .active .title {
   color: #3caadb;
 }
 
-#adesioni_tabs a:hover {
+#adesioni_buttons a:hover {
   background-color: #ffffff;
 }
 
-#adesioni_tab {
+.adesioni_tabs {
   padding-top: 10px;
 }
 
-#adesioni_tab #intro {
+.adesioni_tabs #intro {
   margin-bottom: 30px;
 }
 
-#adesioni_tab .subtitle {
+.adesioni_tabs .subtitle {
   font-size: 18px;
 }
 
-#adesioni_tab .title {
+.adesioni_tabs .title {
   margin-bottom: 15px;
 }
 
-#adesioni_tab li:nth-child(2) a {
+.adesioni_tabs li:nth-child(2) a {
   margin-left: 25px;
 }
 
-#adesioni_tab .active a {
+.adesioni_tabs .active a {
   background-color: #8aa8b3;
   border-radius: 20px;
 }
 
-#adesioni_tab .active a .subtitle {
+.adesioni_tabs .active a .subtitle {
   color: #ffffff;
 }
 
-#adesioni_tab a:hover {
+.adesioni_tabs a:hover {
   border-radius: 20px;
 }
 
-#adesioni_tab .liste_adesioni {
-  padding-bottom: 30px;
+.adesioni_tabs .liste_adesioni {
+  padding-bottom: 15px;
   padding-left: 0;
   overflow: hidden;
 }
 
-#adesioni_tab .liste_adesioni a {
+.adesioni_tabs .liste_adesioni a {
   background-color: white;
   border: 0;
   border-radius: 0;
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni {
+.adesioni_tabs .liste_adesioni .riga_adesioni {
   line-height: 30px;
   border-bottom: 1px solid #cccccc;
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni .email {
+.adesioni_tabs .liste_adesioni .riga_adesioni .email {
   width: 30px;
   margin-right: 8px;
-  margin-left: 8px;
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni .twitter {
-  margin-left: 10px;
+@media (min-width: 800px) {
+  .adesioni_tabs .liste_adesioni .riga_adesioni .email {
+    margin-left: 8px;
+  }
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni .twitter iframe {
+@media (min-width: 800px) {
+  .adesioni_tabs .liste_adesioni .riga_adesioni .twitter {
+    margin-left: 10px;
+  }
+}
+
+.adesioni_tabs .liste_adesioni .riga_adesioni .twitter iframe {
   vertical-align: middle;
 }
 
-#adesioni_tab .liste_adesioni .riga_adesioni .adesioni_separator {
+.adesioni_tabs .liste_adesioni .riga_adesioni .adesioni_separator {
   width: 5px;
   margin-left: 5px;
+}
+
+.adesioni_tabs .adesioni_colgraph {
+  margin-bottom: 30px;
+}
+
+#lista_completa .subtitle {
+  padding: 10px;
+  margin-left: 20px;
+  font-family: 'Bitter', serif;
+  font-size: 25px;
+  line-height: 25px;
+}
+
+#lista_completa .btn a {
+  color: white;
+}
+
+div.dataTables_length label {
+  float: left;
+  width: 460px;
+  text-align: left;
+}
+
+div.dataTables_length select {
+  width: 75px;
+}
+
+div.dataTables_filter label {
+  float: right;
+  width: 460px;
+}
+
+div.dataTables_info {
+  padding-top: 8px;
+}
+
+div.dataTables_paginate {
+  float: right;
+  margin: 0;
+}
+
+table {
+  margin: 1em 0;
+  clear: both;
 }
 
 #footer {
@@ -9181,6 +9395,10 @@ body {
 
 #footer .box-footer .media {
   margin-top: 15px;
+}
+
+#footer .box-footer .content {
+  font-size: 13px;
 }
 
 #footer .box-footer hr {

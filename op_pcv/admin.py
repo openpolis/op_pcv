@@ -27,7 +27,7 @@ class HasTwitterFilter(SimpleListFilter):
 class ParlamentareAdmin(admin.ModelAdmin):
     list_per_page = 1100
     ordering = ('cognome',)
-    list_filter = ('ramo_parlamento','gruppo_parlamentare','adesione',HasTwitterFilter,'in_carica')
+    list_filter = ('ramo_parlamento','gruppo_parlamentare','adesione',HasTwitterFilter,'in_carica','big')
     search_fields = ['^nome', '^cognome']
 
 

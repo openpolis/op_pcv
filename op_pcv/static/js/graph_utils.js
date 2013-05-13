@@ -21,11 +21,33 @@ function sweep(a) {
 
 }
 
+function resize(){
+
+    width=(window.innerWidth/2)-20;
+    offset_x_n = -(width/3 );
+    radius = width/4;
+    outer_label_radius = radius+(radius/1.5);
+    inner_label_radius = radius+(radius/1.8);
+    arc_width = radius/2;
+
+    offset_x_n = -(width/3 );
+    offset_y_n = height -(height/4);
+    offset_y_label = offset_y_n-(height/12);
+    offset_y_line = offset_y_label-(height/24);
+
+    offset_ntot= -25;
+    offset_labeltot= -3;
+    arc = d3.svg.arc().innerRadius(radius-arc_width).outerRadius(radius + arc_width);
+}
+
 
 //draws an arc in the div called div_id with the data provided
 function draw_arc(div_id, data, label){
 
     var color = d3.scale.category20();
+
+    if(window.innerWidth<1200)
+        resize();
 
     var svg = d3.select("#"+div_id).
         append("svg").

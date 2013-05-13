@@ -1,10 +1,59 @@
+import socket
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from django.core.cache import cache
 from settings import OP_BLOG_FEED,OP_BLOG_PCV_TAG,OP_BLOG_CACHETIME
+
+
+
+class PcvLista(TemplateView):
+
+    template_name = "lista.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(PcvLista, self).get_context_data(**kwargs)
+
+        tipo = kwargs['tipologia']
+
+        if tipo == "deputati" or tipo=="senatori" or tipo=="":
+            context['tipologia'] = tipo
+        else:
+            context['tipologia'] = ""
+
+        context['n_deputati']=Parlamentare.get_n_deputati_incarica()
+        context['n_senatori']=Parlamentare.get_n_senatori_incarica()
+        context['n_totale']=Parlamentare.get_n_parlamentari_incarica()
+
+        dep = Parlamentare.get_deputati_incarica()
+        sen = Parlamentare.get_senatori_incarica()
+        par = Parlamentare.get_parlamentari_incarica()
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if dep is not None:
+            for p in dep:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if sen is not None:
+            for p in sen:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if par is not None:
+            for p in par:
+                p.cognome=p.cognome.title()
+
+
+        context['lista_deputati']=dep
+        context['lista_senatori']=sen
+        context['lista_completa']=par
+
+        return context
+
+
 
 class PcvHome(TemplateView):
     template_name = "home.html"
@@ -13,6 +62,7 @@ class PcvHome(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PcvHome,self).get_context_data(**kwargs)
 
+        # data for pie charts
         context['pie_senato']={}
         context['pie_senato']['non_aderenti']=Parlamentare.get_n_senatori_silenti()+Parlamentare.get_n_senatori_non_aderenti()
         context['pie_senato']['aderenti']=Parlamentare.get_n_senatori_aderenti()
@@ -22,35 +72,68 @@ class PcvHome(TemplateView):
         context['pie_camera']['aderenti']=Parlamentare.get_n_deputati_aderenti()
         context['pie_camera']['totale']=Parlamentare.get_n_deputati_incarica()
 
-        gruppi=GruppoParlamentare.get_gruppi()
-        context['dati_gruppi']=[]
-        for g in gruppi:
+        # data for adesioni coloumn charts
+
+        context['col_camera']=[]
+
+        # sets fixed order for groups in the col chart
+        ordine_gruppi_camera=["PD","PDL","M5S","SC","SEL","LEGA","MISTO","FDI"]
+        ordine_gruppi_senato=["PD","PDL","M5S","SC","LEGA","GAL","GPA-PSI","MISTO"]
+
+        for sigla in ordine_gruppi_camera:
+            try:
+                g = GruppoParlamentare.objects.get(sigla=sigla)
+            except ObjectDoesNotExist:
+                pass
+            mydict={}
+            mydict["sigla"]=g.sigla
+            mydict["aderenti_tot"]=g.get_n_aderenti(0)
+            mydict["non_aderenti_tot"]=g.get_n_non_aderenti(0)+g.get_n_silenti(0)
+            context['col_camera'].append(mydict)
+
+
+        context['col_senato']=[]
+
+        for sigla in ordine_gruppi_senato:
+            try:
+                g = GruppoParlamentare.objects.get(sigla=sigla)
+            except ObjectDoesNotExist:
+                pass
 
             mydict={}
             mydict["sigla"]=g.sigla
-            mydict["aderenti_tot"]=g.get_n_aderenti()
-            mydict["non_aderenti_tot"]=g.get_n_non_aderenti()+g.get_n_silenti()
-            context['dati_gruppi'].append(mydict)
+            mydict["aderenti_tot"]=g.get_n_aderenti(1)
+            mydict["non_aderenti_tot"]=g.get_n_non_aderenti(1)+g.get_n_silenti(1)
+            context['col_senato'].append(mydict)
+
+        context['gruppi_didascalia']=GruppoParlamentare.get_gruppi()
+
 
 
         # feeds are extracted and cached for one hour (memcached)
         blogpost = cache.get('op_associazione_home_feeds')
 
+
+        blogpost=None
         if blogpost is None:
-
+            # sets the timeout for the socket connection
+            socket.setdefaulttimeout(150)
             feeds = feedparser.parse(OP_BLOG_FEED)
-            i=0
-            trovato=False
-            while i<len(feeds.entries) and not trovato:
-                for tag in feeds.entries[i].tags:
-                    if tag.term == OP_BLOG_PCV_TAG:
-                        trovato=True
+            if feeds is not None:
+                i=0
+                trovato=False
+                while i<len(feeds.entries) and not trovato:
+                    if 'tags' in feeds.entries[i]:
+                        for tag in feeds.entries[i].tags:
+                            if tag.term == OP_BLOG_PCV_TAG:
+                                trovato=True
 
-                if not trovato:
-                    i += 1
+                    if not trovato:
+                        i += 1
 
-            blogpost = feeds.entries[i]
-            cache.set('op_associazione_home_feeds', blogpost , OP_BLOG_CACHETIME)
+                if trovato is True:
+                    blogpost = feeds.entries[i]
+                    cache.set('op_associazione_home_feeds', blogpost , OP_BLOG_CACHETIME)
 
         context['blogpost']=blogpost
 
@@ -62,10 +145,37 @@ class PcvHome(TemplateView):
         context['n_sen_aderiscono']=Parlamentare.get_n_senatori_aderenti()
         context['n_sen_nonaderiscono']=Parlamentare.get_n_senatori_neg_aderenti()
 
-        context['dep_aderiscono'] = Parlamentare.get_deputati_aderenti()[:10]
-        context['sen_aderiscono'] = Parlamentare.get_senatori_aderenti()[:10]
+        dep_aderenti = Parlamentare.get_deputati_aderenti(True)[:10]
+        sen_aderenti = Parlamentare.get_senatori_aderenti(True)[:10]
 
-        context['dep_neg_aderiscono'] = Parlamentare.get_deputati_neg_aderenti()[:10]
-        context['sen_neg_aderiscono'] = Parlamentare.get_senatori_neg_aderenti()[:10]
+        dep_naderenti = Parlamentare.get_deputati_neg_aderenti(True)[:10]
+        sen_naderenti = Parlamentare.get_senatori_neg_aderenti(True)[:10]
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if dep_aderenti is not None:
+            for p in dep_aderenti:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if sen_aderenti is not None:
+            for p in sen_aderenti:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if dep_naderenti is not None:
+            for p in dep_naderenti:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if sen_naderenti is not None:
+            for p in sen_naderenti:
+                p.cognome=p.cognome.title()
+
+        context['dep_aderiscono'] = dep_aderenti
+        context['sen_aderiscono'] = sen_aderenti
+
+        context['dep_neg_aderiscono'] = dep_naderenti
+        context['sen_neg_aderiscono'] = sen_naderenti
+
 
         return context
