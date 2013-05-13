@@ -32,21 +32,22 @@
     <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
     <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
     <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/jquery.dataTables.css" %}">
+
+
+
     <script type="text/javascript" src="{% static "js/jquery.dataTables.min.js" %}"></script>
     <script type="text/javascript">
 
-        /* Default class modification */
-        $.extend( $.fn.dataTableExt.oStdClasses, {
-            "sSortAsc": "header headerSortDown",
-            "sSortDesc": "header headerSortUp",
-            "sSortable": "header"
-        } );
+
         $(document).ready(function() {
             var gTable = $('.tablesorter').dataTable({
+                {# sdom is also for table responsiveness#}
                 "sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
 
                 "aoColumnDefs": [
-                    { "bSortable": false, "aTargets": [ 0,4,5 ] }
+                    { "bSortable": false, "aTargets": [ 0,4,5 ] },
+                    { "bSortable": true, "aTargets": [ 0,4,5 ] }
                 ],
 
                 bFilter: false,
@@ -138,11 +139,11 @@
 
                                 <table class="table table-condensed tablesorter">
                                     <thead>
-                                        <tr>
+                                        <tr >
                                             <th>Nome </th>
-                                            <th>Cognome  <i class="icon-caret-down"></i></th>
-                                            <th>Gruppo  <i class="icon-caret-down"></i></th>
-                                            <th>Adesione  <i class="icon-caret-down"></i></th>
+                                            <th>Cognome </th>
+                                            <th>Gruppo  </th>
+                                            <th>Adesione  </th>
                                             <th>Email</th>
                                             <th>Twitter</th>
                                         </tr>
@@ -200,9 +201,9 @@
                                     <thead>
                                     <tr>
                                         <th>Nome </th>
-                                        <th>Cognome  <i class="icon-caret-down"></i></th>
-                                        <th>Gruppo  <i class="icon-caret-down"></i></th>
-                                        <th>Adesione  <i class="icon-caret-down"></i></th>
+                                        <th>Cognome </th>
+                                        <th>Gruppo </th>
+                                        <th>Adesione </th>
                                         <th>Email</th>
                                         <th>Twitter</th>
                                     </tr>
@@ -261,9 +262,9 @@
                                     <thead>
                                     <tr>
                                         <th>Nome </th>
-                                        <th>Cognome  <i class="icon-caret-down"></i></th>
-                                        <th>Gruppo  <i class="icon-caret-down"></i></th>
-                                        <th>Adesione  <i class="icon-caret-down"></i></th>
+                                        <th>Cognome </th>
+                                        <th>Gruppo </th>
+                                        <th>Adesione </th>
                                         <th>Email</th>
                                         <th>Twitter</th>
                                     </tr>
