@@ -34,8 +34,16 @@
     <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
     <script type="text/javascript" src="{% static "js/jquery.dataTables.min.js" %}"></script>
     <script type="text/javascript">
+
+        /* Default class modification */
+        $.extend( $.fn.dataTableExt.oStdClasses, {
+            "sSortAsc": "header headerSortDown",
+            "sSortDesc": "header headerSortUp",
+            "sSortable": "header"
+        } );
         $(document).ready(function() {
             var gTable = $('.tablesorter').dataTable({
+                "sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
 
                 "aoColumnDefs": [
                     { "bSortable": false, "aTargets": [ 0,4,5 ] }
@@ -54,6 +62,8 @@
 
             });
         });
+
+
     </script>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -82,15 +92,24 @@
                         <img src="{% static "img/openpolis.gif" %}" style="max-width: 150px;">
                     </a>
                 </div>
-                <div class="span12 subtitle" style="margin-left: 30px;font-family: 'Bitter', serif;">
+            </div>
+            <div class="row">
+                <div class="span12 subtitle">
                     <a name="PageTop"></a>
                     Adesioni dei Parlamentari alla campagna "Parlamento Casa di vetro"
                 </div>
             </div>
             <div class="row">
+                <div class="span4">
+                    <a href="{% url "home" %}" style="text-decoration: underline;">
+                        < Torna alla Home
+                    </a>
+                </div>
+            </div>
+            <div class="row">
                 <div class="span12">
                     <div class="tabbable"> <!-- Only required for left/right tabs -->
-                    <ul class="nav nav-tabs default_padding" id="lista_tabs">
+                    <ul class="nav nav-tabs default_padding" id="lista_ul">
                         <li class="{% if tipologia == "deputati" %}active{% endif %}">
                             <a href="#deputati_tab" data-toggle="tab">
                                 <span class="title">
@@ -113,7 +132,7 @@
                             </a>
                         </li>
                     </ul>
-                        <div class="tab-content">
+                        <div class="tab-content lista_tabs">
                             <div class="tab-pane default_padding {% if tipologia == "deputati" %}active{% endif %} " id="deputati_tab">
                                 {#        table header #}
 
@@ -161,7 +180,7 @@
                                                 {% if parlamentare.account_twitter %}
                                                     <div id="custom-tweet-button">
                                                         <button class="btn btn-info">
-                                                            <a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fpages%2Ftweet-button"
+                                                            <a href="https://twitter.com/share?url=http%3A%2F%2Fbit.ly%2F15p2ltP&lang=it-IT&text=@{{ parlamentare.account_twitter }} {% if parlamentare.adesione == "1" %}coinvolgi+i+tuoi+colleghi+nella+campagna+%23ParlamentoCasadiVetro{% else %}la+trasparenza+delle+commissioni+parlamentari+per+un+%23ParlamentoCasadiVetro.Ci+stai%3F{% endif %}&hashtags=openparlamento{% if parlamentare.adesione == "1" %}{% if parlamentare.ramo_parlamento == "0" %}%2Copencamera{% else %}%2Copensenato{% endif %}{% endif %}"
                                                                target="_blank">
                                                                 Twitta a @{{ parlamentare.account_twitter }}
                                                             </a>
@@ -221,7 +240,7 @@
                                                 {% if parlamentare.account_twitter %}
                                                     <div id="custom-tweet-button">
                                                         <button class="btn btn-info">
-                                                            <a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fpages%2Ftweet-button"
+                                                            <a href="https://twitter.com/share?url=http%3A%2F%2Fbit.ly%2F15p2ltP&lang=it-IT&text=@{{ parlamentare.account_twitter }} {% if parlamentare.adesione == "1" %}coinvolgi+i+tuoi+colleghi+nella+campagna+%23ParlamentoCasadiVetro{% else %}la+trasparenza+delle+commissioni+parlamentari+per+un+%23ParlamentoCasadiVetro.Ci+stai%3F{% endif %}&hashtags=openparlamento{% if parlamentare.adesione == "1" %}{% if parlamentare.ramo_parlamento == "0" %}%2Copencamera{% else %}%2Copensenato{% endif %}{% endif %}"
                                                                target="_blank">
                                                                 Twitta a @{{ parlamentare.account_twitter }}
                                                             </a>
@@ -282,7 +301,7 @@
                                                 {% if parlamentare.account_twitter %}
                                                     <div id="custom-tweet-button">
                                                         <button class="btn btn-info">
-                                                            <a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fpages%2Ftweet-button"
+                                                            <a href="https://twitter.com/share?url=http%3A%2F%2Fbit.ly%2F15p2ltP&lang=it-IT&text=@{{ parlamentare.account_twitter }} {% if parlamentare.adesione == "1" %}coinvolgi+i+tuoi+colleghi+nella+campagna+%23ParlamentoCasadiVetro{% else %}la+trasparenza+delle+commissioni+parlamentari+per+un+%23ParlamentoCasadiVetro.Ci+stai%3F{% endif %}&hashtags=openparlamento{% if parlamentare.adesione == "1" %}{% if parlamentare.ramo_parlamento == "0" %}%2Copencamera{% else %}%2Copensenato{% endif %}{% endif %}"
                                                                target="_blank">
                                                                 Twitta a @{{ parlamentare.account_twitter }}
                                                             </a>
@@ -302,7 +321,6 @@
         </div>
     </div>
 </div>
-{#    LOAD TWITTER WIDGET#}
-{#<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>#}
+
 </body>
 </html>
