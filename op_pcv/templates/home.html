@@ -178,7 +178,7 @@
                 xAxis: {
                     categories: [
                         {% for g in col_camera %}
-                            '{{ g.sigla|lower|capfirst }}'{% if not forloop.last %},{% endif %}
+                            '{{ g.sigla }}'{% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ]
                 },
@@ -230,7 +230,7 @@
                 xAxis: {
                     categories: [
                         {% for g in col_senato %}
-                            '{{ g.sigla|lower|capfirst }}'{% if not forloop.last %},{% endif %}
+                            '{{ g.sigla }}'{% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ]
                 },
@@ -626,7 +626,7 @@
                                                     <div class="row-fluid riga_adesioni">
                                                         <div class="span6">
                                                             <strong>
-                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|lower|capfirst|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla|lower|capfirst }})
+                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
                                                             </strong>
                                                         </div>
 
@@ -661,7 +661,7 @@
                                                     <div class="row-fluid riga_adesioni">
                                                         <div class="span6">
                                                             <strong>
-                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|lower|capfirst|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla|lower|capfirst }})
+                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
                                                             </strong>
                                                         </div>
 
@@ -732,7 +732,7 @@
                                                     <div class="row-fluid riga_adesioni">
                                                         <div class="span6">
                                                             <strong>
-                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|lower|capfirst|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla|lower|capfirst }})
+                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
                                                             </strong>
                                                         </div>
 
@@ -766,7 +766,7 @@
                                                     <div class="row-fluid riga_adesioni">
                                                         <div class="span6">
                                                             <strong>
-                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|lower|capfirst|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla|lower|capfirst }})
+                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
                                                             </strong>
                                                         </div>
 
@@ -837,7 +837,7 @@
                                     <div class="span12" >
                                         <ul style="list-style: none;font-size: 12px;">
                                             {% for gruppo in gruppi_didascalia %}
-                                            <li style="display: inline;">{{ gruppo.sigla|lower|capfirst }}: {{ gruppo.nome }}</li>
+                                            <li style="display: inline;">{{ gruppo.sigla }}: {{ gruppo.nome }}</li>
                                                 {% if not forloop.last %},{% endif %}
                                             {% endfor %}
                                         </ul>

@@ -118,11 +118,37 @@ class PcvHome(TemplateView):
         context['n_sen_aderiscono']=Parlamentare.get_n_senatori_aderenti()
         context['n_sen_nonaderiscono']=Parlamentare.get_n_senatori_neg_aderenti()
 
-        context['dep_aderiscono'] = Parlamentare.get_deputati_aderenti(True)[:10]
-        context['sen_aderiscono'] = Parlamentare.get_senatori_aderenti(True)[:10]
+        dep_aderenti = Parlamentare.get_deputati_aderenti(True)[:10]
+        sen_aderenti = Parlamentare.get_senatori_aderenti(True)[:10]
 
-        context['dep_neg_aderiscono'] = Parlamentare.get_deputati_neg_aderenti(True)[:10]
-        context['sen_neg_aderiscono'] = Parlamentare.get_senatori_neg_aderenti(True)[:10]
+        dep_naderenti = Parlamentare.get_deputati_neg_aderenti(True)[:10]
+        sen_naderenti = Parlamentare.get_senatori_neg_aderenti(True)[:10]
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if dep_aderenti is not None:
+            for p in dep_aderenti:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if sen_aderenti is not None:
+            for p in sen_aderenti:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if dep_naderenti is not None:
+            for p in dep_naderenti:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if sen_naderenti is not None:
+            for p in sen_naderenti:
+                p.cognome=p.cognome.title()
+
+        context['dep_aderiscono'] = dep_aderenti
+        context['sen_aderiscono'] = sen_aderenti
+
+        context['dep_neg_aderiscono'] = dep_naderenti
+        context['sen_neg_aderiscono'] = sen_naderenti
 
 
         return context

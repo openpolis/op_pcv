@@ -124,13 +124,13 @@
                                         {{ parlamentare.nome|truncatesmart:30  }}
                                     </div>
                                     <div class="span2">
-                                        {{ parlamentare.cognome|lower|capfirst|truncatesmart:30 }}
+                                        {{ parlamentare.cognome|truncatesmart:30 }}
                                     </div>
                                     <div class="span1">
-                                        {{ parlamentare.gruppo_parlamentare.sigla|lower|capfirst }}
+                                        {{ parlamentare.gruppo_parlamentare.sigla }}
                                     </div>
                                     <div class="span2">
-                                        {% if parlamentare.adesione == 1 %}
+                                        {% if parlamentare.adesione == '1'   %}
                                             Aderisce
                                         {% else %}
                                             Non aderisce
@@ -200,10 +200,10 @@
                                         {{ parlamentare.nome|truncatesmart:30  }}
                                     </div>
                                     <div class="span2">
-                                        {{ parlamentare.cognome|lower|capfirst|truncatesmart:30 }}
+                                        {{ parlamentare.cognome|truncatesmart:30 }}
                                     </div>
                                     <div class="span1">
-                                        {{ parlamentare.gruppo_parlamentare.sigla|lower|capfirst }}
+                                        {{ parlamentare.gruppo_parlamentare.sigla }}
                                     </div>
                                     <div class="span2">
                                         {% if parlamentare.adesione == 1 %}
@@ -276,10 +276,10 @@
                                         {{ parlamentare.nome|truncatesmart:30  }}
                                     </div>
                                     <div class="span2">
-                                        {{ parlamentare.cognome|lower|capfirst|truncatesmart:30 }}
+                                        {{ parlamentare.cognome|truncatesmart:30 }}
                                     </div>
                                     <div class="span1">
-                                        {{ parlamentare.gruppo_parlamentare.sigla|lower|capfirst }}
+                                        {{ parlamentare.gruppo_parlamentare.sigla }}
                                     </div>
                                     <div class="span2">
                                         {% if parlamentare.adesione == 1 %}

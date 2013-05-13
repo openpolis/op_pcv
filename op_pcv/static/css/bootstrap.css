@@ -9188,6 +9188,10 @@ body {
   margin-bottom: 30px;
 }
 
+#lista_completa .btn a {
+  color: white;
+}
+
 #footer {
   background-color: #3caadb;
 }
