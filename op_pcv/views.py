@@ -20,9 +20,28 @@ class PcvLista(TemplateView):
         context['n_senatori']=Parlamentare.get_n_senatori_incarica()
         context['n_totale']=Parlamentare.get_n_parlamentari_incarica()
 
-        context['lista_deputati']=Parlamentare.get_deputati_incarica()
-        context['lista_senatori']=Parlamentare.get_senatori_incarica()
-        context['lista_completa']=Parlamentare.get_parlamentari_incarica()
+        dep = Parlamentare.get_deputati_incarica()
+        sen = Parlamentare.get_senatori_incarica()
+        par = Parlamentare.get_parlamentari_incarica()
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if dep is not None:
+            for p in dep:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if sen is not None:
+            for p in sen:
+                p.cognome=p.cognome.title()
+
+        # rende maiuscola la prima lettera di ogni parola del cognome
+        if par is not None:
+            for p in par:
+                p.cognome=p.cognome.title()
+
+
+        context['lista_deputati']=dep
+        context['lista_senatori']=sen
+        context['lista_completa']=par
 
         return context
 
