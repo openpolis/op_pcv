@@ -87,6 +87,19 @@
 
 
 <script>
+
+    function scrollToAdesioni(){
+
+        var pageheight=$(document).height();
+
+        var amount = $('#adesioni').offset().top-Math.floor(pageheight/58);
+
+        $('body, html').animate({scrollTop : amount},1000);
+
+    }
+
+
+
     {#variabili globali con i grafici a colonne#}
     var col_camera,col_senato;
 
@@ -140,6 +153,11 @@
     });
 
     $(document).ready(function() {
+
+        $('#adesioni_scrollspy').bind('click', function(e) {
+            e.preventDefault();
+            scrollToAdesioni();
+        });
 
         if(window.innerWidth>600){
             {# fixed navbar #}
@@ -343,7 +361,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#adesioni" >
+                                <a id="adesioni_scrollspy" href="#adesioni" >
                                     Adesioni
                                 </a>
                             </li>
@@ -564,10 +582,15 @@
                     </div>
                 </div>
             </div>
+            <div class="row" id="adesioni" >
+                <div class="span10 offset1 white_bg" style="min-height: 60px;">
+
+                </div>
+            </div>
 
             {# LE ADESIONI #}
 
-            <div class="row" id="adesioni" data-offset-top="200">
+            <div class="row" id="adesioni_tab" data-offset-top="200">
                 <div class="span10 offset1 white_bg">
                     <div class="tabbable"> <!-- Only required for left/right tabs -->
                         <ul class="nav nav-tabs default_padding" id="adesioni_buttons">
