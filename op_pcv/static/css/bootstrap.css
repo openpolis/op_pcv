@@ -9032,7 +9032,7 @@ body {
 
 .header #main-intro {
   margin-top: 25px;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
   color: black;
   text-align: center;
 }
@@ -9049,6 +9049,10 @@ body {
     font-size: 30px;
     line-height: 35px;
   }
+}
+
+.header #slogan_buttons {
+  margin-bottom: 45px;
 }
 
 .top_pie {
@@ -9230,6 +9234,12 @@ body {
   background-color: #ffffff;
 }
 
+.default_padding#appello_tab,
+.default_padding#mondo_tab,
+.default_padding#commissioni_tab {
+  padding-bottom: 0;
+}
+
 #appello_tab p {
   margin-bottom: 20px;
 }
@@ -9339,6 +9349,28 @@ body {
 
 #lista_completa .btn a {
   color: white;
+}
+
+#lista_completa tr.odd {
+  background-color: #ffffff;
+}
+
+#lista_completa tr.even {
+  background-color: #ffffff;
+}
+
+#lista_completa td.sorting_1,
+#lista_completa td.sorting_2,
+#lista_completa td.sorting_3 {
+  background-color: #ffffff;
+}
+
+#lista_completa th.header {
+  cursor: hand;
+}
+
+#lista_completa th.sorting_disabled {
+  cursor: not-allowed;
 }
 
 div.dataTables_length label {

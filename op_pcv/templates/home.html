@@ -8,29 +8,29 @@
     <script type="text/javascript" src="{% static "js/variables.js" %}"></script>
 
 
-    <script>(function(d, s, id) {
+    <script>
+        (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
         js.src = "//connect.facebook.net/it_IT/all.js#xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-    <!-- Google Analytics -->
-    <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-980632-14']);
-        _gaq.push(['_setDomainName', 'openpolis.it']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
+    }(document, 'script', 'facebook-jssdk'));
 
     </script>
+
+{# google analytics #}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-980632-24', 'openpolis.it');
+        ga('send', 'pageview');
+
+    </script>
+
 
 
 {% endblock %}
@@ -41,7 +41,7 @@
     {#  facebook#}
     <meta property="og:title" content="Supporta e diffondi la campagna Parlamento Casa di vetro!"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:image" content="{% static "img/fb_img.png" %}"/>
+    <meta property="og:image" content="http://parlamentocasadivetro.openpolis.it/static/img/fb_img.png"/>
     <meta property="og:description" content="Chiediamo trasparenza nei lavori delle commissioni. Molti parlamentari sono d'accordo ma dobbiamo raggiungere la maggioranza assoluta. Aiutaci!"/>
     <meta property="og:url" content="http://parlamentocasadivetro.openpolis.it"/>
 
@@ -53,7 +53,7 @@
     <meta name="twitter:title" content="Supporta e diffondi la campagna Parlamento Casa di vetro!">
     <meta name="twitter:description" content="Chiediamo trasparenza nei lavori delle commissioni. Molti parlamentari sono d'accordo ma dobbiamo raggiungere la maggioranza assoluta. Facciamoglielo sapere!">
     <meta name="twitter:creator" content="@openpolis">
-    <meta name="twitter:image:src" content="{% static "img/tw_img.png" %}">
+    <meta name="twitter:image:src" content="http://parlamentocasadivetro.openpolis.it/static/img/tw_img.png">
     <meta name="twitter:domain" content="http://parlamentocasadivetro.openpolis.it">
 
     {#    plus#}
@@ -64,7 +64,7 @@
     <!-- Add the following three tags inside head. -->
     <meta itemprop="name" content="Supporta e diffondi la campagna Parlamento Casa di vetro!">
     <meta itemprop="description" content="Chiediamo trasparenza dei lavori nelle commissioni parlamentari. &Egrave; una riforma dai costi minimi che può essere attuata subito. Molti parlamentari sono d'accordo ma dobbiamo arrivare alla maggioranza assoluta. Facciamoglielo sapere!">
-    <meta itemprop="image" content="{% static "img/gplus_img.png" %}">
+    <meta itemprop="image" content="http://parlamentocasadivetro.openpolis.it/static/img/gplus_img.png" %}">
 
 
 
@@ -87,6 +87,19 @@
 
 
 <script>
+
+    function scrollToAdesioni(){
+
+        var pageheight=$(document).height();
+
+        var amount = $('#adesioni').offset().top-Math.floor(pageheight/58);
+
+        $('body, html').animate({scrollTop : amount},1000);
+
+    }
+
+
+
     {#variabili globali con i grafici a colonne#}
     var col_camera,col_senato;
 
@@ -140,6 +153,11 @@
     });
 
     $(document).ready(function() {
+
+        $('#adesioni_scrollspy').bind('click', function(e) {
+            e.preventDefault();
+            scrollToAdesioni();
+        });
 
         if(window.innerWidth>600){
             {# fixed navbar #}
@@ -343,7 +361,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#adesioni" >
+                                <a id="adesioni_scrollspy" href="#adesioni" >
                                     Adesioni
                                 </a>
                             </li>
@@ -564,10 +582,15 @@
                     </div>
                 </div>
             </div>
+            <div class="row" id="adesioni" >
+                <div class="span10 offset1 white_bg" style="min-height: 60px;">
+
+                </div>
+            </div>
 
             {# LE ADESIONI #}
 
-            <div class="row" id="adesioni" data-offset-top="200">
+            <div class="row" id="adesioni_tab" data-offset-top="200">
                 <div class="span10 offset1 white_bg">
                     <div class="tabbable"> <!-- Only required for left/right tabs -->
                         <ul class="nav nav-tabs default_padding" id="adesioni_buttons">
