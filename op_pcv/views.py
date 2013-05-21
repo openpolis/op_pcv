@@ -77,14 +77,14 @@ class PcvHome(TemplateView):
         context['col_camera']=[]
 
         # sets fixed order for groups in the col chart
-        ordine_gruppi_camera=["PD","PDL","M5S","SC","SEL","LEGA","MISTO","FDI"]
-        ordine_gruppi_senato=["PD","PDL","M5S","SC","LEGA","GAL","GPA-PSI","MISTO"]
+        ordine_gruppi_camera=["Pd","Pdl","M5S","Sc","Sel","Lega","Misto","Fdi"]
+        ordine_gruppi_senato=["Pd","Pdl","M5S","Sc","Lega","Gal","Aut-Psi","Misto"]
 
         for sigla in ordine_gruppi_camera:
             try:
                 g = GruppoParlamentare.objects.get(sigla=sigla)
             except ObjectDoesNotExist:
-                pass
+                break
             mydict={}
             mydict["sigla"]=g.sigla
             mydict["aderenti_tot"]=g.get_n_aderenti(0)
