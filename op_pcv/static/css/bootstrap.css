@@ -9263,8 +9263,11 @@ body {
   padding-top: 10px;
 }
 
-.adesioni_tabs #intro {
+.adesioni_tabs #parlamentare_calltoaction {
+  padding-left: 5px;
   margin-bottom: 30px;
+  font-weight: bold;
+  background-color: yellow;
 }
 
 .adesioni_tabs .subtitle {
@@ -9333,6 +9336,11 @@ body {
 .adesioni_tabs .liste_adesioni .riga_adesioni .adesioni_separator {
   width: 5px;
   margin-left: 5px;
+}
+
+.adesioni_tabs .liste_adesioni .link_veditutti {
+  margin-top: 10px;
+  border-bottom: 0;
 }
 
 .adesioni_tabs .adesioni_colgraph {
