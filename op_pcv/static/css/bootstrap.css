@@ -9335,6 +9335,11 @@ body {
   margin-left: 5px;
 }
 
+.adesioni_tabs .liste_adesioni .link_veditutti {
+  margin-top: 10px;
+  border-bottom: 0;
+}
+
 .adesioni_tabs .adesioni_colgraph {
   margin-bottom: 30px;
 }

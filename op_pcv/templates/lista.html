@@ -45,6 +45,15 @@
                 {# sdom is also for table responsiveness#}
                 "sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
 
+                {# aasorting sets the initial sorting of the table                #}
+                {% if ordinamento == "aderiscono" %}
+                    "aaSorting": [[ 3, "asc" ],[1,"asc"]],
+                {% else %}
+                    {% if ordinamento == "non_aderiscono" %}
+                        "aaSorting": [[ 3, "desc" ],[1,"asc"]],
+                    {% endif %}
+                {% endif %}
+
                 "aoColumnDefs": [
                     { "bSortable": false, "aTargets": [ 0,4,5 ] },
                     { "bSortable": true, "aTargets": [ 0,4,5 ] }
@@ -302,10 +311,8 @@
                                                         <a class="btn btn-info" href="https://twitter.com/share?url=http%3A%2F%2Fbit.ly%2F15p2ltP&lang=it-IT&text=@{{ parlamentare.account_twitter }} {% if parlamentare.adesione == "1" %}coinvolgi+i+tuoi+colleghi+nella+campagna+%23ParlamentoCasadiVetro{% else %}la+trasparenza+delle+commissioni+parlamentari+per+un+%23ParlamentoCasadiVetro.Ci+stai%3F{% endif %}&hashtags=openparlamento{% if parlamentare.adesione == "1" %}{% if parlamentare.ramo_parlamento == "0" %}%2Copencamera{% else %}%2Copensenato{% endif %}{% endif %}"
                                                                target="_blank">
                                                                 Twitta a @{{ parlamentare.account_twitter }}
-                                                            </a>
-                                                        
+                                                        </a>
                                                     </div>
-
                                                 {% endif %}
                                             </td>
                                         </tr>
