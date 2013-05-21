@@ -9263,8 +9263,11 @@ body {
   padding-top: 10px;
 }
 
-.adesioni_tabs #intro {
+.adesioni_tabs #parlamentare_calltoaction {
+  padding-left: 5px;
   margin-bottom: 30px;
+  font-weight: bold;
+  background-color: yellow;
 }
 
 .adesioni_tabs .subtitle {
