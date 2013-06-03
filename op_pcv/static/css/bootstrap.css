@@ -9091,6 +9091,10 @@ body {
   border-radius: 3px;
 }
 
+#achepuntosiamo .subtitle {
+  line-height: 25px;
+}
+
 .affix {
   top: 0;
 }
