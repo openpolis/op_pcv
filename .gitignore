@@ -5,3 +5,4 @@ migrations/
 log/
 csv/
 /static/
+*.000

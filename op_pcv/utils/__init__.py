@@ -2,6 +2,8 @@ from _csv import register_dialect, QUOTE_ALL
 import csv
 import codecs
 import cStringIO
+import re
+
 
 class UTF8Recoder:
     """
@@ -97,3 +99,8 @@ class UnicodeWriter:
     def writerows(self, rows):
         for row in rows:
             self.writerow(row)
+
+
+def remove_img_tags(data):
+    p = re.compile(r'<img.*?/>')
+    return p.sub('', data)

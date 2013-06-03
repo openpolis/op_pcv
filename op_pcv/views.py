@@ -5,8 +5,10 @@ from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
+from utils import remove_img_tags
 from django.core.cache import cache
 from settings import OP_BLOG_FEED,OP_BLOG_PCV_TAG,OP_BLOG_CACHETIME
+import time
 
 
 
@@ -139,7 +141,10 @@ class PcvHome(TemplateView):
                         i += 1
 
                 if trovato is True:
+
                     blogpost = feeds.entries[i]
+                    blogpost['content'][0]['value']=remove_img_tags(blogpost['content'][0]['value'])
+                    blogpost['published'] = time.strftime("%d.%m.%Y",time.strptime(blogpost['published'], '%a, %d %b %Y %H:%M:%S +0000'))
                     cache.set('op_associazione_home_feeds', blogpost , OP_BLOG_CACHETIME)
 
         context['blogpost']=blogpost
