@@ -9095,6 +9095,11 @@ body {
   line-height: 25px;
 }
 
+#achepuntosiamo .small {
+  font-size: 18px;
+  line-height: 18px;
+}
+
 .affix {
   top: 0;
 }

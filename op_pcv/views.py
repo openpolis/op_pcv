@@ -120,34 +120,34 @@ class PcvHome(TemplateView):
 
 
         # feeds are extracted and cached for one hour (memcached)
-        blogpost = cache.get('op_associazione_home_feeds')
+        blogposts = cache.get('op_associazione_home_feeds')
 
-
-        blogpost=None
-        if blogpost is None:
+        if blogposts is None:
+            blogposts = []
             # sets the timeout for the socket connection
             socket.setdefaulttimeout(150)
             feeds = feedparser.parse(OP_BLOG_FEED)
+
             if feeds is not None:
                 i=0
-                trovato=False
-                while i<len(feeds.entries) and not trovato:
+                post_counter = 0
+
+                while i<len(feeds.entries) and post_counter < 3 :
                     if 'tags' in feeds.entries[i]:
                         for tag in feeds.entries[i].tags:
                             if tag.term == OP_BLOG_PCV_TAG:
-                                trovato=True
+                                feeds.entries[i]['content'][0]['value']=remove_img_tags(feeds.entries[i]['content'][0]['value'])
+                                feeds.entries[i]['published'] = time.strftime("%d.%m.%Y",time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000'))
+                                blogposts.append(feeds.entries[i])
+                                post_counter += 1
 
-                    if not trovato:
-                        i += 1
 
-                if trovato is True:
+                    i += 1
 
-                    blogpost = feeds.entries[i]
-                    blogpost['content'][0]['value']=remove_img_tags(blogpost['content'][0]['value'])
-                    blogpost['published'] = time.strftime("%d.%m.%Y",time.strptime(blogpost['published'], '%a, %d %b %Y %H:%M:%S +0000'))
-                    cache.set('op_associazione_home_feeds', blogpost , OP_BLOG_CACHETIME)
+                if post_counter > 0:
+                    cache.set('op_associazione_home_feeds', blogposts , OP_BLOG_CACHETIME)
 
-        context['blogpost']=blogpost
+        context['blogposts']=blogposts
 
         # adesioni count and adesioni lists
 
