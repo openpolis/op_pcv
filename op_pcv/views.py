@@ -117,9 +117,7 @@ class PcvHome(TemplateView):
 
         context['gruppi_didascalia']=GruppoParlamentare.get_gruppi()
 
-        # feeds are extracted and cached for one hour (memcached)
-        blogposts = cache.get('op_associazione_home_feeds')
-
+        blogposts = None
         if blogposts is None or len(blogposts) < 3:
             blogposts = []
             # sets the timeout for the socket connection
@@ -142,8 +140,7 @@ class PcvHome(TemplateView):
 
                     i += 1
 
-                if post_counter > 0:
-                    cache.set('op_associazione_home_feeds', blogposts , OP_BLOG_CACHETIME)
+
 
         context['blogposts']=blogposts
 
