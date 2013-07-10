@@ -6,9 +6,8 @@ from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from utils import remove_img_tags
-from django.core.cache import cache
-from settings import OP_BLOG_FEED,OP_BLOG_PCV_TAG,OP_BLOG_CACHETIME
 import time
+import logging
 
 
 
@@ -67,6 +66,7 @@ class PcvLista(TemplateView):
 class PcvHome(TemplateView):
     template_name = "home.html"
     context={}
+    logger = logging.getLogger('feed')    
 
     def get_context_data(self, **kwargs):
         context = super(PcvHome,self).get_context_data(**kwargs)
@@ -117,28 +117,27 @@ class PcvHome(TemplateView):
 
         context['gruppi_didascalia']=GruppoParlamentare.get_gruppi()
 
-        blogposts = None
-        if blogposts is None or len(blogposts) < 3:
-            blogposts = []
-            # sets the timeout for the socket connection
-            socket.setdefaulttimeout(150)
-            feeds = feedparser.parse(OP_BLOG_FEED)
+        blogposts = []
+        # sets the timeout for the socket connection
+        socket.setdefaulttimeout(100)
+        feeds = feedparser.parse(settings.OP_BLOG_FEED)
+        context['feeds_entries'] = len(feeds.entries)
 
-            if feeds is not None:
-                i=0
-                post_counter = 0
+        if feeds is not None:
+            i=0
+            post_counter = 0
 
-                while i<len(feeds.entries) and post_counter < 3 :
-                    if 'tags' in feeds.entries[i]:
-                        for tag in feeds.entries[i].tags:
-                            if tag.term == OP_BLOG_PCV_TAG:
-                                feeds.entries[i]['content'][0]['value']=remove_img_tags(feeds.entries[i]['content'][0]['value'])
-                                feeds.entries[i]['published'] = time.strftime("%d.%m.%Y",time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000'))
-                                blogposts.append(feeds.entries[i])
-                                post_counter += 1
+            while i<len(feeds.entries) and post_counter < 3 :
+                if 'tags' in feeds.entries[i]:
+                    for tag in feeds.entries[i].tags:
+                        if tag.term == settings.OP_BLOG_PCV_TAG:
+                            feeds.entries[i]['content'][0]['value']=remove_img_tags(feeds.entries[i]['content'][0]['value'])
+                            feeds.entries[i]['published'] = time.strftime("%d.%m.%Y",time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000'))
+                            blogposts.append(feeds.entries[i])
+                            post_counter += 1
 
 
-                    i += 1
+                i += 1
 
 
 

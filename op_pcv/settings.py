@@ -181,6 +181,13 @@ LOGGING = {
             'backupCount': 10,
             'formatter': 'standard',
             },
+        'feedlogfile': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'mode': 'w',
+            'filename': REPO_ROOT + "/log/feedlog.log",
+            'formatter': 'standard',
+        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
@@ -198,6 +205,12 @@ LOGGING = {
             'encoding': 'UTF-8',
             'level': 'DEBUG',
             'propagate': True,
-            }
+            },
+        'feed': {
+            'handlers': ['feedlogfile'],
+            'level': 'DEBUG',
+            'encoding': 'UTF-8',
+            'propagate': True,
+        },
     }
 }

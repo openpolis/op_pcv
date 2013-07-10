@@ -6,3 +6,4 @@ log/
 csv/
 /static/
 *.000
+uwsgi.ini
