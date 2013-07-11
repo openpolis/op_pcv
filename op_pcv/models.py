@@ -212,6 +212,7 @@ class GruppoParlamentare(models.Model):
     def __unicode__(self):
         return self.nome
 
+
     nome = models.CharField(max_length=50)
     sigla = models.CharField(max_length=10)
     data_creazione = models.DateField(blank=True, null=True)

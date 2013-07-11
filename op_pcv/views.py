@@ -6,10 +6,7 @@ from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from utils import remove_img_tags
-<<<<<<< HEAD
 from django.core.cache import cache
-=======
->>>>>>> b053c1d8f19fb6241370db23e53cfbd45d3330a5
 import time
 import logging
 
@@ -75,6 +72,7 @@ class PcvHome(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PcvHome,self).get_context_data(**kwargs)
 
+
         # data for pie charts
         context['pie_senato']={}
         context['pie_senato']['non_aderenti']=Parlamentare.get_n_senatori_silenti()+Parlamentare.get_n_senatori_non_aderenti()
@@ -97,7 +95,7 @@ class PcvHome(TemplateView):
             try:
                 g = GruppoParlamentare.objects.get(sigla=sigla)
             except ObjectDoesNotExist:
-                break
+                raise
             mydict={}
             mydict["sigla"]=g.sigla
             mydict["aderenti_tot"]=g.get_n_aderenti(0)
@@ -111,7 +109,7 @@ class PcvHome(TemplateView):
             try:
                 g = GruppoParlamentare.objects.get(sigla=sigla)
             except ObjectDoesNotExist:
-                pass
+                raise
 
             mydict={}
             mydict["sigla"]=g.sigla
