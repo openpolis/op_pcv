@@ -7,7 +7,6 @@ from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, 
 import feedparser
 from utils import remove_img_tags
 from django.core.cache import cache
-from settings import OP_BLOG_FEED,OP_BLOG_PCV_TAG,OP_BLOG_CACHETIME
 import time
 
 
@@ -122,7 +121,7 @@ class PcvHome(TemplateView):
             blogposts = []
             # sets the timeout for the socket connection
             socket.setdefaulttimeout(150)
-            feeds = feedparser.parse(OP_BLOG_FEED)
+            feeds = feedparser.parse(settings.OP_BLOG_FEED)
 
             if feeds is not None:
                 i=0
@@ -131,7 +130,7 @@ class PcvHome(TemplateView):
                 while i<len(feeds.entries) and post_counter < 3 :
                     if 'tags' in feeds.entries[i]:
                         for tag in feeds.entries[i].tags:
-                            if tag.term == OP_BLOG_PCV_TAG:
+                            if tag.term == settings.OP_BLOG_PCV_TAG:
                                 feeds.entries[i]['content'][0]['value']=remove_img_tags(feeds.entries[i]['content'][0]['value'])
                                 feeds.entries[i]['published'] = time.strftime("%d.%m.%Y",time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000'))
                                 blogposts.append(feeds.entries[i])
