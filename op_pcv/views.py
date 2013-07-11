@@ -6,8 +6,12 @@ from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from utils import remove_img_tags
+<<<<<<< HEAD
 from django.core.cache import cache
+=======
+>>>>>>> b053c1d8f19fb6241370db23e53cfbd45d3330a5
 import time
+import logging
 
 
 
@@ -66,6 +70,7 @@ class PcvLista(TemplateView):
 class PcvHome(TemplateView):
     template_name = "home.html"
     context={}
+    logger = logging.getLogger('feed')    
 
     def get_context_data(self, **kwargs):
         context = super(PcvHome,self).get_context_data(**kwargs)
@@ -85,14 +90,14 @@ class PcvHome(TemplateView):
         context['col_camera']=[]
 
         # sets fixed order for groups in the col chart
-        ordine_gruppi_camera=["PD","PDL","M5S","SC","SEL","LEGA","MISTO","FDI"]
-        ordine_gruppi_senato=["PD","PDL","M5S","SC","LEGA","GAL","GPA-PSI","MISTO"]
+        ordine_gruppi_camera=["Pd","Pdl","M5S","Sc","Sel","Lega","Misto","Fdi"]
+        ordine_gruppi_senato=["Pd","Pdl","M5S","Sc","Lega","Gal","Aut-Psi","Misto"]
 
         for sigla in ordine_gruppi_camera:
             try:
                 g = GruppoParlamentare.objects.get(sigla=sigla)
             except ObjectDoesNotExist:
-                pass
+                break
             mydict={}
             mydict["sigla"]=g.sigla
             mydict["aderenti_tot"]=g.get_n_aderenti(0)
@@ -116,29 +121,27 @@ class PcvHome(TemplateView):
 
         context['gruppi_didascalia']=GruppoParlamentare.get_gruppi()
 
-        blogposts = None
-        if blogposts is None or len(blogposts) < 3:
-            blogposts = []
-            # sets the timeout for the socket connection
-            socket.setdefaulttimeout(150)
-            feeds = feedparser.parse(settings.OP_BLOG_FEED)
-
-            if feeds is not None:
-                i=0
-                post_counter = 0
-
-                while i<len(feeds.entries) and post_counter < 3 :
-                    if 'tags' in feeds.entries[i]:
-                        for tag in feeds.entries[i].tags:
-                            if tag.term == settings.OP_BLOG_PCV_TAG:
-                                feeds.entries[i]['content'][0]['value']=remove_img_tags(feeds.entries[i]['content'][0]['value'])
-                                feeds.entries[i]['published'] = time.strftime("%d.%m.%Y",time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000'))
-                                blogposts.append(feeds.entries[i])
-                                post_counter += 1
+        blogposts = []
+        # sets the timeout for the socket connection
+        socket.setdefaulttimeout(100)
+        feeds = feedparser.parse(settings.OP_BLOG_FEED)
+        context['feeds_entries'] = len(feeds.entries)
 
 
-                    i += 1
+        if feeds is not None:
+            i=0
+            post_counter = 0
 
+            while i<len(feeds.entries) and post_counter < 3 :
+                if 'tags' in feeds.entries[i]:
+                    for tag in feeds.entries[i].tags:
+                        if tag.term == settings.OP_BLOG_PCV_TAG:
+                            feeds.entries[i]['content'][0]['value']=remove_img_tags(feeds.entries[i]['content'][0]['value'])
+                            feeds.entries[i]['published'] = time.strftime("%d.%m.%Y",time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000'))
+                            blogposts.append(feeds.entries[i])
+                            post_counter += 1
+
+                i += 1
 
 
         context['blogposts']=blogposts

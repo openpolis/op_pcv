@@ -44,7 +44,7 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'parlamentocasadivetro.openpolis.it']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -181,6 +181,13 @@ LOGGING = {
             'backupCount': 10,
             'formatter': 'standard',
             },
+        'feedlogfile': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'mode': 'w',
+            'filename': REPO_ROOT + "/log/feedlog.log",
+            'formatter': 'standard',
+        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
@@ -198,6 +205,12 @@ LOGGING = {
             'encoding': 'UTF-8',
             'level': 'DEBUG',
             'propagate': True,
-            }
+            },
+        'feed': {
+            'handlers': ['feedlogfile'],
+            'level': 'DEBUG',
+            'encoding': 'UTF-8',
+            'propagate': True,
+        },
     }
 }
