@@ -78,7 +78,7 @@
 
         var pageheight=$(document).height();
 
-        var amount = $('#adesioni').offset().top-Math.floor(pageheight/58);
+        var amount = $('#adesioni').offset().top;//-Math.floor(pageheight/58);
 
         $('body, html').animate({scrollTop : amount},1000);
 
@@ -150,7 +150,7 @@
             {# fixed navbar #}
 
             $('#pcv_navbar').affix({
-                offset:"860"
+                offset:"1100"
             });
         }
 
@@ -386,7 +386,7 @@
             </div>
         </div>
 
-        <div id="scroller" data-spy="scroll" data-target="#spynav" data-offset="0" >
+
 
         <!--start-->
             <div class="row">
@@ -904,7 +904,7 @@
                     </div>
                 </div>
             </div>
-       </div> <!-- end scroller-->
+
 
 {#    LOAD TWITTER WIDGET#}
     <script>
