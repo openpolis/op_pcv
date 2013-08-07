@@ -47,8 +47,11 @@ class Parlamentare(models.Model):
     cognome = models.CharField(max_length=50)
     ramo_parlamento = models.CharField(max_length=3,choices=RAMO_PARLAMENTO_SELECT, blank=True, default=None, null=True)
     gruppo_parlamentare = models.ForeignKey('GruppoParlamentare', null=True, blank=True, on_delete=models.SET_NULL)
+    capogruppo = models.BooleanField(default=False)
+    presidente_commissione = models.BooleanField(default=False)
     adesione = models.CharField(max_length=3,choices=ADESIONE_SELECT, blank=True, default=None, null=True)
     data_adesione = models.DateField(blank=True, null=True)
+    firmatario_testo = models.BooleanField(default=False)
     gruppo_ristretto = models.BooleanField(default=False)
     in_carica = models.BooleanField(default=True)
     account_twitter = models.CharField(max_length=20, blank=True)
@@ -57,7 +60,7 @@ class Parlamentare(models.Model):
     lettura_mail = models.BooleanField(default=False)
     risposta_mail = models.BooleanField(default=False)
     big = models.BooleanField(default=False)
-
+    
     # get the Parlamentari in charge for the Ramo specified.
     # if BIG is not None then the order is on Big field and then alphabetical
     @classmethod

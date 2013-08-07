@@ -83,7 +83,7 @@ class HasTwitterFilter(SimpleListFilter):
 class ParlamentareAdmin(admin.ModelAdmin):
     list_per_page = 1100
     ordering = ('cognome',)
-    list_filter = ('ramo_parlamento','gruppo_parlamentare','adesione',HasTwitterFilter,'in_carica','big')
+    list_filter = ('ramo_parlamento','gruppo_parlamentare','adesione',HasTwitterFilter,'in_carica','big', 'capogruppo', 'presidente_commissione','firmatario_testo')
     search_fields = ['^nome', '^cognome']
     actions = [
         export_select_fields_csv_action("Esporta elementi selezionati in un file CSV",
