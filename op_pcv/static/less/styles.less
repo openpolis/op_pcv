@@ -2,12 +2,12 @@
 @import "styles-responsive.less";
 @import url(http://fonts.googleapis.com/css?family=Bitter);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 //PCV custom Css
 
 body{
   font-family: 'Open Sans', sans-serif;
-
   color: black;
 }
 
@@ -114,10 +114,27 @@ body{
 
 
 .header{
+  color:  #4e4e4e;
   margin-top: @spacing-single;
+  font-family: 'Montserrat', sans-serif;
 
-  #main-title{
-    font-family: 'Bitter', serif;
+  #slogan{
+    text-align: center;
+    font-size: 27px;
+    line-height: 27px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  #sottotitolo{
+    text-align: center;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: normal;
+  }
+
+  #title_container{
+
 
     @media(max-width: 767px){
       font-size:  @medium-size;
@@ -129,28 +146,46 @@ body{
       line-height: @title-size;
     }
 
-
     color: white;
-    text-align: center;
-    background-color: @title-background;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    margin-top: 15px;
+
+
+    #hash{
+      text-align: right;
+      font-size: 129px;
+      line-height: 100px;
+      padding-top: 8px;
+    }
+    #scritta{
+      text-align: left;
+      font-size: 70px;
+      line-height: 60px;
+    }
   }
 
   #main-intro{
-    color: black;
+    color:  #4e4e4e;
     @media(max-width: 768px){
       font-size: 20px;
       line-height: 20px;
     }
     @media(min-width: 768px){
-      font-size: 30px;
-      line-height: 35px;
+      font-size: 22px;
+      line-height: 22px;
     }
     text-align: center;
     margin-top: @spacing-single;
     margin-bottom: 25px;
   }
+
+  #main-grido{
+    text-align: center;
+    font-weight: bold;
+    font-size: @intro-size;
+    color:  @red-color;
+    margin-bottom: 30px;
+  }
+
   #slogan_buttons{
     margin-bottom: 45px;
   }

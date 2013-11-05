@@ -596,329 +596,331 @@
             </div>
 
             {# LE ADESIONI #}
-
-            <div class="row" id="adesioni_container" data-offset-top="200">
-                <div class="span10 offset1 white_bg">
-                    <div class="tabbable"> <!-- Only required for left/right tabs -->
-                        <ul class="nav nav-tabs default_padding" id="adesioni_buttons">
-                            <li class="active">
-                                <a href="#adesioni_tab" data-toggle="tab">
-                                    <span class="title">
-                                        Le adesioni
-                                    </span>
-                                </a>
-                            </li>
-                            <li >
-                                <a href="#adesionigruppi_tab" data-toggle="tab" id="col_chart_link" >
-                                    <span class="title">
-                                        Le adesioni nei gruppi
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane default_padding active adesioni_tabs" id="adesioni_tab">
-                                <div class="row-fluid">
-                                    <div class="span12 content" id="intro">
-
-                                        &Egrave; il momento della verifica. Tutti promettono trasparenza e partecipazione,
-                                        vediamo chi ci sta e chi no: contattali e chiedigliene conto, facciamoglielo sapere!
-                                    </div>
-                                </div>
-                                <div class="row-fluid">
-                                    <div class="span8 content">
-
-                                        <p id="parlamentare_calltoaction">
-                                            Sei un Parlamentare e vuoi aderire? Scrivici a
-                                            <a href="mailto:associazione@openpolis.it">
-                                                associazione@openpolis.it
-                                            </a>
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="row-fluid">
-                                    <div class="span6">
+    {#    TODO: decommentare DEBUG#}
+{##}
+{#            <div class="row" id="adesioni_container" data-offset-top="200">#}
+{#                <div class="span10 offset1 white_bg">#}
+{#                    <div class="tabbable"> <!-- Only required for left/right tabs -->#}
+{#                        <ul class="nav nav-tabs default_padding" id="adesioni_buttons">#}
+{#                            <li class="active">#}
+{#                                <a href="#adesioni_tab" data-toggle="tab">#}
+{#                                    <span class="title">#}
+{#                                        Le adesioni#}
+{#                                    </span>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li >#}
+{#                                <a href="#adesionigruppi_tab" data-toggle="tab" id="col_chart_link" >#}
+{#                                    <span class="title">#}
+{#                                        Le adesioni nei gruppi#}
+{#                                    </span>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                        <div class="tab-content">#}
+{#                            <div class="tab-pane default_padding active adesioni_tabs" id="adesioni_tab">#}
+{#                                <div class="row-fluid">#}
+{#                                    <div class="span12 content" id="intro">#}
+{##}
+{#                                        &Egrave; il momento della verifica. Tutti promettono trasparenza e partecipazione,#}
+{#                                        vediamo chi ci sta e chi no: contattali e chiedigliene conto, facciamoglielo sapere!#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="row-fluid">#}
+{#                                    <div class="span8 content">#}
+{##}
+{#                                        <p id="parlamentare_calltoaction">#}
+{#                                            Sei un Parlamentare e vuoi aderire? Scrivici a#}
+{#                                            <a href="mailto:associazione@openpolis.it">#}
+{#                                                associazione@openpolis.it#}
+{#                                            </a>#}
+{#                                        </p>#}
+{##}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="row-fluid">#}
+{#                                    <div class="span6">#}
                                         {#   pills deputati #}
-                                        <div class="row-fluid">
-                                            <div class="span12 title">
-                                                Deputati
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                            <div class="span12">
-                                                <ul class="nav nav-pills">
-                                                    <li class="active">
-                                                        <a href="#dep_aderiscono" data-toggle="pill">
-                                                           <span class="subtitle">
-                                                                Aderiscono ({{ n_dep_aderiscono }})
-                                                           </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a href="#dep_nonaderiscono" data-toggle="pill">
-                                                           <span class="subtitle">
-                                                                Non Aderiscono ({{ n_dep_nonaderiscono }})
-                                                           </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+{#                                        <div class="row-fluid">#}
+{#                                            <div class="span12 title">#}
+{#                                                Deputati#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="row-fluid">#}
+{#                                            <div class="span12">#}
+{#                                                <ul class="nav nav-pills">#}
+{#                                                    <li class="active">#}
+{#                                                        <a href="#dep_aderiscono" data-toggle="pill">#}
+{#                                                           <span class="subtitle">#}
+{#                                                                Aderiscono ({{ n_dep_aderiscono }})#}
+{#                                                           </span>#}
+{#                                                        </a>#}
+{#                                                    </li>#}
+{#                                                    <li class="">#}
+{#                                                        <a href="#dep_nonaderiscono" data-toggle="pill">#}
+{#                                                           <span class="subtitle">#}
+{#                                                                Non Aderiscono ({{ n_dep_nonaderiscono }})#}
+{#                                                           </span>#}
+{#                                                        </a>#}
+{#                                                    </li>#}
+{#                                                </ul>#}
+{#                                            </div>#}
+{#                                        </div>#}
                                         {#  liste deputati #}
-                                        <div class="tab-content">
-                                            <div class="tab-pane active liste_adesioni" id="dep_aderiscono">
+{#                                        <div class="tab-content">#}
+{#                                            <div class="tab-pane active liste_adesioni" id="dep_aderiscono">#}
                                             {#  lista adesione deputati#}
-                                                {% for p in dep_aderiscono %}
-                                                    <div class="row-fluid riga_adesioni">
-                                                        <div class="span6">
-                                                            <strong>
-                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
-                                                            </strong>
-                                                        </div>
-
-                                                        <div class="span1 email">
-                                                            {% if p.account_mail %}
-                                                                <a href="mailto:{{ p.account_mail }}">
-                                                                    Email
-                                                                </a>
-                                                            {% else %}
-                                                                &nbsp;
-                                                            {% endif %}
-                                                        </div>
-
-                                                        <div class="span4 twitter">
-                                                            {% if p.account_twitter %}
-                                                                <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                                   data-text=",coinvolgi i tuoi colleghi nella campagna #ParlamentoCasadiVetro"
-                                                                   data-hashtags="openparlamento,opencamera"
-                                                                   data-url="http://bit.ly/15p2ltP"
-                                                                   class="twitter-mention-button" data-lang="it" data-size="medium">
-                                                                </a>
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                                <div class="row-fluid">
-                                                    <div class="span7 riga_adesioni link_veditutti" >
-                                                        <a href="{% url "lista" "deputati" "aderiscono" %}">> Vedi tutti </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tab-pane liste_adesioni " id="dep_nonaderiscono">
-
+{#                                                {% for p in dep_aderiscono %}#}
+{#                                                    <div class="row-fluid riga_adesioni">#}
+{#                                                        <div class="span6">#}
+{#                                                            <strong>#}
+{#                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})#}
+{#                                                            </strong>#}
+{#                                                        </div>#}
+{##}
+{#                                                        <div class="span1 email">#}
+{#                                                            {% if p.account_mail %}#}
+{#                                                                <a href="mailto:{{ p.account_mail }}">#}
+{#                                                                    Email#}
+{#                                                                </a>#}
+{#                                                            {% else %}#}
+{#                                                                &nbsp;#}
+{#                                                            {% endif %}#}
+{#                                                        </div>#}
+{##}
+{#                                                        <div class="span4 twitter">#}
+{#                                                            {% if p.account_twitter %}#}
+{#                                                                <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"#}
+{#                                                                   data-text=",coinvolgi i tuoi colleghi nella campagna #ParlamentoCasadiVetro"#}
+{#                                                                   data-hashtags="openparlamento,opencamera"#}
+{#                                                                   data-url="http://bit.ly/15p2ltP"#}
+{#                                                                   class="twitter-mention-button" data-lang="it" data-size="medium">#}
+{#                                                                </a>#}
+{#                                                            {% endif %}#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                {% endfor %}#}
+{#                                                <div class="row-fluid">#}
+{#                                                    <div class="span7 riga_adesioni link_veditutti" >#}
+{#                                                        <a href="{% url "lista" "deputati" "aderiscono" %}">> Vedi tutti </a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{##}
+{#                                            <div class="tab-pane liste_adesioni " id="dep_nonaderiscono">#}
+{##}
                                                 {#  lista deputati non aderenti#}
-                                                {% for p in dep_neg_aderiscono %}
-                                                    <div class="row-fluid riga_adesioni">
-                                                        <div class="span6">
-                                                            <strong>
-                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
-                                                            </strong>
-                                                        </div>
-
-                                                        <div class="span1 email">
-                                                            {% if p.account_mail %}
-                                                                <a href="mailto:{{ p.account_mail }}">
-                                                                    Email
-                                                                </a>
-                                                            {% else %}
-                                                                &nbsp;
-                                                            {% endif %}
-                                                        </div>
-
-                                                        <div class="span4 twitter">
-                                                            {% if p.account_twitter %}
-                                                                <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                                   data-text="la trasparenza delle commissioni parlamentari per un #ParlamentoCasadiVetro.Ci stai?"
-                                                                   data-hashtags="openparlamento"
-                                                                   data-url="http://bit.ly/15p2ltP"
-                                                                   class="twitter-mention-button" data-lang="it" data-size="medium">
-                                                                </a>
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                                <div class="row-fluid">
-                                                    <div class="span7 riga_adesioni link_veditutti" >
-                                                        <a href="{% url "lista" "deputati" "non_aderiscono" %}">> Vedi tutti </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="span6">
+{#                                                {% for p in dep_neg_aderiscono %}#}
+{#                                                    <div class="row-fluid riga_adesioni">#}
+{#                                                        <div class="span6">#}
+{#                                                            <strong>#}
+{#                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})#}
+{#                                                            </strong>#}
+{#                                                        </div>#}
+{##}
+{#                                                        <div class="span1 email">#}
+{#                                                            {% if p.account_mail %}#}
+{#                                                                <a href="mailto:{{ p.account_mail }}">#}
+{#                                                                    Email#}
+{#                                                                </a>#}
+{#                                                            {% else %}#}
+{#                                                                &nbsp;#}
+{#                                                            {% endif %}#}
+{#                                                        </div>#}
+{##}
+{#                                                        <div class="span4 twitter">#}
+{#                                                            {% if p.account_twitter %}#}
+{#                                                                <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"#}
+{#                                                                   data-text="la trasparenza delle commissioni parlamentari per un #ParlamentoCasadiVetro.Ci stai?"#}
+{#                                                                   data-hashtags="openparlamento"#}
+{#                                                                   data-url="http://bit.ly/15p2ltP"#}
+{#                                                                   class="twitter-mention-button" data-lang="it" data-size="medium">#}
+{#                                                                </a>#}
+{#                                                            {% endif %}#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                {% endfor %}#}
+{#                                                <div class="row-fluid">#}
+{#                                                    <div class="span7 riga_adesioni link_veditutti" >#}
+{#                                                        <a href="{% url "lista" "deputati" "non_aderiscono" %}">> Vedi tutti </a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                    <div class="span6">#}
                                     {#   pills senatori #}
-                                        <div class="row-fluid">
-                                            <div class="span12 title">
-                                                Senatori
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                           <div class="span12">
-                                               <ul class="nav nav-pills">
-                                                   <li class="active">
-                                                       <a href="#sen_aderiscono" data-toggle="pill">
-                                                           <span class="subtitle">
-                                                                Aderiscono ({{ n_sen_aderiscono }})
-                                                           </span>
-                                                       </a>
-                                                   </li>
-                                                   <li class="">
-                                                       <a href="#sen_nonaderiscono" data-toggle="pill">
-                                                           <span class="subtitle">
-                                                                Non Aderiscono ({{ n_sen_nonaderiscono }})
-                                                           </span>
-                                                       </a>
-                                                   </li>
-                                               </ul>
-                                           </div>
-                                        </div>
+{#                                        <div class="row-fluid">#}
+{#                                            <div class="span12 title">#}
+{#                                                Senatori#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="row-fluid">#}
+{#                                           <div class="span12">#}
+{#                                               <ul class="nav nav-pills">#}
+{#                                                   <li class="active">#}
+{#                                                       <a href="#sen_aderiscono" data-toggle="pill">#}
+{#                                                           <span class="subtitle">#}
+{#                                                                Aderiscono ({{ n_sen_aderiscono }})#}
+{#                                                           </span>#}
+{#                                                       </a>#}
+{#                                                   </li>#}
+{#                                                   <li class="">#}
+{#                                                       <a href="#sen_nonaderiscono" data-toggle="pill">#}
+{#                                                           <span class="subtitle">#}
+{#                                                                Non Aderiscono ({{ n_sen_nonaderiscono }})#}
+{#                                                           </span>#}
+{#                                                       </a>#}
+{#                                                   </li>#}
+{#                                               </ul>#}
+{#                                           </div>#}
+{#                                        </div>#}
                                     {#  liste senatori #}
-                                        <div class="tab-content">
-                                            <div class="tab-pane liste_adesioni active " id="sen_aderiscono">
+{#                                        <div class="tab-content">#}
+{#                                            <div class="tab-pane liste_adesioni active " id="sen_aderiscono">#}
                                                 {#  lista adesione senatori#}
-                                                {% for p in sen_aderiscono %}
-                                                    <div class="row-fluid riga_adesioni">
-                                                        <div class="span6">
-                                                            <strong>
-                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
-                                                            </strong>
-                                                        </div>
-
-                                                        <div class="span1 email">
-                                                            {% if p.account_mail %}
-                                                                <a href="mailto:{{ p.account_mail }}">
-                                                                    Email
-                                                                </a>
-                                                            {% else %}
-                                                                &nbsp;
-                                                            {% endif %}
-                                                        </div>
-
-                                                        <div class="span4 twitter">
-                                                            {% if p.account_twitter %}
-                                                                <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                                   data-text=",coinvolgi i tuoi colleghi nella campagna #ParlamentoCasadiVetro"
-                                                                   data-hashtags="openparlamento,opensenato"
-                                                                   data-url="http://bit.ly/15p2ltP"
-                                                                   class="twitter-mention-button" data-lang="it" data-size="medium">
-                                                                </a>
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                                <div class="row-fluid">
-                                                    <div class="span7 riga_adesioni link_veditutti" >
-                                                        <a href="{% url "lista" "senatori" "aderiscono" %}">> Vedi tutti </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tab-pane liste_adesioni " id="sen_nonaderiscono">
+{#                                                {% for p in sen_aderiscono %}#}
+{#                                                    <div class="row-fluid riga_adesioni">#}
+{#                                                        <div class="span6">#}
+{#                                                            <strong>#}
+{#                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})#}
+{#                                                            </strong>#}
+{#                                                        </div>#}
+{##}
+{#                                                        <div class="span1 email">#}
+{#                                                            {% if p.account_mail %}#}
+{#                                                                <a href="mailto:{{ p.account_mail }}">#}
+{#                                                                    Email#}
+{#                                                                </a>#}
+{#                                                            {% else %}#}
+{#                                                                &nbsp;#}
+{#                                                            {% endif %}#}
+{#                                                        </div>#}
+{##}
+{#                                                        <div class="span4 twitter">#}
+{#                                                            {% if p.account_twitter %}#}
+{#                                                                <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"#}
+{#                                                                   data-text=",coinvolgi i tuoi colleghi nella campagna #ParlamentoCasadiVetro"#}
+{#                                                                   data-hashtags="openparlamento,opensenato"#}
+{#                                                                   data-url="http://bit.ly/15p2ltP"#}
+{#                                                                   class="twitter-mention-button" data-lang="it" data-size="medium">#}
+{#                                                                </a>#}
+{#                                                            {% endif %}#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                {% endfor %}#}
+{#                                                <div class="row-fluid">#}
+{#                                                    <div class="span7 riga_adesioni link_veditutti" >#}
+{#                                                        <a href="{% url "lista" "senatori" "aderiscono" %}">> Vedi tutti </a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{##}
+{#                                            <div class="tab-pane liste_adesioni " id="sen_nonaderiscono">#}
                                                 {#  lista senatori non aderenti#}
-                                                {% for p in sen_neg_aderiscono %}
-                                                    <div class="row-fluid riga_adesioni">
-                                                        <div class="span6">
-                                                            <strong>
-                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})
-                                                            </strong>
-                                                        </div>
-
-                                                        <div class="span1 email">
-                                                            {% if p.account_mail %}
-                                                                <a href="mailto:{{ p.account_mail }}">
-                                                                    Email
-                                                                </a>
-                                                            {% else %}
-                                                                &nbsp;
-                                                            {% endif %}
-                                                        </div>
-
-                                                        <div class="span4 twitter">
-                                                            {% if p.account_twitter %}
-                                                                <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"
-                                                                   data-text="la trasparenza delle commissioni parlamentari per un #ParlamentoCasadiVetro.Ci stai?"
-                                                                   data-hashtags="openparlamento"
-                                                                   data-url="http://bit.ly/15p2ltP"
-                                                                   class="twitter-mention-button" data-lang="it" data-size="medium">
-                                                                </a>
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                                <div class="row-fluid">
-                                                    <div class="span7 riga_adesioni link_veditutti">
-                                                        <a href="{% url "lista" "senatori" "non_aderiscono" %}">> Vedi tutti </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="tab-pane default_padding adesioni_tabs" id="adesionigruppi_tab">
-                                <div class="row-fluid">
-                                    <div class="span12 content" >
-                                        <p>
-                                            Funzioni, organi e procedure della Camera e del Senato sono definiti dai
-                                            rispettivi Regolamenti, che ogni ramo del Parlamento ha adottato
-                                            e può modificare, in modo autonomo e separato, attraverso il voto
-                                            favorevole della maggioranza assoluta dei suoi componenti.
-                                        </p>
-
-                                        <p>Occorre l'adesione di almeno 316 Deputati e 158 Senatori.
-                                        A seguire quanti Parlamentati hanno dato la propria disponibilità suddivisi per gruppo
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row-fluid" id="col_chart_camera">
-                                    <div class="span12"  >
-                                        <div id="adesioni_camera_graph" class="adesioni_colgraph" >
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="row-fluid" id="col_chart_senato">
-                                    <div class="span12" >
-                                        <div id="adesioni_senato_graph" class="adesioni_colgraph" >
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="row-fluid" >
-                                    <div class="span12" >
-                                        <ul style="list-style: none;font-size: 12px;">
-                                            {% for gruppo in gruppi_didascalia %}
-                                            <li style="display: inline;">{{ gruppo.sigla }}: {{ gruppo.nome }}</li>
-                                                {% if not forloop.last %},{% endif %}
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+{#                                                {% for p in sen_neg_aderiscono %}#}
+{#                                                    <div class="row-fluid riga_adesioni">#}
+{#                                                        <div class="span6">#}
+{#                                                            <strong>#}
+{#                                                                {{ p.nome|truncatesmart:12 }} {{ p.cognome|truncatesmart:15 }} ({{ p.gruppo_parlamentare.sigla }})#}
+{#                                                            </strong>#}
+{#                                                        </div>#}
+{##}
+{#                                                        <div class="span1 email">#}
+{#                                                            {% if p.account_mail %}#}
+{#                                                                <a href="mailto:{{ p.account_mail }}">#}
+{#                                                                    Email#}
+{#                                                                </a>#}
+{#                                                            {% else %}#}
+{#                                                                &nbsp;#}
+{#                                                            {% endif %}#}
+{#                                                        </div>#}
+{##}
+{#                                                        <div class="span4 twitter">#}
+{#                                                            {% if p.account_twitter %}#}
+{#                                                                <a href="https://twitter.com/intent/tweet?screen_name={{ p.account_twitter  }}"#}
+{#                                                                   data-text="la trasparenza delle commissioni parlamentari per un #ParlamentoCasadiVetro.Ci stai?"#}
+{#                                                                   data-hashtags="openparlamento"#}
+{#                                                                   data-url="http://bit.ly/15p2ltP"#}
+{#                                                                   class="twitter-mention-button" data-lang="it" data-size="medium">#}
+{#                                                                </a>#}
+{#                                                            {% endif %}#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                {% endfor %}#}
+{#                                                <div class="row-fluid">#}
+{#                                                    <div class="span7 riga_adesioni link_veditutti">#}
+{#                                                        <a href="{% url "lista" "senatori" "non_aderiscono" %}">> Vedi tutti </a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        <div class="tab-pane default_padding adesioni_tabs" id="adesionigruppi_tab">#}
+{#                                <div class="row-fluid">#}
+{#                                    <div class="span12 content" >#}
+{#                                        <p>#}
+{#                                            Funzioni, organi e procedure della Camera e del Senato sono definiti dai#}
+{#                                            rispettivi Regolamenti, che ogni ramo del Parlamento ha adottato#}
+{#                                            e può modificare, in modo autonomo e separato, attraverso il voto#}
+{#                                            favorevole della maggioranza assoluta dei suoi componenti.#}
+{#                                        </p>#}
+{##}
+{#                                        <p>Occorre l'adesione di almeno 316 Deputati e 158 Senatori.#}
+{#                                        A seguire quanti Parlamentati hanno dato la propria disponibilità suddivisi per gruppo#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="row-fluid" id="col_chart_camera">#}
+{#                                    <div class="span12"  >#}
+{#                                        <div id="adesioni_camera_graph" class="adesioni_colgraph" >#}
+{##}
+{#                                        </div>#}
+{##}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="row-fluid" id="col_chart_senato">#}
+{#                                    <div class="span12" >#}
+{#                                        <div id="adesioni_senato_graph" class="adesioni_colgraph" >#}
+{##}
+{#                                        </div>#}
+{##}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="row-fluid" >#}
+{#                                    <div class="span12" >#}
+{#                                        <ul style="list-style: none;font-size: 12px;">#}
+{#                                            {% for gruppo in gruppi_didascalia %}#}
+{#                                            <li style="display: inline;">{{ gruppo.sigla }}: {{ gruppo.nome }}</li>#}
+{#                                                {% if not forloop.last %},{% endif %}#}
+{#                                            {% endfor %}#}
+{#                                        </ul>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
 
 {#    LOAD TWITTER WIDGET#}
-    <script>
-        window.twttr = (function (d,s,id) {
-            var t, js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
-            js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-            return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-        }(document, "script", "twitter-wjs"));
-
-        // Wait for the asynchronous resources to load
-        twttr.ready(function(twttr) {
-            _ga.trackTwitter(); //Google Analytics tracking
-        });
-    </script>
+{#    TODO: decommentare DEBUG#}
+{#    <script>#}
+{#        window.twttr = (function (d,s,id) {#}
+{#            var t, js, fjs = d.getElementsByTagName(s)[0];#}
+{#            if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;#}
+{#            js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);#}
+{#            return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });#}
+{#        }(document, "script", "twitter-wjs"));#}
+{##}
+{#        // Wait for the asynchronous resources to load#}
+{#        twttr.ready(function(twttr) {#}
+{#            _ga.trackTwitter(); //Google Analytics tracking#}
+{#        });#}
+{#    </script>#}
 
 
     </div>

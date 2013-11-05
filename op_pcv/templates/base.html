@@ -1,7 +1,8 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<meta charset="utf-8" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<meta charset="utf-8" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <html>
 <head>
 
@@ -91,45 +92,70 @@
     <div class="container header">
         <div class="row ">
 {#            here goes the header#}
-            <div class="span10 offset1" id="main-title">
-                <a name="PageTop"></a>
-                "Parlamento Casa di vetro"
-            </div>
-            <div class="span1">
-                <!-- AddThis Button BEGIN -->
-                <div class="addthis_toolbox addthis_floating_style addthis_counter_style">
-                    <a class="addthis_button_facebook_like"
-                       fb:like:layout="box_count"
-                       fb:like:width="50"
-                       addthis:url="http://parlamentocasadivetro.openpolis.it"
-                       addthis:title="Supporta e diffondi la campagna Parlamento Casa di vetro!"
-                       addthis:description="Chiediamo trasparenza nei lavori delle commissioni. Molti parlamentari sono d'accordo ma dobbiamo raggiungere la maggioranza assoluta. Aiutaci!"
-                            ></a>
-
-                    <a class="addthis_button_tweet"
-                       tw:count="vertical"
-                       addthis:url="http://parlamentocasadivetro.openpolis.it"
-                       addthis:title="Supporta e diffondi la campagna Parlamento Casa di vetro!"
-                       addthis:description="Chiediamo trasparenza nei lavori delle commissioni. Molti parlamentari sono d'accordo ma dobbiamo raggiungere la maggioranza assoluta. Aiutaci!"
-                            ></a>
-                    <a class="addthis_button_google_plusone"
-                       g:plusone:size="tall"
-                       addthis:url="http://parlamentocasadivetro.openpolis.it"
-                       addthis:title="Supporta e diffondi la campagna Parlamento Casa di vetro!"
-                       addthis:description="Chiediamo trasparenza dei lavori nelle commissioni parlamentari. &Egrave; una riforma dai costi minimi che può essere attuata subito. Molti parlamentari sono d'accordo ma dobbiamo arrivare alla maggioranza assoluta. Facciamoglielo sapere!"
-                            ></a>
-                    <a class="addthis_counter"></a>
+            <div class="span10 offset1" id="slogan_container">
+                <div id="slogan">
+                    Chiediamo trasparenza<br/> dei lavori nelle commissioni parlamentari.
                 </div>
-                <!-- AddThis Button END -->
+                <div id="sottotitolo">
+                  Una riforma dai costi minimi che pu&ograve; essere attuata subito.
+                </div>
+
             </div>
+            <div class="span10 offset1" id="title_container">
+                <a name="PageTop"></a>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span10 offset2">
+                            <div id="hash" style="float:left; clear:left;">
+                                #
+                            </div>
+                            <div id="scritta" style="float:left; clear:right;">
+                                PARLAMENTO<br/> CASA DI VETRO
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+    <!-- TODO: decommentare DEBUG -->
+{#            <div class="span1">#}
+{#                <!-- AddThis Button BEGIN -->#}
+{#                <div class="addthis_toolbox addthis_floating_style addthis_counter_style">#}
+{#                    <a class="addthis_button_facebook_like"#}
+{#                       fb:like:layout="box_count"#}
+{#                       fb:like:width="50"#}
+{#                       addthis:url="http://parlamentocasadivetro.openpolis.it"#}
+{#                       addthis:title="Supporta e diffondi la campagna Parlamento Casa di vetro!"#}
+{#                       addthis:description="Chiediamo trasparenza nei lavori delle commissioni. Molti parlamentari sono d'accordo ma dobbiamo raggiungere la maggioranza assoluta. Aiutaci!"#}
+{#                            ></a>#}
+{##}
+{#                    <a class="addthis_button_tweet"#}
+{#                       tw:count="vertical"#}
+{#                       addthis:url="http://parlamentocasadivetro.openpolis.it"#}
+{#                       addthis:title="Supporta e diffondi la campagna Parlamento Casa di vetro!"#}
+{#                       addthis:description="Chiediamo trasparenza nei lavori delle commissioni. Molti parlamentari sono d'accordo ma dobbiamo raggiungere la maggioranza assoluta. Aiutaci!"#}
+{#                            ></a>#}
+{#                    <a class="addthis_button_google_plusone"#}
+{#                       g:plusone:size="tall"#}
+{#                       addthis:url="http://parlamentocasadivetro.openpolis.it"#}
+{#                       addthis:title="Supporta e diffondi la campagna Parlamento Casa di vetro!"#}
+{#                       addthis:description="Chiediamo trasparenza dei lavori nelle commissioni parlamentari. &Egrave; una riforma dai costi minimi che può essere attuata subito. Molti parlamentari sono d'accordo ma dobbiamo arrivare alla maggioranza assoluta. Facciamoglielo sapere!"#}
+{#                            ></a>#}
+{#                    <a class="addthis_counter"></a>#}
+{#                </div>#}
+{#                <!-- AddThis Button END -->#}
+{#            </div>#}
         </div>
         <div class="row">
             <div class="span10 offset1" id="main-intro" >
-                Chiediamo trasparenza dei lavori nelle commissioni parlamentari.<br>
-                &Egrave; una riforma dai costi minimi che può essere attuata subito.<br>
-                <span style="font-weight: bold;"> Molti parlamentari sono d'accordo<br>
-                ma dobbiamo arrivare alla maggioranza assoluta.<br>
-                Facciamoglielo sapere!</span>
+                Molti parlamentari sono d'accordo<br>
+                ma dobbiamo arrivare alla maggioranza assoluta.
+            </div>
+        </div>
+        <div class="row">
+            <div class="span10 offset1" id="main-grido" >
+                FACCIAMOGLIELO SAPERE!
             </div>
         </div>
         <div class="row" id="slogan_buttons">
