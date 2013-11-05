@@ -24,13 +24,12 @@ function sweep(a) {
 function resize(){
 
     width=(window.innerWidth/2)-20;
-    offset_x_n = -(width/3 );
     radius = width/4;
     outer_label_radius = radius+(radius/1.5);
     inner_label_radius = radius+(radius/1.8);
     arc_width = radius/2;
 
-    offset_x_n = -(width/3 );
+    offset_x_n = -(width/3.9 );
     offset_y_n = height -(height/4);
     offset_y_label = offset_y_n-(height/12);
     offset_y_line = offset_y_label-(height/24);
@@ -72,9 +71,9 @@ function draw_arc(div_id, data, label){
         attr("d",arc).
         attr("fill",function(d, i) {
             if(data[i].label=="ADERISCONO")
-                return "#60b887";
+                return "#65a0b8";
             else
-                return "#ff7e79";
+                return "#e54442";
         }).
         attr("stroke", "white").
         attr("stroke-width", "4px").
@@ -100,6 +99,7 @@ function draw_arc(div_id, data, label){
         .attr("transform", "translate("+offset_x_n+",-"+offset_y_n+")")
         .attr("text-anchor", "middle")
         .attr("class","big_bold_label")
+        .attr("fill", "#65a0b8")
         .text(data[0].value);
 
     svg.append("svg:text")
@@ -112,6 +112,7 @@ function draw_arc(div_id, data, label){
         .attr("transform", "translate("+ (-offset_x_n)+",-"+offset_y_n+")")
         .attr("text-anchor", "middle")
         .attr("class","big_bold_label")
+        .attr("fill", "#e54442")
         .text(data[1].value);
 
     svg.append("svg:text")
@@ -119,47 +120,5 @@ function draw_arc(div_id, data, label){
         .attr("text-anchor", "middle")
         .text(data[1].label);
 
-
-    //aggiunge le linee di connessione fra grafico e labels
-    var connection_lines=[];
-
-    connection_lines[0]={
-        x1:offset_x_n,
-        y1:-offset_y_line
-    };
-    connection_lines[1]={
-        x1:-offset_x_n,
-        y1:-offset_y_line
-    };
-
-    connection_lines[2]={};
-    connection_lines[3]={};
-    var i,temp;
-
-    for( i=0;i<2;i++){
-        temp = place_label(arcs[i], outer_label_radius);
-        connection_lines[i].x2=temp.x;
-        connection_lines[i].y2=temp.y;
-        connection_lines[i+2].x1 = temp.x;
-        connection_lines[i+2].y1 = temp.y;
-    }
-
-    for(i=2; i<4; i++){
-        temp = place_label(arcs[i-2], inner_label_radius);
-        connection_lines[i].x2=temp.x;
-        connection_lines[i].y2=temp.y;
-    }
-
-    svg.selectAll().
-        data(connection_lines).
-        sort(null).
-        enter().
-        append("line").
-        attr("x1",function(d) { return d.x1;}).
-        attr("y1",function(d) { return d.y1;}).
-        attr("x2",function(d) { return d.x2;}).
-        attr("y2",function(d) { return d.y2;}).
-        attr("stroke","black").
-        attr("class","connection-line");
 
 }

@@ -1,13 +1,11 @@
 @import "bootstrap/bootstrap.less";
 @import "styles-responsive.less";
-@import url(http://fonts.googleapis.com/css?family=Bitter);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 //PCV custom Css
 
 body{
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: black;
 }
 
@@ -23,7 +21,7 @@ body{
 }
 
 .title{
-  font-family: 'Bitter', serif;
+  font-family: 'Montserrat', sans-serif;
   color: @subtitle-color;
   font-size: @slogan-size;
   line-height: @slogan-size;
@@ -116,7 +114,6 @@ body{
 .header{
   color:  #4e4e4e;
   margin-top: @spacing-single;
-  font-family: 'Montserrat', sans-serif;
 
   #slogan{
     text-align: center;
@@ -190,7 +187,7 @@ body{
     margin-bottom: 45px;
   }
 
-  #button{
+  .button{
     max-width: 100%;
     overflow: hidden;
     height: 89px;
@@ -221,6 +218,7 @@ body{
 }
 
 .bold_label{
+  font-size: @slogan-size;
   font-weight: bold;
 }
 
@@ -233,6 +231,14 @@ body{
   }
 
   font-weight: normal;
+}
+
+.blue_label{
+  color: blue;
+}
+
+.red_label{
+  color: red;
 }
 
 
@@ -521,7 +527,7 @@ body{
     line-height: @slogan-size;
     font-size: @slogan-size;
     margin-left: 20px;
-    font-family: 'Bitter', serif;
+    font-family: 'Montserrat', sans-serif;
     padding: 10px;
   }
   .btn a{
