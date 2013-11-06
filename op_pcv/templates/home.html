@@ -297,8 +297,8 @@
                 $('body, html').animate({scrollTop : amount},800);
             },
             expandPrefix:     '...', // default is '... '
-            expandText:       '<BR>CONTINUA A LEGGERE <i class="icon-caret-down"></i>', // default is 'read more'
-            userCollapseText: 'CHIUDI <i class="icon-caret-up"></i>'  // default is 'read less'
+            expandText:       '<BR><BR><span class="blogpost_click">CONTINUA A LEGGERE <i class="icon-caret-down"></i></span>', // default is 'read more'
+            userCollapseText: '<BR><BR><span class="blogpost_click">CHIUDI <i class="icon-caret-up"></i></span>'  // default is 'read less'
         });
     });
 
@@ -330,7 +330,7 @@
                                       <div class="year">{{ blogpost.year}}</div>
                                   </a>
                               </div>
-                              <div class="text span5" style="color:black;">
+                              <div class="text span5" style="margin-left: 15px;">
                                   <div class="subtitle">
                                       <a href="{{ blogpost.link}}">
                                         {{ blogpost.title }}
@@ -374,9 +374,9 @@
 {#                            {% endif %}#}
 {#                        {% endfor %}#}
                         <div class="row-fluid">
-                            <div class="span3 offset9">
+                            <div class="span3 offset9 blogpost_click">
                                 <a href="http://blog.openpolis.it/tag/parlamentocasadivetro/" target="_blank">
-                                    Vai a tutti i post
+                                    VAI A TUTTI I POST
                                 </a>
                             </div>
                         </div>

@@ -1,12 +1,18 @@
 @import "bootstrap/bootstrap.less";
 @import "styles-responsive.less";
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 //PCV custom Css
 
 body{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: black;
+}
+
+a:hover{
+  text-decoration: none;
+  color: @red-color;
 }
 
 .light_blue_bg{
@@ -119,6 +125,7 @@ body{
   margin-top: @spacing-single;
 
   #slogan{
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-size: 27px;
     line-height: 27px;
@@ -127,6 +134,7 @@ body{
   }
 
   #sottotitolo{
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-size: 22px;
     line-height: 22px;
@@ -135,6 +143,7 @@ body{
 
   #title_container{
 
+    font-family: 'Montserrat', sans-serif;
 
     @media(max-width: 767px){
       font-size:  @medium-size;
@@ -164,7 +173,9 @@ body{
   }
 
   #main-intro{
+    font-family: 'Montserrat', sans-serif;
     color:  #4e4e4e;
+
     @media(max-width: 768px){
       font-size: 20px;
       line-height: 20px;
@@ -179,6 +190,7 @@ body{
   }
 
   #main-grido{
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-weight: bold;
     font-size: @intro-size;
@@ -217,11 +229,15 @@ body{
 }
 
 .bold_label{
+  font-family: 'Montserrat', sans-serif;
   font-size: @slogan-size;
   font-weight: bold;
 }
 
 .big_bold_label{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+
   @media(min-width: 900px){
     font-size: 36px;
   }
@@ -229,7 +245,7 @@ body{
     font-size: 18px;
   }
 
-  font-weight: normal;
+
 }
 
 .blue_label{
@@ -246,6 +262,7 @@ body{
   overflow: hidden;
 
   .subtitle{
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     line-height: 20px;
     padding-top: 10px;
@@ -257,6 +274,7 @@ body{
   }
 
   .box_data{
+    font-family: 'Montserrat', sans-serif;
 
     @media (max-width: 767px){
       margin-right: @spacing-half;
@@ -292,6 +310,11 @@ body{
     .year{
       font-size: 13px;
     }
+  }
+
+  .blogpost_click{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
   }
 
 }
