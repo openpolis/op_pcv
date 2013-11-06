@@ -258,7 +258,11 @@ a:hover{
 
 
 #achepuntosiamo{
-  border-radius: 3px;
+
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   overflow: hidden;
 
   .subtitle{
@@ -325,7 +329,6 @@ a:hover{
       text-decoration: none;
     }
 
-
     .day{
       font-size: @slogan-size;
       line-height: @slogan-size;
@@ -361,41 +364,34 @@ a:hover{
 
 #pcv_inner_navbar{
   min-height: 40px;
+  font-family: "MontSerrat",'sans-serif';
 
   @media(min-width:1024px){
-    margin-right: @spacing-double;
-    margin-left: @spacing-double;
+    margin-right: 80px;
+    margin-left: 90px;
     padding-left: 35px;
     padding-right: 35px;
   }
-
-
+  border-radius: 0;
   padding-top: 0px;
   padding-bottom: 0px;
-
-  background-image: -moz-linear-gradient(top, @navbar-top, @navbar-bottom);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@navbar-top), to(@navbar-bottom));
-  background-image: -webkit-linear-gradient(top, @navbar-top, @navbar-bottom);
-  background-image: -o-linear-gradient(top, @navbar-top, @navbar-bottom);
-  background-image: linear-gradient(to bottom, @navbar-top, @navbar-bottom);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@navbar-top', endColorstr='@navbar-bottom', GradientType=0);
+  background-image: none;
+  background-color: @blue-color;
   border: 0;
-  -webkit-border-radius: @navbar-border-radius;
-  -moz-border-radius: @navbar-border-radius;
-  border-radius: @navbar-border-radius;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 
   .brand{
     padding-top: 20px;
     padding-bottom: 20px;
   }
+  li a:hover{
+    background-color: @navbar-selected;
+    -webkit-box-shadow: none;
+  }
   li.active a{
     background-color: @navbar-selected;
     -webkit-box-shadow: none;
   }
+
 
   .nav li a{
     padding: 20px @spacing-half 20px;
@@ -416,8 +412,6 @@ a:hover{
         @media(max-width: 1024px){
           width: 100px;
         }
-
-
       }
     }
   }
