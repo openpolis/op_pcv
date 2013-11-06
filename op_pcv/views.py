@@ -139,9 +139,10 @@ class PcvHome(TemplateView):
                             # splits the date and formats it
                             post_date = time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000')
                             post_date_dt = datetime.date.fromtimestamp( time.mktime(post_date))
-                            feeds.entries[i]['month'] = _date(post_date_dt,"M")
+                            feeds.entries[i]['month'] = _date(post_date_dt,"M").upper()
                             feeds.entries[i]['day'] = time.strftime("%d",post_date)
                             feeds.entries[i]['year'] = time.strftime("%Y",post_date)
+                            feeds.entries[i]['title'] = feeds.entries[i]['title'].upper()
                             blogposts.append(feeds.entries[i])
                             post_counter += 1
 

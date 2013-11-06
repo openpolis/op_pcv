@@ -60,7 +60,7 @@ body{
 
 .default_padding{
   @media (min-width: 767px){
-    padding: @spacing-30;
+    padding: 40px;
   }
   @media (max-width: 767px){
     padding: 10px;
@@ -246,13 +246,54 @@ body{
   overflow: hidden;
 
   .subtitle{
-    line-height: 25px;
+    font-size: 18px;
+    line-height: 20px;
+    padding-top: 10px;
   }
 
   .small{
     font-size: 18px;
     line-height: 18px;
   }
+
+  .box_data{
+
+    @media (max-width: 767px){
+      margin-right: @spacing-half;
+    }
+
+    a{
+      color: black;
+    }
+    a:hover{
+      text-decoration: none;
+    }
+    width: 50px;
+    height: 60px;
+    padding-top: 7px;
+    float:left;
+    color:white;
+    text-transform: uppercase;
+    line-height: 15px;
+    text-align: center;
+    background-image: url("../img/box_data.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+
+    .day{
+      font-size: @slogan-size;
+      line-height: @slogan-size;
+      font-weight: bold;
+    }
+    .month{
+      font-size: 13px;
+    }
+    .year{
+      font-size: 13px;
+    }
+  }
+
 }
 
 .affix {
