@@ -320,33 +320,94 @@
                             </div>
                             <div class="topAnchor"></div>
                         </div>
-{##}
-                      {% for blogpost in blogposts %}
-                        {%  if forloop.first %}
-                          <div class="row blogpost" style="margin-bottom: 15px;">
-                              <div class="box_data span1" >
-                                      <div class="day">{{ blogpost.day}}</div>
-                                      <div class="month">{{ blogpost.month}}</div>
-                                      <div class="year">{{ blogpost.year}}</div>
-                                  </a>
-                              </div>
-                              <div class="text span5" style="margin-left: 15px;">
-                                  <div class="subtitle">
-                                      <a href="{{ blogpost.link}}">
-                                        {{ blogpost.title }}
-                                      </a>
-                                  </div>
-                              </div>
-                          </div>
-                            <div class="row">
-                              <div class="span6">
-                                <div class="body content expandable">
-                                  {{ blogpost.content.0.value|safe|striptags }}
+                      {#Blogpost#}
+                        <div class="row-fluid ">
+                            <div class="span8" >
+                                <div class="row-fluid blogpost_title " style="margin-bottom: 15px;">
+                                    <a href="{{ blogposts.0.link}}">
+                                      <div class="box_data span2" >
+                                          <div class="day">{{ blogposts.0.day}}</div>
+                                          <div class="month">{{ blogposts.0.month}}</div>
+                                          <div class="year">{{ blogposts.0.year}}</div>
+                                      </div>
+                                    </a>
+                                    <div class="span10" style="">
+                                        <div class="subtitle">
+                                            <a href="{{ blogposts.0.link}}">
+                                              {{ blogposts.0.title }}
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <div class="body content expandable">
+                                          {{ blogposts.0.content.0.value|safe|striptags }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        {% endif %}
-                      {% endfor %}
+                            <div class="span4">
+                                <div class="row-fluid blogpost_title " style="margin-bottom: 15px;">
+                                    <a href="{{ blogposts.1.link}}">
+                                      <div class="box_data span2" >
+                                          <div class="day">{{ blogposts.1.day}}</div>
+                                          <div class="month">{{ blogposts.1.month}}</div>
+                                          <div class="year">{{ blogposts.1.year}}</div>
+                                      </div>
+                                    </a>
+                                    <div class="span8">
+                                        <div class="small_subtitle">
+                                            <a href="{{ blogposts.1.link}}">
+                                              {{ blogposts.1.title }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-fluid blogpost_title " style="margin-bottom: 15px;">
+                                    <a href="{{ blogposts.2.link}}">
+                                      <div class="box_data span2" >
+                                          <div class="day">{{ blogposts.2.day}}</div>
+                                          <div class="month">{{ blogposts.2.month}}</div>
+                                          <div class="year">{{ blogposts.2.year}}</div>
+                                      </div>
+                                    </a>
+                                    <div class="span8" >
+                                        <div class="small_subtitle">
+                                            <a href="{{ blogposts.2.link}}">
+                                              {{ blogposts.2.title }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+{#                      {% for blogpost in blogposts %}#}
+{#                        {%  if forloop.first %}#}
+{#                          <div class="row-fluid " style="margin-bottom: 15px;">#}
+{#                              <div class="box_data span1" >#}
+{#                                      <div class="day">{{ blogpost.day}}</div>#}
+{#                                      <div class="month">{{ blogpost.month}}</div>#}
+{#                                      <div class="year">{{ blogpost.year}}</div>#}
+{#                                  </a>#}
+{#                              </div>#}
+{#                              <div class="text span5" style="margin-left: 15px;">#}
+{#                                  <div class="subtitle">#}
+{#                                      <a href="{{ blogpost.link}}">#}
+{#                                        {{ blogpost.title }}#}
+{#                                      </a>#}
+{#                                  </div>#}
+{#                              </div>#}
+{#                          </div>#}
+{#                          <div class="row-fluid">#}
+{#                            <div class="span6">#}
+{#                              <div class="body content expandable">#}
+{#                                {{ blogpost.content.0.value|safe|striptags }}#}
+{#                              </div>#}
+{#                            </div>#}
+{#                          </div>#}
+{#                        {% endif %}#}
+{#                      {% endfor %}#}
 
                       <div class="row-fluid">
                           <div class="span3 offset9 blogpost_click">

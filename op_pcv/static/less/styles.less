@@ -265,7 +265,21 @@ a:hover{
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     line-height: 20px;
-    padding-top: 10px;
+    height: 60px;
+    display: table-cell;
+    vertical-align: middle;
+
+
+  }
+
+  .small_subtitle{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    height: 60px;
+    margin-left: 5px;
+    display: table-cell;
+    vertical-align: middle;
   }
 
   .small{
@@ -282,14 +296,14 @@ a:hover{
     }
 
     a{
-      color: black;
+      color: white;
     }
     a:hover{
       text-decoration: none;
     }
     max-width: 100%;
     width: 50px;
-    height: 60px;
+    height: 67px;
     padding-top: 7px;
     float:left;
     color:white;
@@ -315,11 +329,18 @@ a:hover{
       font-size: 13px;
     }
   }
-  .blogpost:hover{
+
+  .blogpost_title .subtitle a{
+    vertical-align: middle;
+  }
+
+  .blogpost_title:hover{
     .box_data{
       background-position: 0% 100%;
       background-size: 100% 200%;
-
+    }
+    .subtitle a{
+      color:  @red-color;
     }
 
   }
