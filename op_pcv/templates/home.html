@@ -278,7 +278,7 @@
 
         {# blog post expansion #}
         $('div.expandable').expander({
-            slicePoint: 550,
+            slicePoint: 350,
             preserveWords: true,
             expandEffect: 'show',
             expandSpeed: 0,
@@ -380,44 +380,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row-fluid">
+                                    <div class="span9 blogpost_click">
+                                        <a href="http://blog.openpolis.it/tag/parlamentocasadivetro/" target="_blank">
+                                            VAI A TUTTI I POST
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-{#                      {% for blogpost in blogposts %}#}
-{#                        {%  if forloop.first %}#}
-{#                          <div class="row-fluid " style="margin-bottom: 15px;">#}
-{#                              <div class="box_data span1" >#}
-{#                                      <div class="day">{{ blogpost.day}}</div>#}
-{#                                      <div class="month">{{ blogpost.month}}</div>#}
-{#                                      <div class="year">{{ blogpost.year}}</div>#}
-{#                                  </a>#}
-{#                              </div>#}
-{#                              <div class="text span5" style="margin-left: 15px;">#}
-{#                                  <div class="subtitle">#}
-{#                                      <a href="{{ blogpost.link}}">#}
-{#                                        {{ blogpost.title }}#}
-{#                                      </a>#}
-{#                                  </div>#}
-{#                              </div>#}
-{#                          </div>#}
-{#                          <div class="row-fluid">#}
-{#                            <div class="span6">#}
-{#                              <div class="body content expandable">#}
-{#                                {{ blogpost.content.0.value|safe|striptags }}#}
-{#                              </div>#}
-{#                            </div>#}
-{#                          </div>#}
-{#                        {% endif %}#}
-{#                      {% endfor %}#}
-
-                      <div class="row-fluid">
-                          <div class="span3 offset9 blogpost_click">
-                              <a href="http://blog.openpolis.it/tag/parlamentocasadivetro/" target="_blank">
-                                  VAI A TUTTI I POST
-                              </a>
-                          </div>
-                      </div>
-
-
                     </div>
                 </div>
             </div>
