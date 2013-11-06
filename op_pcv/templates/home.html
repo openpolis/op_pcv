@@ -320,12 +320,38 @@
                             </div>
                             <div class="topAnchor"></div>
                         </div>
+{##}
+{#                        <div class="box">#}
+{#                            <div class="row">#}
+{#                                <div class="box_data span1" >#}
+{#                                    <a href="{{ post.link }}">#}
+{#                                        <div class="day">{{ post.day}}</div>#}
+{#                                        <div class="month">{{ post.month}}</div>#}
+{#                                        <div class="year">{{ post.year}}</div>#}
+{#                                    </a>#}
+{#                                </div>#}
+{#                                <div class="text span5" style="color:black;">#}
+{#                                    <div class="title">#}
+{#                                        <a href="{{ post.link}}">#}
+{#                                          {{ post.title }}#}
+{#                                        </a>#}
+{#                                    </div>#}
+{#                                    <div class="body">#}
+{#                                      {{ post.content|striptags|truncatewords:40 }}#}
+{#                                        <br/>#}
+{#                                        <a href="{{ post.link }}">Leggi tutto</a>#}
+{##}
+{#                                    </div>#}
+{##}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
 
                         {% for blogpost in blogposts %}
                             {%  if forloop.first %}
                                 <div class="row-fluid">
                                     <div class="span12 subtitle">
-                                        {{ blogpost.title }} - {{ blogpost.published }}
+                                        {{ blogpost.title }} - {{ blogpost.month }} {{ blogpost.year }} {{ blogpost.day }}
 
                                     </div>
                                 </div>

@@ -1,3 +1,5 @@
+import datetime
+from django.template.defaultfilters import date as _date
 import socket
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
@@ -6,7 +8,6 @@ from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from utils import remove_img_tags
-from django.core.cache import cache
 import time
 import logging
 
@@ -135,7 +136,12 @@ class PcvHome(TemplateView):
                     for tag in feeds.entries[i].tags:
                         if tag.term == settings.OP_BLOG_PCV_TAG:
                             feeds.entries[i]['content'][0]['value']=remove_img_tags(feeds.entries[i]['content'][0]['value'])
-                            feeds.entries[i]['published'] = time.strftime("%d.%m.%Y",time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000'))
+                            # splits the date and formats it
+                            post_date = time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000')
+                            post_date_dt = datetime.date.fromtimestamp( time.mktime(post_date))
+                            feeds.entries[i]['month'] = _date(post_date_dt,"M")
+                            feeds.entries[i]['day'] = time.strftime("%d",post_date)
+                            feeds.entries[i]['year'] = time.strftime("%Y",post_date)
                             blogposts.append(feeds.entries[i])
                             post_counter += 1
 
