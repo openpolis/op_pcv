@@ -323,7 +323,7 @@
 {##}
                       {% for blogpost in blogposts %}
                         {%  if forloop.first %}
-                          <div class="row" style="margin-bottom: 15px;">
+                          <div class="row blogpost" style="margin-bottom: 15px;">
                               <div class="box_data span1" >
                                       <div class="day">{{ blogpost.day}}</div>
                                       <div class="month">{{ blogpost.month}}</div>
@@ -348,38 +348,13 @@
                         {% endif %}
                       {% endfor %}
 
-
-{#                        {% for blogpost in blogposts %}#}
-{#                            {%  if forloop.first %}#}
-{#                                <div class="row-fluid">#}
-{#                                    <div class="span12 subtitle">#}
-{#                                        {{ blogpost.title }} - {{ blogpost.month }} {{ blogpost.year }} {{ blogpost.day }}#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="row-fluid">#}
-{#                                    <div class="span12 content expandable">#}
-{#                                        {{ blogpost.content.0.value|safe }}#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            {% else %}#}
-{#                                <div class="row-fluid">#}
-{#                                    <div class="span12 small">#}
-{#                                        <a href="{{ blogpost.link }}">#}
-{#                                            {{ blogpost.title }} - {{ blogpost.published }}#}
-{#                                        </a>#}
-{#                                    </div>#}
-{#                                </div>#}
-{##}
-{#                            {% endif %}#}
-{#                        {% endfor %}#}
-                        <div class="row-fluid">
-                            <div class="span3 offset9 blogpost_click">
-                                <a href="http://blog.openpolis.it/tag/parlamentocasadivetro/" target="_blank">
-                                    VAI A TUTTI I POST
-                                </a>
-                            </div>
-                        </div>
+                      <div class="row-fluid">
+                          <div class="span3 offset9 blogpost_click">
+                              <a href="http://blog.openpolis.it/tag/parlamentocasadivetro/" target="_blank">
+                                  VAI A TUTTI I POST
+                              </a>
+                          </div>
+                      </div>
 
 
                     </div>
