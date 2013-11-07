@@ -520,9 +520,20 @@ a:hover{
   padding-bottom: 0;
   border-bottom: 1px solid #dddddd;
 
-  .active .title{
-    color:@title-background;
+  .title{
+    font-size: 22px;
+    line-height: 20px;
+    color: @blue-color;
   }
+
+  .title:hover{
+    color: @red-color;
+  }
+
+  .active .title{
+    color:@red-color;
+  }
+
 
   a:hover{
     background-color: #ffffff;
@@ -530,23 +541,88 @@ a:hover{
 }
 
 .adesioni_tabs{
-  padding-top:10px;
 
-  #intro{
-
+  .nav-tabs > .active > a:hover{
+    border-bottom: 0;
+    border-bottom-color: white;
   }
+
+  padding-top:10px;
 
   #parlamentare_calltoaction{
     font-weight:bold;
-    background-color: yellow;
-    padding-left:5px;
+    color: white;
+    background-color: @red-color;
+    padding:5px;
     margin-bottom: @spacing-30;
+    box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
+    -moz-box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
+    -webkit-box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
+
+    a{
+      color: black;
+    }
+    a:hover{
+      color: white;
+    }
+  }
+
+  ul.nav-tabs{
+
+    span.red{
+      color: @red-color;
+    }
+    span:hover.red{
+      color: @red-color;
+    }
+
+    span.blue{
+      color: @blue-color;
+    }
+    span:hover.blue{
+      color: @blue-color;
+    }
+
+    li.active{
+
+      a:hover{
+        background-color: white;
+        border-bottom: 1px;
+        border-bottom-color: white;
+        border-bottom-style: solid;
+      }
+    }
+  }
+  ul.nav-tabs{
+    li{
+      a:hover{
+        background-color: white;
+        border-bottom: 1px #ffffff;
+      }
+    }
   }
 
   .subtitle{
-    font-size: 18px;
+    font-size: 15px;
+    line-size: 30px;
+    color: @blue-color;
+    font-family: "Montserrat", "sans-serif";
+    font-weight: bold;
+
+    .numero_adesioni{
+      font-size: 29px;
+    }
+
   }
+  .subtitle:hover{
+    color: @red-color;
+
+  }
+
+
   .title{
+    color: @blue-color;
+    font-size:  19px;
     margin-bottom: @spacing-half;
   }
 
@@ -554,19 +630,6 @@ a:hover{
     margin-left: @spacing-single;
   }
 
-  .active{
-    a{
-      background-color: @subtitle-color;
-      border-radius: 20px;
-
-      .subtitle{
-        color:#ffffff;
-      }
-    }
-  }
-  a:hover{
-    border-radius: 20px;
-  }
 
   .liste_adesioni{
     padding-bottom:@spacing-half;

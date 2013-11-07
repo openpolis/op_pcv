@@ -1,6 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Bitter);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 /*!
  * Bootstrap v2.1.1
@@ -8898,8 +8898,16 @@ body {
   color: black;
 }
 
+a:hover {
+  color: #e54442;
+  text-decoration: none;
+}
+
 .light_blue_bg {
-  background-color: #bce3f5;
+  background-color: #a9d0cd;
+  background-image: url('/static/img/home_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 @media (max-width: 768px) {
@@ -8910,10 +8918,10 @@ body {
 
 .title {
   margin-bottom: 15px;
-  font-family: 'Bitter', serif;
-  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
   line-height: 25px;
-  color: #8aa8b3;
+  color: #e54442;
 }
 
 .subtitle {
@@ -8951,7 +8959,7 @@ body {
 
 @media (min-width: 767px) {
   .default_padding {
-    padding: 30px;
+    padding: 40px;
   }
 }
 
@@ -8963,6 +8971,19 @@ body {
 
 .default_padding.content {
   padding-top: 0;
+}
+
+@media (min-width: 767px) {
+  .in_tab_padding {
+    padding-right: 150px;
+    padding-left: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .in_tab_padding {
+    padding-left: 15px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -9005,35 +9026,64 @@ body {
 
 .header {
   margin-top: 25px;
+  color: #4e4e4e;
 }
 
-.header #main-title {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-family: 'Bitter', serif;
-  color: white;
+.header #slogan {
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 27px;
+  font-weight: bold;
+  line-height: 27px;
   text-align: center;
-  background-color: #3caadb;
+}
+
+.header #sottotitolo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  line-height: 22px;
+  text-align: center;
+}
+
+.header #title_container {
+  margin-top: 15px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
 }
 
 @media (max-width: 767px) {
-  .header #main-title {
+  .header #title_container {
     font-size: 30px;
     line-height: 30px;
   }
 }
 
 @media (min-width: 768px) {
-  .header #main-title {
+  .header #title_container {
     font-size: 61px;
     line-height: 61px;
   }
 }
 
+.header #title_container #hash {
+  padding-top: 8px;
+  font-size: 129px;
+  line-height: 100px;
+  text-align: right;
+}
+
+.header #title_container #scritta {
+  font-size: 70px;
+  line-height: 60px;
+  text-align: left;
+}
+
 .header #main-intro {
   margin-top: 25px;
   margin-bottom: 25px;
-  color: black;
+  font-family: 'Montserrat', sans-serif;
+  color: #4e4e4e;
   text-align: center;
 }
 
@@ -9046,13 +9096,38 @@ body {
 
 @media (min-width: 768px) {
   .header #main-intro {
-    font-size: 30px;
-    line-height: 35px;
+    font-size: 22px;
+    line-height: 22px;
   }
 }
 
-.header #slogan_buttons {
-  margin-bottom: 45px;
+.header #main-grido {
+  margin-bottom: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #e54442;
+  text-align: center;
+}
+
+.header .button {
+  height: 89px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.header .button img {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 200%;
+  overflow: hidden;
+}
+
+.header .button img:hover {
+  top: -100%;
+  left: 0;
+  overflow: hidden;
 }
 
 .top_pie {
@@ -9067,11 +9142,14 @@ body {
 }
 
 .bold_label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
   font-weight: bold;
 }
 
 .big_bold_label {
-  font-weight: normal;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 @media (min-width: 900px) {
@@ -9086,18 +9164,106 @@ body {
   }
 }
 
+.blue_label {
+  color: blue;
+}
+
+.red_label {
+  color: red;
+}
+
 #achepuntosiamo {
   overflow: hidden;
-  border-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 3px;
 }
 
 #achepuntosiamo .subtitle {
-  line-height: 25px;
+  display: table-cell;
+  height: 60px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+#achepuntosiamo .small_subtitle {
+  display: table-cell;
+  height: 60px;
+  margin-left: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+  vertical-align: middle;
+}
+
+#achepuntosiamo .blogpost_title:hover .box_data {
+  background-position: 0 100%;
+  background-size: 100% 200%;
+}
+
+#achepuntosiamo .blogpost_title:hover .subtitle a,
+#achepuntosiamo .blogpost_title:hover .small_subtitle a {
+  color: #e54442;
 }
 
 #achepuntosiamo .small {
   font-size: 18px;
   line-height: 18px;
+}
+
+#achepuntosiamo .box_data {
+  float: left;
+  width: 50px;
+  height: 67px;
+  max-width: 100%;
+  padding-top: 7px;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 15px;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  background-image: url("../img/box_data.png");
+  background-position: 0 0%;
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
+}
+
+@media (max-width: 767px) {
+  #achepuntosiamo .box_data {
+    margin-right: 15px;
+  }
+}
+
+#achepuntosiamo .box_data a {
+  color: white;
+}
+
+#achepuntosiamo .box_data a:hover {
+  text-decoration: none;
+}
+
+#achepuntosiamo .box_data .day {
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+#achepuntosiamo .box_data .month {
+  font-size: 13px;
+}
+
+#achepuntosiamo .box_data .year {
+  font-size: 13px;
+}
+
+#achepuntosiamo .blogpost_click {
+  margin-top: 38px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 .affix {
@@ -9117,28 +9283,19 @@ body {
   min-height: 40px;
   padding-top: 0;
   padding-bottom: 0;
-  background-image: -moz-linear-gradient(top, #3ba7d8, #2c88b1);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3ba7d8), to(#2c88b1));
-  background-image: -webkit-linear-gradient(top, #3ba7d8, #2c88b1);
-  background-image: -o-linear-gradient(top, #3ba7d8, #2c88b1);
-  background-image: linear-gradient(to bottom, #3ba7d8, #2c88b1);
-  background-repeat: repeat-x;
+  font-family: "MontSerrat", 'sans-serif';
+  background-color: #65a0b8;
+  background-image: none;
   border: 0;
-  -webkit-border-radius: 10px;
-     -moz-border-radius: 10px;
-          border-radius: 10px;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@navbar-top', endColorstr='@navbar-bottom', GradientType=0);
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  border-radius: 0;
 }
 
 @media (min-width: 1024px) {
   #pcv_inner_navbar {
     padding-right: 35px;
     padding-left: 35px;
-    margin-right: 50px;
-    margin-left: 50px;
+    margin-right: 80px;
+    margin-left: 90px;
   }
 }
 
@@ -9147,8 +9304,13 @@ body {
   padding-bottom: 20px;
 }
 
+#pcv_inner_navbar li a:hover {
+  background-color: #4a7d92;
+  -webkit-box-shadow: none;
+}
+
 #pcv_inner_navbar li.active a {
-  background-color: #8aa8b3;
+  background-color: #4a7d92;
   -webkit-box-shadow: none;
 }
 
@@ -9186,18 +9348,7 @@ body {
 
 #pcv_tabs #presidenti_img {
   width: 100%;
-}
-
-@media (min-width: 1024px) {
-  #pcv_tabs #presidenti_img {
-    margin-top: 30px;
-  }
-}
-
-@media (max-width: 1024px) {
-  #pcv_tabs #presidenti_img {
-    margin-top: 0;
-  }
+  margin-top: 0;
 }
 
 #pcv_tabs .content {
@@ -9229,23 +9380,38 @@ body {
   padding-top: 0;
 }
 
-#middle_tabs {
+#middle_tabs #tabs_titles {
   padding-bottom: 0;
   margin-top: 25px;
   border-bottom: 1px solid #dddddd;
 }
 
-#middle_tabs .active .title {
-  color: #3caadb;
+#middle_tabs #tabs_titles .title {
+  font-size: 19px;
+  line-height: 20px;
+  color: #65a0b8;
 }
 
-#middle_tabs a:hover {
+#middle_tabs #tabs_titles .title:hover {
+  color: #e54442;
+}
+
+#middle_tabs #tabs_titles .active .title {
+  color: #e54442;
+}
+
+#middle_tabs #tabs_titles a:hover {
   background-color: #ffffff;
 }
 
-.default_padding#appello_tab,
-.default_padding#mondo_tab,
-.default_padding#commissioni_tab {
+#middle_tabs .title {
+  font-size: 25px;
+  line-height: 25px;
+}
+
+#middle_tabs .default_padding#appello_tab,
+#middle_tabs .default_padding#mondo_tab,
+#middle_tabs .default_padding#commissioni_tab {
   padding-bottom: 0;
 }
 
@@ -9260,8 +9426,18 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 
+#adesioni_buttons .title {
+  font-size: 22px;
+  line-height: 20px;
+  color: #65a0b8;
+}
+
+#adesioni_buttons .title:hover {
+  color: #e54442;
+}
+
 #adesioni_buttons .active .title {
-  color: #3caadb;
+  color: #e54442;
 }
 
 #adesioni_buttons a:hover {
@@ -9272,36 +9448,82 @@ body {
   padding-top: 10px;
 }
 
+.adesioni_tabs .nav-tabs > .active > a:hover {
+  border-bottom: 0;
+  border-bottom-color: white;
+}
+
 .adesioni_tabs #parlamentare_calltoaction {
-  padding-left: 5px;
+  padding: 5px;
   margin-bottom: 30px;
   font-weight: bold;
-  background-color: yellow;
+  color: white;
+  background-color: #e54442;
+  -webkit-box-shadow: 0 9px 10px 3px rgba(47, 47, 47, 0.2);
+     -moz-box-shadow: 0 9px 10px 3px rgba(47, 47, 47, 0.2);
+          box-shadow: 0 9px 10px 3px rgba(47, 47, 47, 0.2);
+}
+
+.adesioni_tabs #parlamentare_calltoaction a {
+  color: black;
+}
+
+.adesioni_tabs #parlamentare_calltoaction a:hover {
+  color: white;
+}
+
+.adesioni_tabs ul.nav-tabs span.red {
+  color: #e54442;
+}
+
+.adesioni_tabs ul.nav-tabs span:hover.red {
+  color: #e54442;
+}
+
+.adesioni_tabs ul.nav-tabs span.blue {
+  color: #65a0b8;
+}
+
+.adesioni_tabs ul.nav-tabs span:hover.blue {
+  color: #65a0b8;
+}
+
+.adesioni_tabs ul.nav-tabs li.active a:hover {
+  background-color: white;
+  border-bottom: 1px;
+  border-bottom-color: white;
+  border-bottom-style: solid;
+}
+
+.adesioni_tabs ul.nav-tabs li a:hover {
+  background-color: white;
+  border-bottom: 1px #ffffff;
 }
 
 .adesioni_tabs .subtitle {
-  font-size: 18px;
+  font-family: "Montserrat", "sans-serif";
+  font-size: 15px;
+  font-weight: bold;
+  color: #65a0b8;
+  line-size: 30px;
+}
+
+.adesioni_tabs .subtitle .numero_adesioni {
+  font-size: 29px;
+}
+
+.adesioni_tabs .subtitle:hover {
+  color: #e54442;
 }
 
 .adesioni_tabs .title {
   margin-bottom: 15px;
+  font-size: 19px;
+  color: #65a0b8;
 }
 
 .adesioni_tabs li:nth-child(2) a {
   margin-left: 25px;
-}
-
-.adesioni_tabs .active a {
-  background-color: #8aa8b3;
-  border-radius: 20px;
-}
-
-.adesioni_tabs .active a .subtitle {
-  color: #ffffff;
-}
-
-.adesioni_tabs a:hover {
-  border-radius: 20px;
 }
 
 .adesioni_tabs .liste_adesioni {
@@ -9359,7 +9581,7 @@ body {
 #lista_completa .subtitle {
   padding: 10px;
   margin-left: 20px;
-  font-family: 'Bitter', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 25px;
   line-height: 25px;
 }

@@ -594,14 +594,14 @@
                             <li class="active">
                                 <a href="#adesioni_tab" data-toggle="tab">
                                     <span class="title">
-                                        Le adesioni
+                                        LE ADESIONI
                                     </span>
                                 </a>
                             </li>
                             <li >
                                 <a href="#adesionigruppi_tab" data-toggle="tab" id="col_chart_link" >
                                     <span class="title">
-                                        Le adesioni nei gruppi
+                                        LE ADESIONI NEI GRUPPI
                                     </span>
                                 </a>
                             </li>
@@ -616,10 +616,9 @@
                                     </div>
                                 </div>
                                 <div class="row-fluid">
-                                    <div class="span8 content">
-
+                                    <div class="span9 content">
                                         <p id="parlamentare_calltoaction">
-                                            Sei un Parlamentare e vuoi aderire? Scrivici a
+                                            SEI UN PARLAMENTARE E VUOI ADERIRE? SCRIVICI A
                                             <a href="mailto:associazione@openpolis.it">
                                                 associazione@openpolis.it
                                             </a>
@@ -629,36 +628,42 @@
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span6">
-                                           pills deputati
+{#                                           pills deputati#}
                                         <div class="row-fluid">
                                             <div class="span12 title">
-                                                Deputati
+                                                DEPUTATI
                                             </div>
                                         </div>
                                         <div class="row-fluid">
                                             <div class="span12">
-                                                <ul class="nav nav-pills">
+                                                <ul class="nav nav-tabs">
                                                     <li class="active">
-                                                        <a href="#dep_aderiscono" data-toggle="pill">
-                                                           <span class="subtitle">
-                                                                Aderiscono ({{ n_dep_aderiscono }})
+                                                        <a href="#dep_aderiscono" data-toggle="tab">
+                                                           <span class="subtitle blue">
+                                                                ADERISCONO
+                                                               <span class="numero_adesioni">
+                                                                 {{ n_dep_aderiscono }}
+                                                               </span>
                                                            </span>
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="#dep_nonaderiscono" data-toggle="pill">
-                                                           <span class="subtitle">
-                                                                Non Aderiscono ({{ n_dep_nonaderiscono }})
+                                                        <a href="#dep_nonaderiscono" data-toggle="tab">
+                                                           <span class="subtitle red">
+                                                                NON ADERISCONO
+                                                               <span class="numero_adesioni">
+                                                                 {{ n_dep_nonaderiscono }}
+                                                               </span>
                                                            </span>
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
-                                          liste deputati
+{#                                          liste deputati#}
                                         <div class="tab-content">
                                             <div class="tab-pane active liste_adesioni" id="dep_aderiscono">
-                                              lista adesione deputati
+{#                                              lista adesione deputati#}
                                                 {% for p in dep_aderiscono %}
                                                     <div class="row-fluid riga_adesioni">
                                                         <div class="span6">
@@ -698,7 +703,7 @@
 
                                             <div class="tab-pane liste_adesioni " id="dep_nonaderiscono">
 
-                                                  lista deputati non aderenti
+{#                                                  lista deputati non aderenti#}
                                                 {% for p in dep_neg_aderiscono %}
                                                     <div class="row-fluid riga_adesioni">
                                                         <div class="span6">
@@ -738,36 +743,42 @@
                                         </div>
                                     </div>
                                     <div class="span6">
-                                       pills senatori
+                                    {#pills senatori#}
                                         <div class="row-fluid">
                                             <div class="span12 title">
-                                                Senatori
+                                                SENATORI
                                             </div>
                                         </div>
                                         <div class="row-fluid">
                                            <div class="span12">
-                                               <ul class="nav nav-pills">
+                                               <ul class="nav nav-tabs">
                                                    <li class="active">
-                                                       <a href="#sen_aderiscono" data-toggle="pill">
-                                                           <span class="subtitle">
-                                                                Aderiscono ({{ n_sen_aderiscono }})
+                                                       <a href="#sen_aderiscono" data-toggle="tab">
+                                                           <span class="subtitle blue">
+                                                                ADERISCONO
+                                                               <span class="numero_adesioni">
+                                                                 {{ n_sen_aderiscono }}
+                                                               </span>
                                                            </span>
                                                        </a>
                                                    </li>
                                                    <li class="">
-                                                       <a href="#sen_nonaderiscono" data-toggle="pill">
-                                                           <span class="subtitle">
-                                                                Non Aderiscono ({{ n_sen_nonaderiscono }})
+                                                       <a href="#sen_nonaderiscono" data-toggle="tab">
+                                                           <span class="subtitle red">
+                                                                NON ADERISCONO
+                                                               <span class="numero_adesioni">
+                                                                 {{ n_sen_nonaderiscono }}
+                                                               </span>
                                                            </span>
                                                        </a>
                                                    </li>
                                                </ul>
                                            </div>
                                         </div>
-                                      liste senatori
+{#                                      liste senatori#}
                                         <div class="tab-content">
                                             <div class="tab-pane liste_adesioni active " id="sen_aderiscono">
-                                                  lista adesione senatori
+{#                                                  lista adesione senatori#}
                                                 {% for p in sen_aderiscono %}
                                                     <div class="row-fluid riga_adesioni">
                                                         <div class="span6">
@@ -806,7 +817,7 @@
                                             </div>
 
                                             <div class="tab-pane liste_adesioni " id="sen_nonaderiscono">
-                                                  lista senatori non aderenti
+{#                                                  lista senatori non aderenti#}
                                                 {% for p in sen_neg_aderiscono %}
                                                     <div class="row-fluid riga_adesioni">
                                                         <div class="span6">
