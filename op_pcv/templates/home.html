@@ -171,7 +171,7 @@
         $(function () {
 
             col_camera=$('#adesioni_camera_graph').highcharts({
-                colors:[ '#60b887', '#ff7e79'],
+                colors:[ '#4a7d92', '#e64442'],
                 credits: {
                     enabled: false
                 },
@@ -182,7 +182,14 @@
 
                 },
                 title: {
-                    text: 'CAMERA'
+                    text: 'CAMERA',
+                    margin: 30,
+                    style: {
+                        fontFamily: '\'Montserrat\', sans-serif',
+                        color: '#e54442',
+                        fontWeight: 'bold',
+                        fontSize: '23px'
+                    }
                 },
                 xAxis: {
                     categories: [
@@ -224,7 +231,7 @@
             });
 
             col_senato= $('#adesioni_senato_graph').highcharts({
-                colors:[ '#60b887', '#ff7e79'],
+                colors:[ '#4a7d92', '#e64442'],
                 credits: {
                     enabled: false
                 },
@@ -234,7 +241,14 @@
                     height: 250
                 },
                 title: {
-                    text: 'SENATO'
+                    text: 'SENATO',
+                    margin: 30,
+                    style: {
+                        fontFamily: '\'Montserrat\', sans-serif',
+                        color: '#e54442',
+                        fontWeight: 'bold',
+                        fontSize: '23px'
+                    }
                 },
                 xAxis: {
                     categories: [
