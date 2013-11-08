@@ -622,8 +622,10 @@ a:hover{
 
   .title{
     color: @blue-color;
-    font-size:  19px;
     margin-bottom: @spacing-half;
+    font-size: 27px;
+    font-weight: bold;
+
   }
 
   li:nth-child(2) a {
@@ -648,9 +650,20 @@ a:hover{
 
       .email{
         width: 30px;
+        font-family: "Montserrat", "sans-serif";
+        font-weight: bold;
+
+        a{
+          color: @red-color;
+        }
+
+        a:hover{
+          color:  @dark-red-color;
+        }
 
         @media(min-width:800px){
-          margin-left: 8px;
+          margin-left: 5px;
+          margin-right: 8px;
         }
 
 
@@ -661,6 +674,7 @@ a:hover{
       {
         @media(min-width:800px){
           margin-left: 10px;
+          padding-left: 4px;
         }
 
         iframe{
@@ -756,6 +770,11 @@ table {
   background-color: @blue-color;
   color:  white;
 
+  .small{
+    height: 25px!important;
+    min-height: 25px!important;
+  }
+
   .default_padding{
     padding-bottom: 20px;
   }
@@ -776,7 +795,8 @@ table {
   .title{
     color: white;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
+    margin-bottom: 10px;
   }
 
 }
