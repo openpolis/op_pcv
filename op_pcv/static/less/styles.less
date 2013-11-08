@@ -38,7 +38,7 @@ a:hover{
 }
 
 .subtitle{
-  color: @title-background;
+  color: @blue-color;
   @media (min-width: 767px){
     font-size: @slogan-size;
   }
@@ -80,7 +80,7 @@ a:hover{
 .in_tab_padding{
   @media (min-width: 767px){
     padding-left: 50px;
-    padding-right: 150px;
+    padding-right: 50px;
   }
   @media (max-width: 767px){
     padding-left: 15px;
@@ -258,14 +258,6 @@ a:hover{
 
 }
 
-.blue_label{
-  color: blue;
-}
-
-.red_label{
-  color: red;
-}
-
 
 #achepuntosiamo{
 
@@ -274,6 +266,10 @@ a:hover{
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   overflow: hidden;
+
+  a{
+    color: @blue-color;
+  }
 
   .subtitle{
     font-family: 'Montserrat', sans-serif;
@@ -458,7 +454,7 @@ a:hover{
   border-bottom: 1px solid #dddddd;
 
   .active .title{
-    color:@title-background;
+    color:@blue-color;
   }
 
   a:hover{
@@ -550,10 +546,15 @@ a:hover{
   padding-top:10px;
 
   #parlamentare_calltoaction{
+    font-family: "Montserrat", "sans-serif";
     font-weight:bold;
     color: white;
     background-color: @red-color;
-    padding:5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+
     margin-bottom: @spacing-30;
     box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
     -moz-box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
@@ -690,8 +691,12 @@ a:hover{
     }
     .link_veditutti{
       font-family: "Montserrat", "sans-serif";
+      font-weight: bold;
       border-bottom: 0;
       margin-top:10px;
+      a{
+        color: @blue-color;
+      }
 
     }
   }
@@ -765,7 +770,7 @@ table {
 
 
 #footer{
-  padding-top: 30px;
+  padding-top: 0;
   font-family: "Montserrat", "sans-serif";
   background-color: @blue-color;
   color:  white;
