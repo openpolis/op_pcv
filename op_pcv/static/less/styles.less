@@ -784,5 +784,34 @@ table {
 #sub_footer{
   color: black;
   background-color: @page-background;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  ul{
+    list-style: none;
+    list-style-type: none;
 
+    margin: 0;
+    padding: 0;
+
+    li:first-child{
+      border-left: 0;
+      padding-left: 19px;
+    }
+
+    li{
+      border-left: 1px solid #808080;
+      height: 30px;
+      line-height: 30px;
+      display: block;
+      float: left;
+      list-style: none;
+      padding-right: 11px;
+      padding-left: 11px;
+
+      a{
+        min-height: 30px;
+      }
+
+    }
+  }
 }
