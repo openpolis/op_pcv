@@ -8910,6 +8910,10 @@ a:hover {
   background-size: 100%;
 }
 
+.light_blue_no_bg {
+  background-color: #a9d0cd;
+}
+
 @media (max-width: 768px) {
   .affix {
     position: relative;
@@ -9298,6 +9302,7 @@ a:hover {
 #pcv_inner_navbar .brand {
   padding-top: 20px;
   padding-bottom: 20px;
+  outline: 0;
 }
 
 #pcv_inner_navbar li a:hover {
@@ -9360,16 +9365,26 @@ a:hover {
 }
 
 #lista_ul {
+  padding-top: 20px;
   padding-bottom: 0;
   border-bottom: 1px solid #dddddd;
+}
+
+#lista_ul a:hover {
+  background-color: #ffffff;
+}
+
+#lista_ul .title {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #lista_ul .active .title {
   color: #65a0b8;
 }
 
-#lista_ul a:hover {
-  background-color: #ffffff;
+#lista_ul li {
+  margin-left: 19px;
 }
 
 .lista_tabs .default_padding {
@@ -9440,16 +9455,7 @@ a:hover {
   background-color: #ffffff;
 }
 
-.adesioni_tabs {
-  padding-top: 10px;
-}
-
-.adesioni_tabs .nav-tabs > .active > a:hover {
-  border-bottom: 0;
-  border-bottom-color: white;
-}
-
-.adesioni_tabs #parlamentare_calltoaction {
+.parlamentare_calltoaction {
   padding-top: 5px;
   padding-right: 5px;
   padding-bottom: 5px;
@@ -9464,12 +9470,25 @@ a:hover {
           box-shadow: 0 9px 10px 3px rgba(47, 47, 47, 0.2);
 }
 
-.adesioni_tabs #parlamentare_calltoaction a {
+.parlamentare_calltoaction a {
   color: black;
 }
 
-.adesioni_tabs #parlamentare_calltoaction a:hover {
+.parlamentare_calltoaction a:hover {
   color: white;
+}
+
+.numero_adesioni {
+  font-size: 29px;
+}
+
+.adesioni_tabs {
+  padding-top: 10px;
+}
+
+.adesioni_tabs .nav-tabs > .active > a:hover {
+  border-bottom: 0;
+  border-bottom-color: white;
 }
 
 .adesioni_tabs ul.nav-tabs span.red {
@@ -9506,10 +9525,6 @@ a:hover {
   font-weight: bold;
   color: #65a0b8;
   line-size: 30px;
-}
-
-.adesioni_tabs .subtitle .numero_adesioni {
-  font-size: 29px;
 }
 
 .adesioni_tabs .subtitle:hover {
@@ -9597,6 +9612,41 @@ a:hover {
   margin-bottom: 30px;
 }
 
+#lista_completa .title {
+  line-height: 30px;
+  color: #e54442;
+}
+
+#lista_completa #lista_title_container {
+  padding-top: 50px;
+  padding-bottom: 25px;
+  margin-bottom: 0;
+}
+
+#lista_completa #lista_title_container #title {
+  padding-left: 35px;
+}
+
+#lista_completa #pcv_inner_navbar ul {
+  display: none;
+}
+
+#lista_completa #lista_ul .active .title {
+  color: #e54442;
+}
+
+#lista_completa #lista_ul .title {
+  color: #65a0b8;
+}
+
+#lista_completa #lista_ul .title:hover {
+  color: #e54442;
+}
+
+#lista_completa #lista_ul li:hover a span {
+  color: #e54442;
+}
+
 #lista_completa .subtitle {
   padding: 10px;
   margin-left: 20px;
@@ -9607,6 +9657,15 @@ a:hover {
 
 #lista_completa .btn a {
   color: white;
+}
+
+#lista_completa .tabbable {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+#lista_completa th {
+  font-family: "Montserrat", "sans-serif";
 }
 
 #lista_completa tr.odd {
@@ -9629,6 +9688,22 @@ a:hover {
 
 #lista_completa th.sorting_disabled {
   cursor: not-allowed;
+}
+
+#lista_completa td .list_email {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: bold;
+  color: #e54442;
+}
+
+#lista_completa td .adesione_blue {
+  font-weight: bold;
+  color: #65a0b8;
+}
+
+#lista_completa td .adesione_red {
+  font-weight: bold;
+  color: #e54442;
 }
 
 div.dataTables_length label {
