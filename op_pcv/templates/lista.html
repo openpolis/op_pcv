@@ -2,6 +2,14 @@
 {% load utils %}
 {% load staticfiles %}
 
+{% block title %}
+  Lista completa
+{% endblock %}
+
+
+{% block css_header %}
+    <link href="{% static "css/jquery.dataTables.css" %}" rel="stylesheet">
+{% endblock %}
 
 {% block js_header %}
 
@@ -11,10 +19,10 @@
 
         $(document).ready(function() {
             var gTable = $('.tablesorter').dataTable({
-                {# sdom is also for table responsiveness#}
+{#                sdom is also for table responsiveness#}
                 "sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
 
-                {# aasorting sets the initial sorting of the table                #}
+{#                aasorting sets the initial sorting of the table                #}
                 {% if ordinamento == "aderiscono" %}
                     "aaSorting": [[ 3, "asc" ],[1,"asc"]],
                 {% else %}
@@ -24,8 +32,10 @@
                 {% endif %}
 
                 "aoColumnDefs": [
-                    { "bSortable": false, "aTargets": [ 0,4,5 ] },
-                    { "bSortable": true, "aTargets": [ 0,4,5 ] }
+                    {#  defines not sortable cols#}
+                    { "bSortable": false, "aTargets": [ 0,4,5,6 ] },
+                    {#  defines sortable cols#}
+                    { "bSortable": true, "aTargets": [ 1,2,3 ] }
                 ],
 
                 bFilter: false,
@@ -48,125 +58,172 @@
 {% endblock %}
 
 
-
-
 {% block top-content %}
-    <div class="wrapper">
-    <!-- HEADER -->
-    <div class="container" id="lista_completa">
+
+  <!-- HEADER -->
+  <div class="container" id="lista_completa">
 
     <div class="row">
-        <div class="span12 subtitle">
-            <a name="PageTop"></a>
-            I Parlamentari e la campagna "Parlamento Casa di vetro"
-        </div>
+      <div class="span10 offset1 white_bg" id="" style="min-height: 40px;">
+      </div>
     </div>
-    <div class="row">
-        <div class="span4">
-            <a href="{% url "home" %}" style="text-decoration: underline;">
-                < Torna alla Home
-            </a>
-        </div>
-    </div>
-    <div class="row">
-    <div class="span12">
-    <div class="tabbable"> <!-- Only required for left/right tabs -->
-    <ul class="nav nav-tabs default_padding" id="lista_ul">
-        <li class="{% if tipologia == "deputati" %}active{% endif %}">
-            <a href="#deputati_tab" data-toggle="tab">
-                                <span class="title">
-                                    Deputati ({{ n_deputati }})
-                                </span>
-            </a>
-        </li>
-        <li class="{% if tipologia == "senatori" %}active{% endif %}">
-            <a href="#senatori_tab" data-toggle="tab">
-                                <span class="title">
-                                    Senatori ({{ n_senatori }})
-                                </span>
-            </a>
-        </li>
-        <li class="{% if tipologia == "" %}active{% endif %}">
-            <a href="#totale_tab" data-toggle="tab">
-                                <span class="title">
-                                    Tutti ({{ n_totale }})
-                                </span>
-            </a>
-        </li>
-    </ul>
-    <div class="tab-content lista_tabs">
-        <div class="tab-pane default_padding {% if tipologia == "deputati" %}active{% endif %} " id="deputati_tab">
-          {#        table header #}
 
-            <table class="table table-condensed tablesorter">
-                <thead>
-                <tr >
-                    <th>Nome </th>
-                    <th>Cognome </th>
-                    <th>Gruppo  </th>
-                    <th>Adesione  </th>
-                    <th>Email</th>
-                    <th>Twitter</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for parlamentare in lista_deputati %}
-                    <tr>
-                        <td>
-                          {{ parlamentare.nome|truncatesmart:20  }}
-                        </td>
-                        <td >
-                          {{ parlamentare.cognome|truncatesmart:30 }}
-                        </td>
-                        <td >
-                          {{ parlamentare.gruppo_parlamentare.sigla }}
-                        </td>
-                        <td>
-                          {% if parlamentare.adesione == '1'   %}
-                              Aderisce
-                          {% else %}
-                              Non aderisce
-                          {% endif %}
+  {#    top navbar#}
 
-                        </td>
-                        <td>
-                          {% if parlamentare.account_mail %}
-                              <a href="mailto:{{ parlamentare.account_mail }}">
-                                  Email
+      <div class="row " id="pcv_navbar" >
+          <div class="span12">
+              <div class="navbar" id="spynav_pcv">
+                  <div class="navbar-inner" id="pcv_inner_navbar" >
+                      <a class="brand" href="{% url "home" %}">#PARLAMENTO<strong>CASADIVETRO</strong></a>
+                      <ul class="nav" id="ulnav">
+                          <li>
+                              <a href="#campagna">
+                                  CAMPAGNA
                               </a>
-                          {% else %}
-                              &nbsp;
-                          {% endif %}
-                        </td>
-                        <td>
-                          {% if parlamentare.account_twitter %}
-                              <div id="custom-tweet-button">
-                                  <a class="btn btn-info" href="https://twitter.com/share?url=http%3A%2F%2Fbit.ly%2F15p2ltP&lang=it-IT&text=@{{ parlamentare.account_twitter }} {% if parlamentare.adesione == "1" %}coinvolgi+i+tuoi+colleghi+nella+campagna+%23ParlamentoCasadiVetro{% else %}la+trasparenza+delle+commissioni+parlamentari+per+un+%23ParlamentoCasadiVetro.Ci+stai%3F{% endif %}&hashtags=openparlamento{% if parlamentare.adesione == "1" %}{% if parlamentare.ramo_parlamento == "0" %}%2Copencamera{% else %}%2Copensenato{% endif %}{% endif %}"
-                                     target="_blank">
-                                      Twitta a @{{ parlamentare.account_twitter }}
-                                  </a>
+                          </li>
+                          <li>
+                              <a id="adesioni_scrollspy" href="#adesioni" >
+                                  ADESIONI
+                              </a>
+                          </li>
+                      </ul>
+                      <div id="openpolis_logo">
+                          <a href="http://www.openpolis.it" target="_blank">
+                              <img src="{% static "img/openpolis.png" %}"/>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
 
-                              </div>
+      <div class="row">
+        <div class="span10 offset1 title white_bg" id="lista_title_container">
+          <a name="PageTop"></a>
+          <div id="title">
+            I PARLAMENTARI E LA CAMPAGNA<br/> #PARLAMENTO<STRONG>CASADIVETRO</STRONG>
+          </div>
+        </div>
+      </div>
 
-                          {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
+      <div class="row">
+          <div class="span10 offset1 white_bg" >
+              <p class="parlamentare_calltoaction span9">
+                  SEI UN PARLAMENTARE E VUOI ADERIRE? SCRIVICI A
+                  <a href="mailto:associazione@openpolis.it">
+                      associazione@openpolis.it
+                  </a>
+              </p>
+          </div>
+      </div>
+
+
+      <div class="row">
+        <div class="span10 offset1 white_bg">
+          <div class="tabbable"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs default_padding" id="lista_ul">
+              <li class="{% if tipologia == "deputati" %}active{% endif %}">
+                <a href="#deputati_tab" data-toggle="tab">
+                  <span class="title">
+                      DEPUTATI <span class="numero_adesioni">{{ n_deputati }}</span>
+                  </span>
+                </a>
+              </li>
+              <li class="{% if tipologia == "senatori" %}active{% endif %}">
+                <a href="#senatori_tab" data-toggle="tab">
+                  <span class="title">
+                      SENATORI <span class="numero_adesioni">{{ n_senatori }}</span>
+                  </span>
+                </a>
+            </li>
+            <li class="{% if tipologia == "" %}active{% endif %}">
+                <a href="#totale_tab" data-toggle="tab">
+                  <span class="title">
+                      TUTTI <span class="numero_adesioni">{{ n_totale }}</span>
+                  </span>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content lista_tabs">
+          <div class="tab-pane default_padding {% if tipologia == "deputati" %}active{% endif %} " id="deputati_tab">
+
+          {#        table header #}
+            <table class="table table-condensed tablesorter">
+              <thead>
+                <tr >
+                  <th>NOME </th>
+                  <th>COGNOME </th>
+                  <th>GRUPPO  </th>
+                  <th>ADESIONE  </th>
+                  <th>FIRMATARIO</th>
+                  <th>EMAIL</th>
+                  <th>TWITTER</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for parlamentare in lista_deputati %}
+                <tr>
+                  <td>
+                    {{ parlamentare.nome|truncatesmart:20  }}
+                  </td>
+                  <td >
+                    {{ parlamentare.cognome|truncatesmart:30 }}
+                  </td>
+                  <td >
+                    {{ parlamentare.gruppo_parlamentare.sigla }}
+                  </td>
+                  <td>
+                    {% if parlamentare.adesione == '1'   %}
+                        <span class="adesione_blue">ADERISCE</span>
+                    {% else %}
+                        <span class="adesione_red">NON ADERISCE</span>
+                    {% endif %}
+
+                  </td>
+                  <td>
+                    {% if parlamentare.firmatario_testo == '1' %}
+                      <img src="{% static "img/icona_firmatario.png"  %}"/>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if parlamentare.account_mail %}
+                        <a class="list_email" href="mailto:{{ parlamentare.account_mail }}">
+                            EMAIL
+                        </a>
+                    {% else %}
+                        &nbsp;
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if parlamentare.account_twitter %}
+                        <div id="custom-tweet-button">
+                            <a class="btn btn-info" href="https://twitter.com/share?url=http%3A%2F%2Fbit.ly%2F15p2ltP&lang=it-IT&text=@{{ parlamentare.account_twitter }} {% if parlamentare.adesione == "1" %}coinvolgi+i+tuoi+colleghi+nella+campagna+%23ParlamentoCasadiVetro{% else %}la+trasparenza+delle+commissioni+parlamentari+per+un+%23ParlamentoCasadiVetro.Ci+stai%3F{% endif %}&hashtags=openparlamento{% if parlamentare.adesione == "1" %}{% if parlamentare.ramo_parlamento == "0" %}%2Copencamera{% else %}%2Copensenato{% endif %}{% endif %}"
+                               target="_blank">
+                                Twitta
+                            </a>
+
+                        </div>
+
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
             </table>
         </div>
         <div class="tab-pane default_padding {% if tipologia == "senatori" %}active{% endif %} " id="senatori_tab">
           {#        table header #}
             <table class="table table-condensed tablesorter">
                 <thead>
-                <tr>
-                    <th>Nome </th>
-                    <th>Cognome </th>
-                    <th>Gruppo </th>
-                    <th>Adesione </th>
-                    <th>Email</th>
-                    <th>Twitter</th>
-                </tr>
+                  <tr >
+                    <th>NOME </th>
+                    <th>COGNOME </th>
+                    <th>GRUPPO  </th>
+                    <th>ADESIONE  </th>
+                    <th>FIRMATARIO</th>
+                    <th>EMAIL</th>
+                    <th>TWITTER</th>
+                  </tr>
                 </thead>
                 <tbody>
                 {% for parlamentare in lista_senatori %}
@@ -182,16 +239,21 @@
                         </td>
                         <td>
                           {% if parlamentare.adesione == '1'   %}
-                              Aderisce
+                              <span class="adesione_blue">ADERISCE</span>
                           {% else %}
-                              Non aderisce
+                              <span class="adesione_red">NON ADERISCE</span>
                           {% endif %}
 
                         </td>
                         <td>
+                          {% if parlamentare.firmatario_testo == '1' %}
+                            <img src="{% static "img/icona_firmatario.png"  %}"/>
+                          {% endif %}
+                        </td>
+                        <td>
                           {% if parlamentare.account_mail %}
-                              <a href="mailto:{{ parlamentare.account_mail }}">
-                                  Email
+                              <a class="list_email" href="mailto:{{ parlamentare.account_mail }}">
+                                  EMAIL
                               </a>
                           {% else %}
                               &nbsp;
@@ -202,7 +264,7 @@
                               <div id="custom-tweet-button">
                                   <a class="btn btn-info" href="https://twitter.com/share?url=http%3A%2F%2Fbit.ly%2F15p2ltP&lang=it-IT&text=@{{ parlamentare.account_twitter }} {% if parlamentare.adesione == "1" %}coinvolgi+i+tuoi+colleghi+nella+campagna+%23ParlamentoCasadiVetro{% else %}la+trasparenza+delle+commissioni+parlamentari+per+un+%23ParlamentoCasadiVetro.Ci+stai%3F{% endif %}&hashtags=openparlamento{% if parlamentare.adesione == "1" %}{% if parlamentare.ramo_parlamento == "0" %}%2Copencamera{% else %}%2Copensenato{% endif %}{% endif %}"
                                      target="_blank">
-                                      Twitta a @{{ parlamentare.account_twitter }}
+                                      Twitta
                                   </a>
 
                               </div>
@@ -217,67 +279,84 @@
         <div class="tab-pane default_padding {% if tipologia == "" %}active{% endif %} " id="totale_tab">
           {#        table header #}
 
-            <table class="table table-condensed tablesorter">
-                <thead>
+          <table class="table table-condensed tablesorter">
+            <thead>
+              <tr >
+                <th>NOME </th>
+                <th>COGNOME </th>
+                <th>GRUPPO  </th>
+                <th>ADESIONE  </th>
+                <th>FIRMATARIO</th>
+                <th>EMAIL</th>
+                <th>TWITTER</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for parlamentare in lista_completa %}
                 <tr>
-                    <th>Nome </th>
-                    <th>Cognome </th>
-                    <th>Gruppo </th>
-                    <th>Adesione </th>
-                    <th>Email</th>
-                    <th>Twitter</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for parlamentare in lista_completa %}
-                    <tr>
-                        <td>
-                          {{ parlamentare.nome|truncatesmart:20  }}
-                        </td>
-                        <td >
-                          {{ parlamentare.cognome|truncatesmart:30 }}
-                        </td>
-                        <td >
-                          {{ parlamentare.gruppo_parlamentare.sigla }}
-                        </td>
-                        <td>
-                          {% if parlamentare.adesione == '1'   %}
-                              Aderisce
-                          {% else %}
-                              Non aderisce
-                          {% endif %}
+                    <td>
+                      {{ parlamentare.nome|truncatesmart:20  }}
+                    </td>
+                    <td >
+                      {{ parlamentare.cognome|truncatesmart:30 }}
+                    </td>
+                    <td >
+                      {{ parlamentare.gruppo_parlamentare.sigla }}
+                    </td>
+                    <td>
+                      {% if parlamentare.adesione == '1'   %}
+                          <span class="adesione_blue">ADERISCE</span>
+                      {% else %}
+                          <span class="adesione_red">NON ADERISCE</span>
+                      {% endif %}
 
-                        </td>
-                        <td>
-                          {% if parlamentare.account_mail %}
-                              <a href="mailto:{{ parlamentare.account_mail }}">
-                                  Email
+                    </td>
+                    <td>
+                      {% if parlamentare.firmatario_testo == '1' %}
+                        <img src="{% static "img/icona_firmatario.png"  %}"/>
+                      {% endif %}
+                    </td>
+                    <td>
+                      {% if parlamentare.account_mail %}
+                          <a class="list_email" href="mailto:{{ parlamentare.account_mail }}">
+                              EMAIL
+                          </a>
+                      {% else %}
+                          &nbsp;
+                      {% endif %}
+                    </td>
+                    <td>
+                      {% if parlamentare.account_twitter %}
+                          <div id="custom-tweet-button">
+                              <a class="btn btn-info" href="https://twitter.com/share?url=http%3A%2F%2Fbit.ly%2F15p2ltP&lang=it-IT&text=@{{ parlamentare.account_twitter }} {% if parlamentare.adesione == "1" %}coinvolgi+i+tuoi+colleghi+nella+campagna+%23ParlamentoCasadiVetro{% else %}la+trasparenza+delle+commissioni+parlamentari+per+un+%23ParlamentoCasadiVetro.Ci+stai%3F{% endif %}&hashtags=openparlamento{% if parlamentare.adesione == "1" %}{% if parlamentare.ramo_parlamento == "0" %}%2Copencamera{% else %}%2Copensenato{% endif %}{% endif %}"
+                                 target="_blank">
+                                  Twitta
                               </a>
-                          {% else %}
-                              &nbsp;
-                          {% endif %}
-                        </td>
-                        <td>
-                          {% if parlamentare.account_twitter %}
-                              <div id="custom-tweet-button">
-                                  <a class="btn btn-info" href="https://twitter.com/share?url=http%3A%2F%2Fbit.ly%2F15p2ltP&lang=it-IT&text=@{{ parlamentare.account_twitter }} {% if parlamentare.adesione == "1" %}coinvolgi+i+tuoi+colleghi+nella+campagna+%23ParlamentoCasadiVetro{% else %}la+trasparenza+delle+commissioni+parlamentari+per+un+%23ParlamentoCasadiVetro.Ci+stai%3F{% endif %}&hashtags=openparlamento{% if parlamentare.adesione == "1" %}{% if parlamentare.ramo_parlamento == "0" %}%2Copencamera{% else %}%2Copensenato{% endif %}{% endif %}"
-                                     target="_blank">
-                                      Twitta a @{{ parlamentare.account_twitter }}
-                                  </a>
-                              </div>
-                          {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                          </div>
+                      {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
         </div>
     </div>
     </div>
     </div>
+
     </div>
+    <div class="row">
+        <div class="span10 offset1 white_bg" >
+            <p class="parlamentare_calltoaction span9">
+                SEI UN PARLAMENTARE E VUOI ADERIRE? SCRIVICI A
+                <a href="mailto:associazione@openpolis.it">
+                    associazione@openpolis.it
+                </a>
+            </p>
+        </div>
     </div>
-    </div>
+  </div>
+
 
 
 

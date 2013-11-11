@@ -8926,7 +8926,7 @@ a:hover {
 
 .subtitle {
   margin-bottom: 15px;
-  color: #3caadb;
+  color: #65a0b8;
 }
 
 @media (min-width: 767px) {
@@ -8975,7 +8975,7 @@ a:hover {
 
 @media (min-width: 767px) {
   .in_tab_padding {
-    padding-right: 150px;
+    padding-right: 50px;
     padding-left: 50px;
   }
 }
@@ -9164,20 +9164,16 @@ a:hover {
   }
 }
 
-.blue_label {
-  color: blue;
-}
-
-.red_label {
-  color: red;
-}
-
 #achepuntosiamo {
   overflow: hidden;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-top-left-radius: 3px;
+}
+
+#achepuntosiamo a {
+  color: #65a0b8;
 }
 
 #achepuntosiamo .subtitle {
@@ -9294,7 +9290,7 @@ a:hover {
   #pcv_inner_navbar {
     padding-right: 35px;
     padding-left: 35px;
-    margin-right: 80px;
+    margin-right: 90px;
     margin-left: 90px;
   }
 }
@@ -9369,7 +9365,7 @@ a:hover {
 }
 
 #lista_ul .active .title {
-  color: #3caadb;
+  color: #65a0b8;
 }
 
 #lista_ul a:hover {
@@ -9454,8 +9450,12 @@ a:hover {
 }
 
 .adesioni_tabs #parlamentare_calltoaction {
-  padding: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
   margin-bottom: 30px;
+  font-family: "Montserrat", "sans-serif";
   font-weight: bold;
   color: white;
   background-color: #e54442;
@@ -9518,7 +9518,8 @@ a:hover {
 
 .adesioni_tabs .title {
   margin-bottom: 15px;
-  font-size: 19px;
+  font-size: 27px;
+  font-weight: bold;
   color: #65a0b8;
 }
 
@@ -9546,16 +9547,28 @@ a:hover {
 .adesioni_tabs .liste_adesioni .riga_adesioni .email {
   width: 30px;
   margin-right: 8px;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: bold;
+}
+
+.adesioni_tabs .liste_adesioni .riga_adesioni .email a {
+  color: #e54442;
+}
+
+.adesioni_tabs .liste_adesioni .riga_adesioni .email a:hover {
+  color: #b13231;
 }
 
 @media (min-width: 800px) {
   .adesioni_tabs .liste_adesioni .riga_adesioni .email {
-    margin-left: 8px;
+    margin-right: 8px;
+    margin-left: 5px;
   }
 }
 
 @media (min-width: 800px) {
   .adesioni_tabs .liste_adesioni .riga_adesioni .twitter {
+    padding-left: 4px;
     margin-left: 10px;
   }
 }
@@ -9571,7 +9584,13 @@ a:hover {
 
 .adesioni_tabs .liste_adesioni .link_veditutti {
   margin-top: 10px;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: bold;
   border-bottom: 0;
+}
+
+.adesioni_tabs .liste_adesioni .link_veditutti a {
+  color: #65a0b8;
 }
 
 .adesioni_tabs .adesioni_colgraph {
@@ -9642,51 +9661,71 @@ table {
 }
 
 #footer {
-  background-color: #3caadb;
+  padding-top: 0;
+  font-family: "Montserrat", "sans-serif";
+  color: white;
+  background-color: #65a0b8;
 }
 
-#footer .title,
-#footer .content {
+#footer .small {
+  height: 25px!important;
+  min-height: 25px!important;
+}
+
+#footer .default_padding {
+  padding-bottom: 20px;
+}
+
+#footer img {
+  vertical-align: bottom;
+}
+
+#footer a {
   color: white;
 }
 
-#footer .box-footer {
-  padding: 15px;
-  margin-top: 30px;
-  margin-right: 0;
-  margin-bottom: 30px;
-  margin-left: 0;
-  text-align: left;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
+#footer a:hover {
+  color: white;
+  text-decoration: underline;
 }
 
-#footer .box-footer .media {
-  margin-top: 15px;
+#footer .title {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
 }
 
-#footer .box-footer .content {
-  font-size: 13px;
+#sub_footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: black;
+  background-color: #a9d0cd;
 }
 
-#footer .box-footer hr {
+#sub_footer ul {
+  padding: 0;
   margin: 0;
-  border: 0;
-  border-top: 1px solid #7cc0b2;
-  border-bottom: 1px solid #ffffff;
+  list-style: none;
+  list-style-type: none;
 }
 
-#footer .box-footer p {
-  margin-left: 48px;
-  font-size: 0.9em;
-  line-height: 1.2em;
-  color: #939698;
-  text-align: left;
+#sub_footer ul li:first-child {
+  padding-left: 19px;
+  border-left: 0;
 }
 
-#footer .box-footer p#iban {
-  margin-left: 0;
+#sub_footer ul li {
+  display: block;
+  float: left;
+  height: 30px;
+  padding-right: 11px;
+  padding-left: 11px;
+  line-height: 30px;
+  list-style: none;
+  border-left: 1px solid #808080;
+}
+
+#sub_footer ul li a {
+  min-height: 30px;
 }

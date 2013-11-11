@@ -2,6 +2,12 @@
 {% load utils %}
 {% load staticfiles %}
 
+
+{% block title %}
+  Home
+{% endblock %}
+
+
 {% block js_header %}
     <script type="text/javascript" src="{% static "js/d3.v3.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/graph_utils.js" %}"></script>
@@ -725,7 +731,7 @@
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span9 content">
-                                        <p id="parlamentare_calltoaction">
+                                        <p class="parlamentare_calltoaction">
                                             SEI UN PARLAMENTARE E VUOI ADERIRE? SCRIVICI A
                                             <a href="mailto:associazione@openpolis.it">
                                                 associazione@openpolis.it

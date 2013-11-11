@@ -22,6 +22,12 @@ a:hover{
   background-size: 100%;
 }
 
+.light_blue_no_bg{
+  background-color: @page-background;
+
+}
+
+
 .affix{
   @media(max-width: 768px){
     position: relative;
@@ -388,6 +394,7 @@ a:hover{
   .brand{
     padding-top: 20px;
     padding-bottom: 20px;
+    outline: 0;
   }
   li a:hover{
     background-color: @navbar-selected;
@@ -451,15 +458,25 @@ a:hover{
 #lista_ul{
 
   padding-bottom: 0;
+  padding-top:20px;
   border-bottom: 1px solid #dddddd;
-
-  .active .title{
-    color:@blue-color;
-  }
 
   a:hover{
     background-color: #ffffff;
   }
+
+  .title{
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .active .title{
+    color:@blue-color;
+  }
+
+  li{
+    margin-left: 19px;
+  }
+
 }
 
 .lista_tabs{
@@ -536,6 +553,33 @@ a:hover{
   }
 }
 
+.parlamentare_calltoaction{
+  font-family: "Montserrat", "sans-serif";
+  font-weight:bold;
+  color: white;
+  background-color: @red-color;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+
+  margin-bottom: @spacing-30;
+  box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
+  -moz-box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
+  -webkit-box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
+
+  a{
+    color: black;
+  }
+  a:hover{
+    color: white;
+  }
+}
+
+.numero_adesioni{
+  font-size: 29px;
+}
+
 .adesioni_tabs{
 
   .nav-tabs > .active > a:hover{
@@ -545,28 +589,6 @@ a:hover{
 
   padding-top:10px;
 
-  #parlamentare_calltoaction{
-    font-family: "Montserrat", "sans-serif";
-    font-weight:bold;
-    color: white;
-    background-color: @red-color;
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-left: 10px;
-    padding-bottom: 5px;
-
-    margin-bottom: @spacing-30;
-    box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
-    -moz-box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
-    -webkit-box-shadow: 0px 9px 10px 3px rgba(47, 47, 47, 0.2);
-
-    a{
-      color: black;
-    }
-    a:hover{
-      color: white;
-    }
-  }
 
   ul.nav-tabs{
 
@@ -609,10 +631,6 @@ a:hover{
     color: @blue-color;
     font-family: "Montserrat", "sans-serif";
     font-weight: bold;
-
-    .numero_adesioni{
-      font-size: 29px;
-    }
 
   }
   .subtitle:hover{
@@ -708,6 +726,44 @@ a:hover{
 }
 
 #lista_completa{
+
+  .title{
+    color: @red-color;
+    line-height: 30px;
+  }
+
+  #lista_title_container{
+    margin-bottom: 0;
+    padding-top:50px;
+    padding-bottom:25px;
+    #title{
+      padding-left:35px;
+    }
+  }
+
+  #pcv_inner_navbar{
+    ul{
+      display: none;
+    }
+  }
+  #lista_ul{
+
+    .active .title{
+      color: @red-color;
+    }
+    .title{
+      color:@blue-color;
+    }
+    .title:hover{
+      color: @red-color;
+    }
+
+    li:hover a span{
+      color: @red-color;
+    }
+  }
+
+
   .subtitle{
     line-height: @slogan-size;
     font-size: @slogan-size;
@@ -717,6 +773,15 @@ a:hover{
   }
   .btn a{
     color: white;
+  }
+
+  .tabbable{
+    margin-left:20px;
+    margin-right: 20px;
+  }
+
+  th{
+    font-family: "Montserrat","sans-serif";
   }
 
   tr.odd{
@@ -734,6 +799,21 @@ a:hover{
   }
   th.sorting_disabled{
     cursor: not-allowed;
+  }
+
+  td .list_email{
+    font-family: "Montserrat","sans-serif";
+    font-weight: bold;
+    color: @red-color;
+  }
+
+  td .adesione_blue{
+    color: @blue-color;
+    font-weight: bold;
+  }
+  td .adesione_red{
+    color: @red-color;
+    font-weight: bold;
   }
 }
 
