@@ -9070,17 +9070,41 @@ a:hover {
   }
 }
 
-.header #title_container #hash {
+.header #title_container .hash {
   padding-top: 8px;
-  font-size: 129px;
-  line-height: 100px;
   text-align: right;
 }
 
-.header #title_container #scritta {
-  font-size: 70px;
-  line-height: 60px;
+@media (max-width: 768px) {
+  .header #title_container .hash {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header #title_container .hash {
+    font-size: 129px;
+    line-height: 100px;
+  }
+}
+
+.header #title_container .scritta {
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .header #title_container .scritta {
+    font-size: 35px;
+    line-height: 35px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header #title_container .scritta {
+    font-size: 70px;
+    line-height: 60px;
+  }
 }
 
 .header #main-intro {
@@ -9108,10 +9132,23 @@ a:hover {
 .header #main-grido {
   margin-bottom: 30px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
   font-weight: bold;
   color: #e54442;
   text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .header #main-grido {
+    font-size: 25px;
+    line-height: 25px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header #main-grido {
+    font-size: 40px;
+    line-height: 40px;
+  }
 }
 
 .header .button {
@@ -9339,8 +9376,10 @@ a:hover {
   }
 }
 
-#pcv_tabs {
-  min-height: 500px;
+@media (min-width: 1024px) {
+  #pcv_tabs {
+    min-height: 500px;
+  }
 }
 
 #pcv_tabs .tab-content {
@@ -9666,6 +9705,10 @@ a:hover {
 
 #lista_completa th {
   font-family: "Montserrat", "sans-serif";
+}
+
+#lista_completa tr {
+  height: 37px;
 }
 
 #lista_completa tr.odd {

@@ -22,8 +22,16 @@ function sweep(a) {
 }
 
 function resize(){
+    var window_width=window.innerWidth
+    pie_container =$("#pie_container")
+    width = pie_container.outerWidth()-(pie_container.outerWidth()*0.1);
+    height= width / 1.19;
 
-    width=(window.innerWidth/2)-20;
+    if(width> 380)
+        width=380;
+    if(height>255)
+        height=255;
+
     radius = width/4;
     outer_label_radius = radius+(radius/1.5);
     inner_label_radius = radius+(radius/1.8);
@@ -54,7 +62,7 @@ function draw_arc(div_id, data, label){
         attr("width", width).
         attr("height",height).
         append("g").
-        attr("transform", "translate(" + radius*1.8 + "," + (radius*1.5+100) +")");
+        attr("transform","translate("+ width/2+","+(height) +")");
 
     var pie_chart = d3.layout.
         pie().

@@ -80,12 +80,22 @@
             <div class="span10 offset1" id="title_container">
                 <a name="PageTop"></a>
                 <div class="container-fluid">
-                    <div class="row-fluid">
+                    <div class="row-fluid visible-desktop">
                         <div class="span10 offset2">
-                            <div id="hash" style="float:left; clear:left;">
+                            <div class="hash" style="float:left; clear:left;">
                                 #
                             </div>
-                            <div id="scritta" style="float:left; clear:right;">
+                            <div class="scritta" style="float:left; clear:right;">
+                                PARLAMENTO<br/> CASA DI VETRO
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid hidden-desktop">
+                        <div class="span10 offset1">
+                            <div class="hash" style="float:left; clear:left;">
+                                #
+                            </div>
+                            <div class="scritta" style="float:left; clear:right;">
                                 PARLAMENTO<br/> CASA DI VETRO
                             </div>
                         </div>
@@ -159,9 +169,10 @@
 
 {% block top-content %}
 
+
     <div class="container">
         <div class="row">
-            <div class="span4 offset2">
+            <div class="span4 offset2" id="pie_container">
                 <div id="pie_camera" class="top_pie"></div>
             </div>
             <div class="span4">

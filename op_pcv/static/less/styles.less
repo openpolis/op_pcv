@@ -175,16 +175,34 @@ a:hover{
     margin-top: 15px;
 
 
-    #hash{
+    .hash{
       text-align: right;
-      font-size: 129px;
-      line-height: 100px;
       padding-top: 8px;
+
+      @media(max-width: 768px){
+        font-size: 50px;
+        line-height: 50px;
+      }
+
+      @media(min-width: 768px){
+        font-size: 129px;
+        line-height: 100px;
+      }
+
+
     }
-    #scritta{
+    .scritta{
       text-align: left;
-      font-size: 70px;
-      line-height: 60px;
+      @media(max-width: 768px){
+        font-size: 35px;
+        line-height: 35px;
+      }
+
+      @media(min-width: 768px){
+        font-size: 70px;
+        line-height: 60px;
+      }
+
     }
   }
 
@@ -209,9 +227,20 @@ a:hover{
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-weight: bold;
-    font-size: @intro-size;
     color:  @red-color;
     margin-bottom: 30px;
+
+
+    @media(max-width: 1024px){
+      font-size: @slogan-size;
+      line-height: @slogan-size;
+    }
+    @media(min-width: 1024px){
+      font-size: @intro-size;
+      line-height: @intro-size;
+
+    }
+
   }
 
   .button{
@@ -431,7 +460,9 @@ a:hover{
 }
 
 #pcv_tabs{
-  min-height: 500px;
+  @media(min-width:1024px){
+    min-height: 500px;
+  }
 
   .tab-content{
     overflow: hidden;
@@ -784,6 +815,10 @@ a:hover{
     font-family: "Montserrat","sans-serif";
   }
 
+  tr{
+    height: 37px;
+  }
+
   tr.odd{
     background-color: #ffffff
   }
@@ -882,6 +917,11 @@ table {
     font-weight: bold;
     font-size: 16px;
     margin-bottom: 10px;
+
+    @media(max-width:800px){
+      margin-top: 10px;
+    }
+
   }
 
 }
