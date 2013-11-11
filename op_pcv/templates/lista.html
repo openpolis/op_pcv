@@ -180,8 +180,8 @@
                     {% endif %}
 
                   </td>
-                  <td>
-                    {% if parlamentare.firmatario_testo == '1' %}
+                  <td style="text-align: center;">
+                    {% if parlamentare.firmatario_testo %}
                       <img src="{% static "img/icona_firmatario.png"  %}"/>
                     {% endif %}
                   </td>
@@ -246,7 +246,7 @@
 
                         </td>
                         <td>
-                          {% if parlamentare.firmatario_testo == '1' %}
+                          {% if parlamentare.firmatario_testo %}
                             <img src="{% static "img/icona_firmatario.png"  %}"/>
                           {% endif %}
                         </td>
@@ -312,7 +312,7 @@
 
                     </td>
                     <td>
-                      {% if parlamentare.firmatario_testo == '1' %}
+                      {% if parlamentare.firmatario_testo %}
                         <img src="{% static "img/icona_firmatario.png"  %}"/>
                       {% endif %}
                     </td>
