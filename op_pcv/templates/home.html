@@ -522,7 +522,8 @@
             <div class="span12">
                 <div class="navbar" id="spynav_pcv">
                     <div class="navbar-inner" id="pcv_inner_navbar" >
-                        <a class="brand" href="#PageTop">#PARLAMENTO<strong>CASADIVETRO</strong></a>
+                        <a class="brand visible-desktop" href="#PageTop">#PARLAMENTO<strong>CASADIVETRO</strong></a>
+                        <a class="brand hidden-desktop" href="#PageTop">#PARLAMENTO<br/><strong>CASADIVETRO</strong></a>
                         <ul class="nav" id="ulnav">
                             <li>
                                 <a href="#campagna">
@@ -762,7 +763,7 @@
                                         <div class="row-fluid">
                                             <div class="span12">
                                                 <ul class="nav nav-tabs">
-                                                    <li class="active">
+                                                    <li class="">
                                                         <a href="#dep_aderiscono" data-toggle="tab">
                                                            <span class="subtitle blue">
                                                                 ADERISCONO
@@ -772,7 +773,7 @@
                                                            </span>
                                                         </a>
                                                     </li>
-                                                    <li class="">
+                                                    <li class="active">
                                                         <a href="#dep_nonaderiscono" data-toggle="tab">
                                                            <span class="subtitle red">
                                                                 NON ADERISCONO
@@ -787,7 +788,7 @@
                                         </div>
 {#                                          liste deputati#}
                                         <div class="tab-content">
-                                            <div class="tab-pane active liste_adesioni" id="dep_aderiscono">
+                                            <div class="tab-pane liste_adesioni" id="dep_aderiscono">
 {#                                              lista adesione deputati#}
                                                 {% for p in dep_aderiscono %}
                                                     <div class="row-fluid riga_adesioni">
@@ -826,7 +827,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="tab-pane liste_adesioni " id="dep_nonaderiscono">
+                                            <div class="tab-pane active liste_adesioni " id="dep_nonaderiscono">
 
 {#                                                  lista deputati non aderenti#}
                                                 {% for p in dep_neg_aderiscono %}
@@ -877,7 +878,7 @@
                                         <div class="row-fluid">
                                            <div class="span12">
                                                <ul class="nav nav-tabs">
-                                                   <li class="active">
+                                                   <li class="">
                                                        <a href="#sen_aderiscono" data-toggle="tab">
                                                            <span class="subtitle blue">
                                                                 ADERISCONO
@@ -887,7 +888,7 @@
                                                            </span>
                                                        </a>
                                                    </li>
-                                                   <li class="">
+                                                   <li class="active">
                                                        <a href="#sen_nonaderiscono" data-toggle="tab">
                                                            <span class="subtitle red">
                                                                 NON ADERISCONO
@@ -902,7 +903,7 @@
                                         </div>
 {#                                      liste senatori#}
                                         <div class="tab-content">
-                                            <div class="tab-pane liste_adesioni active " id="sen_aderiscono">
+                                            <div class="tab-pane liste_adesioni " id="sen_aderiscono">
 {#                                                  lista adesione senatori#}
                                                 {% for p in sen_aderiscono %}
                                                     <div class="row-fluid riga_adesioni">
@@ -941,7 +942,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="tab-pane liste_adesioni " id="sen_nonaderiscono">
+                                            <div class="tab-pane liste_adesioni active " id="sen_nonaderiscono">
 {#                                                  lista senatori non aderenti#}
                                                 {% for p in sen_neg_aderiscono %}
                                                     <div class="row-fluid riga_adesioni">

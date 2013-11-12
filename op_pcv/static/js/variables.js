@@ -13,8 +13,8 @@ var offset_y_n = height -60;
 var offset_y_label = offset_y_n-20;
 var offset_y_line = offset_y_label-10;
 
-var offset_ntot= -25;
-var offset_labeltot= -3;
+var offset_ntot= -27;
+var offset_labeltot= -7;
 
 var arc = d3.svg.arc().innerRadius(radius-(arc_width/1.2)).outerRadius(radius + (arc_width*1.2));
 

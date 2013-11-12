@@ -42,8 +42,8 @@ function resize(){
     offset_y_label = offset_y_n-(height/12);
     offset_y_line = offset_y_label-(height/24);
 
-    offset_ntot= -25;
-    offset_labeltot= -3;
+    offset_ntot= -27;
+    offset_labeltot= -7;
     arc = d3.svg.arc().innerRadius(radius-arc_width).outerRadius(radius + arc_width);
 }
 
