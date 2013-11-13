@@ -9712,6 +9712,9 @@ a:hover {
 #lista_completa th {
   padding-bottom: 8px;
   font-family: "Montserrat", "sans-serif";
+  background-color: #e0f1f0;
+  border-right: white solid;
+  border-right-width: 2px;
 }
 
 #lista_completa tr {
