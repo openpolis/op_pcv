@@ -9710,6 +9710,7 @@ a:hover {
 }
 
 #lista_completa th {
+  padding-bottom: 8px;
   font-family: "Montserrat", "sans-serif";
 }
 
@@ -9723,6 +9724,10 @@ a:hover {
 
 #lista_completa tr.even {
   background-color: #ffffff;
+}
+
+#lista_completa td {
+  vertical-align: middle;
 }
 
 #lista_completa td.sorting_1,
@@ -9746,11 +9751,13 @@ a:hover {
 }
 
 #lista_completa td .adesione_blue {
+  font-family: "Montserrat", "sans-serif";
   font-weight: bold;
   color: #65a0b8;
 }
 
 #lista_completa td .adesione_red {
+  font-family: "Montserrat", "sans-serif";
   font-weight: bold;
   color: #e54442;
 }
