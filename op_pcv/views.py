@@ -1,3 +1,4 @@
+import copy
 import datetime
 import socket
 from django.conf import settings
@@ -132,25 +133,26 @@ class PcvHome(TemplateView):
                 if 'tags' in feeds.entries[i]:
                     for tag in feeds.entries[i].tags:
                         if tag.term == settings.OP_BLOG_PCV_TAG:
-                            feeds.entries[i]['content'][0]['value']=remove_img_tags(feeds.entries[i]['content'][0]['value'])
-                            # splits the date and formats it (into italian)
+                            entry = copy.deepcopy(feeds.entries[i])
+                            entry['content'][0]['value']=remove_img_tags(entry['content'][0]['value'])
 
                             # set locale to en, to parse the post timestamp
                             locale.setlocale(locale.LC_ALL, 'en_US')
-                            post_date = datetime.datetime.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000')
+                            post_date = datetime.datetime.strptime(entry['published'], '%a, %d %b %Y %H:%M:%S +0000')
 
                             # set locale to it, to produced localized months' names
                             locale.setlocale(locale.LC_ALL, 'it_IT')
-                            feeds.entries[i]['month'] = post_date.strftime('%b').upper()
-                            feeds.entries[i]['day'] = post_date.strftime('%d')
-                            feeds.entries[i]['year'] = post_date.strftime('%Y')
+                            entry['month'] = post_date.strftime('%b').upper()
+                            entry['day'] = post_date.strftime('%d')
+                            entry['year'] = post_date.strftime('%Y')
 
-                            feeds.entries[i]['title'] = feeds.entries[i]['title'].upper()
-                            blogposts.append(feeds.entries[i])
+                            entry['title'] = entry['title'].upper()
+                            blogposts.append(entry)
                             post_counter += 1
 
                 i += 1
 
+        locale.setlocale(locale.LC_ALL, 'en_US')
 
         context['blogposts']=blogposts
 
