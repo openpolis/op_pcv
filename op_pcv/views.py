@@ -133,7 +133,7 @@ class PcvHome(TemplateView):
                 if 'tags' in feeds.entries[i]:
                     for tag in feeds.entries[i].tags:
                         if tag.term == settings.OP_BLOG_PCV_TAG:
-                            entry = copy.deepcopy(feeds.entries[i])
+                            entry = feeds.entries[i]
                             entry['content'][0]['value']=remove_img_tags(entry['content'][0]['value'])
 
                             # set locale to en, to parse the post timestamp
