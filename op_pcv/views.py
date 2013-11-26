@@ -1,15 +1,13 @@
 import datetime
-from django.template.defaultfilters import date as _date
 import socket
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from op_pcv.models import Parlamentare,GruppoParlamentare, UltimoAggiornamento, Entry
 import feedparser
 from utils import remove_img_tags
-import time
 import logging
+import locale
 
 
 
@@ -126,7 +124,6 @@ class PcvHome(TemplateView):
         feeds = feedparser.parse(settings.OP_BLOG_FEED)
         context['feeds_entries'] = len(feeds.entries)
 
-
         if feeds is not None:
             i=0
             post_counter = 0
@@ -136,12 +133,18 @@ class PcvHome(TemplateView):
                     for tag in feeds.entries[i].tags:
                         if tag.term == settings.OP_BLOG_PCV_TAG:
                             feeds.entries[i]['content'][0]['value']=remove_img_tags(feeds.entries[i]['content'][0]['value'])
-                            # splits the date and formats it
-                            post_date = time.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000')
-                            post_date_dt = datetime.date.fromtimestamp( time.mktime(post_date))
-                            feeds.entries[i]['month'] = _date(post_date_dt,"M").upper()
-                            feeds.entries[i]['day'] = time.strftime("%d",post_date).zfill(2)
-                            feeds.entries[i]['year'] = time.strftime("%Y",post_date)
+                            # splits the date and formats it (into italian)
+
+                            # set locale to en, to parse the post timestamp
+                            locale.setlocale(locale.LC_ALL, 'en_US')
+                            post_date = datetime.datetime.strptime(feeds.entries[i]['published'], '%a, %d %b %Y %H:%M:%S +0000')
+
+                            # set locale to it, to produced localized months' names
+                            locale.setlocale(locale.LC_ALL, 'it_IT')
+                            feeds.entries[i]['month'] = post_date.strftime('%b').upper()
+                            feeds.entries[i]['day'] = post_date.strftime('%d')
+                            feeds.entries[i]['year'] = post_date.strftime('%Y')
+
                             feeds.entries[i]['title'] = feeds.entries[i]['title'].upper()
                             blogposts.append(feeds.entries[i])
                             post_counter += 1
