@@ -9029,24 +9029,24 @@ a:hover {
 }
 
 .header {
-  margin-top: 25px;
+  margin-top: 15px;
   color: #4e4e4e;
 }
 
 .header #slogan {
   margin-bottom: 10px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 27px;
+  font-size: 22px;
   font-weight: bold;
-  line-height: 27px;
+  line-height: 22px;
   text-align: center;
 }
 
 .header #sottotitolo {
   font-family: 'Montserrat', sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: normal;
-  line-height: 22px;
+  line-height: 17px;
   text-align: center;
 }
 
@@ -9084,8 +9084,8 @@ a:hover {
 
 @media (min-width: 768px) {
   .header #title_container .hash {
-    font-size: 129px;
-    line-height: 100px;
+    font-size: 120px;
+    line-height: 90px;
   }
 }
 
@@ -9102,14 +9102,14 @@ a:hover {
 
 @media (min-width: 768px) {
   .header #title_container .scritta {
-    font-size: 70px;
-    line-height: 60px;
+    font-size: 65px;
+    line-height: 55px;
   }
 }
 
 .header #main-intro {
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   font-family: 'Montserrat', sans-serif;
   color: #4e4e4e;
   text-align: center;
@@ -9117,20 +9117,20 @@ a:hover {
 
 @media (max-width: 768px) {
   .header #main-intro {
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 18px;
   }
 }
 
 @media (min-width: 768px) {
   .header #main-intro {
-    font-size: 22px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 20px;
   }
 }
 
 .header #main-grido {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   color: #e54442;
@@ -9146,13 +9146,13 @@ a:hover {
 
 @media (min-width: 1024px) {
   .header #main-grido {
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 30px;
+    line-height: 30px;
   }
 }
 
 .header .button {
-  height: 89px;
+  height: 80px;
   max-width: 100%;
   overflow: hidden;
 }
