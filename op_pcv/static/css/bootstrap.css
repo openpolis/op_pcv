@@ -9518,7 +9518,7 @@ a:hover {
 }
 
 .numero_adesioni {
-  font-size: 29px;
+  font-size: 28px;
 }
 
 .adesioni_tabs {
@@ -9528,6 +9528,12 @@ a:hover {
 .adesioni_tabs .nav-tabs > .active > a:hover {
   border-bottom: 0;
   border-bottom-color: white;
+}
+
+.adesioni_tabs ul#senatori_adesioni a,
+.adesioni_tabs ul#deputati_adesioni a {
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .adesioni_tabs ul.nav-tabs span.red {
@@ -9578,7 +9584,7 @@ a:hover {
 }
 
 .adesioni_tabs li:nth-child(2) a {
-  margin-left: 25px;
+  margin-left: 15px;
 }
 
 .adesioni_tabs .liste_adesioni {
