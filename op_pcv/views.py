@@ -88,19 +88,20 @@ class PcvHome(TemplateView):
         context['col_camera']=[]
 
         # sets fixed order for groups in the col chart
-        ordine_gruppi_camera=["Pd","Pdl","M5S","Sc","Sel","Lega","Misto","Fdi"]
-        ordine_gruppi_senato=["Pd","Pdl","M5S","Sc","Lega","Gal","Aut-Psi","Misto"]
+        ordine_gruppi_camera=["Pd","M5S","FI-Pdl","Sel","NCD","Sc","Misto","Lega","PI","Fdi"]
+        ordine_gruppi_senato=["Pd","FI-Pdl","M5S","NCD","Lega","Misto","Aut-Psi","PI","Gal","Sc"]
 
         for sigla in ordine_gruppi_camera:
             try:
                 g = GruppoParlamentare.objects.get(sigla=sigla)
             except ObjectDoesNotExist:
-                raise
-            mydict={}
-            mydict["sigla"]=g.sigla
-            mydict["aderenti_tot"]=g.get_n_aderenti(0)
-            mydict["non_aderenti_tot"]=g.get_n_non_aderenti(0)+g.get_n_silenti(0)
-            context['col_camera'].append(mydict)
+                pass
+            else:
+                mydict={}
+                mydict["sigla"]=g.sigla
+                mydict["aderenti_tot"]=g.get_n_aderenti(0)
+                mydict["non_aderenti_tot"]=g.get_n_non_aderenti(0)+g.get_n_silenti(0)
+                context['col_camera'].append(mydict)
 
 
         context['col_senato']=[]
@@ -109,13 +110,13 @@ class PcvHome(TemplateView):
             try:
                 g = GruppoParlamentare.objects.get(sigla=sigla)
             except ObjectDoesNotExist:
-                raise
-
-            mydict={}
-            mydict["sigla"]=g.sigla
-            mydict["aderenti_tot"]=g.get_n_aderenti(1)
-            mydict["non_aderenti_tot"]=g.get_n_non_aderenti(1)+g.get_n_silenti(1)
-            context['col_senato'].append(mydict)
+                pass
+            else:
+                mydict={}
+                mydict["sigla"]=g.sigla
+                mydict["aderenti_tot"]=g.get_n_aderenti(1)
+                mydict["non_aderenti_tot"]=g.get_n_non_aderenti(1)+g.get_n_silenti(1)
+                context['col_senato'].append(mydict)
 
         context['gruppi_didascalia']=GruppoParlamentare.get_gruppi()
 
