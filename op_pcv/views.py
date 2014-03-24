@@ -119,38 +119,51 @@ class PcvHome(TemplateView):
         blogposts = []
         # sets the timeout for the socket connection
         socket.setdefaulttimeout(100)
-        feeds = feedparser.parse(settings.OP_BLOG_FEED)
-        context['feeds_entries'] = len(feeds.entries)
+        feedparser._HTMLSanitizer.acceptable_elements = feedparser._HTMLSanitizer.acceptable_elements.union(set(["object", "embed", "iframe"]))
+        entries = feedparser.parse(settings.OP_BLOG_FEED).entries
+        context['feeds_entries'] = len(entries)
 
-        if feeds is not None:
-            i=0
-            post_counter = 0
+        if entries is not None:
+            for entry in entries:
 
-            while i<len(feeds.entries) and post_counter < 3 :
-                if 'tags' in feeds.entries[i]:
-                    for tag in feeds.entries[i].tags:
-                        if tag.term == settings.OP_BLOG_PCV_TAG:
-                            entry = feeds.entries[i]
-                            entry['content'][0]['value']=remove_img_tags(entry['content'][0]['value'])
+                if len(blogposts) > 2:
+                    break
 
-                            # set locale to en, to parse the post timestamp
-                            locale.setlocale(locale.LC_ALL, 'en_US')
-                            post_date = datetime.datetime.strptime(entry['published'], '%a, %d %b %Y %H:%M:%S +0000')
+                if 'tags' in entry:
 
-                            # set locale to it, to produced localized months' names
-                            locale.setlocale(locale.LC_ALL, 'it_IT')
-                            entry['month'] = post_date.strftime('%b').upper()
-                            entry['day'] = post_date.strftime('%d')
-                            entry['year'] = post_date.strftime('%Y')
+                    category_found = False
+                    for tag in entry.tags:
+                        if tag.term == settings.OP_BLOG_PCV_CATEGORY:
+                            category_found = True
+                            break
 
-                            entry['title'] = entry['title'].upper()
-                            blogposts.append(entry)
-                            post_counter += 1
+                    if category_found:
+                        entry_dict = {
+                                      'link': entry['link'],
+                                      'title': entry['title'].upper(),
+                                      }
 
-                i += 1
+                        post_content = entry['content'][0]['value']
+                        feedburner_string = '<p>The post <a'
+                        entry_dict['content'] = post_content.split(feedburner_string)[0]
 
-        locale.setlocale(locale.LC_ALL, 'en_US')
+                        # set locale to en, to parse the post timestamp
+                        locale.setlocale(locale.LC_ALL, 'en_US.utf8')
+                        post_date = datetime.datetime.strptime(entry['published'], '%a, %d %b %Y %H:%M:%S +0000')
 
+                        # set locale to it, to produced localized months' names
+                        locale.setlocale(locale.LC_ALL, 'it_IT.utf8')
+
+                        entry_dict['month'] = post_date.strftime('%b').upper()
+                        entry_dict['day'] = post_date.strftime('%d')
+                        entry_dict['year'] = post_date.strftime('%Y')
+
+                        blogposts.append(entry_dict)
+
+
+
+        locale.setlocale(locale.LC_ALL, 'en_US.utf8')
+        
         context['blogposts']=blogposts
 
         # adesioni count and adesioni lists
