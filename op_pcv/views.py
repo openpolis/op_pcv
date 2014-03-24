@@ -124,8 +124,10 @@ class PcvHome(TemplateView):
         entries = feedparser.parse(settings.OP_BLOG_FEED).entries
         context['feeds_entries'] = len(entries)
 
+
         if entries is not None:
             for entry in entries:
+
                 # only takes 3 blog post
                 if len(blogposts) > 2:
                     break
@@ -134,7 +136,7 @@ class PcvHome(TemplateView):
 
                     category_found = False
                     for tag in entry.tags:
-                        if tag.term == settings.OP_BLOG_PCV_CATEGORY:
+                        if tag.term.lower() == settings.OP_BLOG_PCV_CATEGORY.lower():
                             category_found = True
                             break
 

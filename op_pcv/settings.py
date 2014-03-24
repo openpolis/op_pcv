@@ -26,8 +26,8 @@ DATABASES = {
 OP_BLOG_FEED = "http://blog.openpolis.it/feed/"
 OP_BLOG_PCV_TAG = "parlamentocasadivetro"
 OP_BLOG_PCV_CATEGORY = "ParlamentoCasadiVetro"
-# caches the last blog post about PCV for 30mins
-OP_BLOG_CACHETIME = 1800
+# caches the last blog post about PCV for 1min
+# OP_BLOG_CACHETIME = 60
 
 MEDIA_ROOT = root('assets')
 MEDIA_URL = '/media/'
@@ -141,12 +141,12 @@ INSTALLED_APPS = (
 
 )
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
-        }
-}
+#CACHES = {
+#    'default': {
+#        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#        'LOCATION': '127.0.0.1:11211',
+#        }
+#}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -185,7 +185,7 @@ LOGGING = {
         'feedlogfile': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'mode': 'w',
+            'mode': 'a',
             'filename': REPO_ROOT + "/log/feedlog.log",
             'formatter': 'standard',
         },
