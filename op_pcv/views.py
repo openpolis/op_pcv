@@ -119,13 +119,14 @@ class PcvHome(TemplateView):
         blogposts = []
         # sets the timeout for the socket connection
         socket.setdefaulttimeout(100)
+        # allow the iframe embed into post content
         feedparser._HTMLSanitizer.acceptable_elements = feedparser._HTMLSanitizer.acceptable_elements.union(set(["object", "embed", "iframe"]))
         entries = feedparser.parse(settings.OP_BLOG_FEED).entries
         context['feeds_entries'] = len(entries)
 
         if entries is not None:
             for entry in entries:
-
+                # only takes 3 blog post
                 if len(blogposts) > 2:
                     break
 
@@ -163,7 +164,7 @@ class PcvHome(TemplateView):
 
 
         locale.setlocale(locale.LC_ALL, 'en_US.utf8')
-        
+
         context['blogposts']=blogposts
 
         # adesioni count and adesioni lists
