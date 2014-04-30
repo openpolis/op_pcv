@@ -23,7 +23,7 @@ DATABASES = {
 }
 
 # rss feeds for openpolis blog, twitter account and facebook page
-OP_BLOG_FEED = "http://blog.openpolis.it/feed/"
+OP_BLOG_FEED = "http://blog.openpolis.it/categorie/parlamentocasadivetro/feed/"
 OP_BLOG_PCV_TAG = "parlamentocasadivetro"
 OP_BLOG_PCV_CATEGORY = "ParlamentoCasadiVetro"
 # caches the last blog post about PCV for 1min
